@@ -1,0 +1,396 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sungabha Music Academy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+        }
+
+        /* Logo and text container */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adds space between logo and text */
+        }
+
+        /* Adjust logo size */
+        .logo-container img {
+            height: 75px; /* Adjust as needed */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Brand text styling */
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 0.05;
+        }
+
+        /* "Sungabha" bigger */
+        .brand-title {
+            font-size: 25px; /* Adjust size */
+            font-weight: bold;
+            color: black;
+        }
+
+        /* "Music Academy" smaller and on a new line */
+        .brand-subtitle {
+            font-size: 20px; /* Adjust size */
+            color: #555; /* Lighter color for contrast */
+        }
+
+        nav div:nth-child(2) { /* Targeting the div containing nav links */
+            display: flex;
+            gap: 30px; /* Adjust gap as needed */
+            font-size: 15px;
+        }
+
+        nav a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: bold;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #555;
+        }
+
+        /* Highlight the active page (Home) */
+        nav a.active {
+        color: #07301f;
+        }
+
+        /* Optional: Add an underline or border effect */
+        nav a.active::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #07301f;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+            background-color: white;
+        }
+
+        .btn-primary {
+            background-color: #07301f;
+            color: white;
+            border: none;
+            position: relative;
+            left: -10px;
+        }
+
+        .btn-primary:hover {
+            background-color:rgb(255, 255, 255);
+            color: black;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            background-color: white;
+        }
+
+        .hero-content {
+            max-width: 50%;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5em;
+            color: #07301f;
+            margin-bottom: 20px;
+        }
+
+        .hero-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .hero-content li {
+            margin-bottom: 10px;
+        }
+
+        .hero-image {
+            border-radius: 35%;
+            width: 550px;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .discover {
+            background-color: #07301f;
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .discover-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .discover img {
+            border-radius: 15px;
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .discover-text {
+            max-width: 50%;
+            text-align: left;
+        }
+
+        .discover-text h2 {
+            font-size: 2em;
+        }
+
+        .discover button {
+            padding: 10px 20px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            position: relative;
+            left: -10px;
+        }
+
+        .discover button:hover {
+            background-color: white;
+            color: #07301f;
+        }
+
+        .discover-image-full {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .discover-image-full img {
+            width: 59.3%;
+            border-radius: 15px;
+        }
+
+        .courses {
+            padding: 50px 10%;
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .courses h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .course-card {
+            background-color: white;
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .course-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .course-content {
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .course-content h3 {
+            margin: 0;
+            color: #07301f;
+            font-size: 1.3em;
+        }
+        
+        .course-content p {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+
+        .footer {
+            background-color: #07301f;
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo">
+            <div class="brand-text">
+                <span class="brand-title">Sungabha</span>
+                <span class="brand-subtitle">Music Academy</span>
+            </div>
+        </div>
+        <div>
+            <a href="/" class="active">Home</a> 
+            <a href="{% url 'courses_list' %}">Courses</a>
+            <a href="contact.html">Contact</a>
+            <a href="team.html">Team</a>
+            <a href="about.html">About</a>
+            <a href="teach-with-us.html">Teach With Us</a>
+        </div>
+        <div>
+            <a href="login.html"><button class="btn-p">LOGIN</button></a>
+            <a href="register.html"><button class="btn-primary">REGISTER</button></a>
+        </div>
+    </nav>
+    
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Online Music Class For Kids & Adults</h1>
+            <ul>
+                <li>- Learn At Your Own Pace</li>
+                <li>- Making Learning Engaging & Fun</li>
+            </ul>
+            <button class="btn-primary">Get Courses</button>
+        </div>
+        <div>
+            <img src="{% static 'images/Nice.jpg'%}" alt="Music Image" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Discover Section -->
+    <section class="discover">
+        <div class="discover-content">
+            <img src="{% static 'images/Sabin1.png'%}" alt="Musician performing">
+            <div class="discover-text">
+                <h2>Discover Yourself With Music</h2>
+                <p>Unleash Your Potential Through the Power of Music</p>
+                <button>Learn More</button>
+            </div>
+        </div>
+        <div class="discover-image-full">
+            <img src="{% static 'images/Trio1.png'%}" alt="Band performance">
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+<section class="courses">
+    <h2>Join Sungabha Music Academy To Empower Talent Across All Levels</h2>
+    <div class="courses-grid">
+        <div class="course-card">
+            <img src="{% static 'images/Class1.png'%}" alt="Drum Class">
+            <div class="course-content">
+                <h3>Drum Class</h3>
+                <p>Are you ready to take the role of drummers? At Sungabha Music Academy, we offer an exciting drum class designed for beginners and aspiring drummers of all ages.</p>
+            </div>
+        </div>
+        <div class="course-card">
+            <img src="{% static 'images/Class2.png'%}" alt="Guitar Class">
+            <div class="course-content">
+                <h3>Guitar Class</h3>
+                <p>Are you ready to unleash your best chord and dive into the wonderful world of guitar music? Our course is structured to enhance your skills and technique.</p>
+            </div>
+        </div>
+        <div class="course-card">
+            <img src="{% static 'images/Class3.png'%}" alt="Bass Class">
+            <div class="course-content">
+                <h3>Bass Class</h3>
+                <p>Unlock the magic of bass with our professional instructors. This course is ideal for beginners and those looking to refine their skills.</p>
+            </div>
+        </div>
+        <div class="course-card">
+            <img src="{% static 'images/Class4.png'%}" alt="Vocal Class">
+            <div class="course-content">
+                <h3>Vocal Class</h3>
+                <p>Train your voice to express beautiful melodies and become a confident singer. Our vocal lessons cater to all skill levels.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <h3>Sungabha Music Academy</h3>
+            <p>Contact: sungabhamusicacademy@gmail.com<br>Phone: 987-4563210 | 068-522948</p>
+        </div>
+        <div>
+            <h3>Menu</h3>
+            <a href="#">Home</a> | <a href="#">Courses</a> | <a href="#">Contact</a> | <a href="#">Team</a> | <a href="#">About</a>
+        </div>
+        <div>
+            <h3>Connect</h3>
+            <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

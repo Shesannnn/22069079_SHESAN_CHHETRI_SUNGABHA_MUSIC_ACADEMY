@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sungabha Music Academy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+        }
+
+        /* Logo and text container */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adds space between logo and text */
+        }
+
+        /* Adjust logo size */
+        .logo-container img {
+            height: 75px; /* Adjust as needed */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Brand text styling */
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 0.05;
+        }
+
+        /* "Sungabha" bigger */
+        .brand-title {
+            font-size: 25px; /* Adjust size */
+            font-weight: bold;
+            color: black;
+        }
+
+        /* "Music Academy" smaller and on a new line */
+        .brand-subtitle {
+            font-size: 20px; /* Adjust size */
+            color: #555; /* Lighter color for contrast */
+        }
+
+        nav div:nth-child(2) { /* Targeting the div containing nav links */
+            display: flex;
+            gap: 30px; /* Adjust gap as needed */
+            font-size: 15px;
+        }
+
+        nav a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: bold;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #555;
+        }
+
+        /* Highlight the active page (Home) */
+        nav a.active {
+        color: #07301f;
+        }
+
+        /* Optional: Add an underline or border effect */
+        nav a.active::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #07301f;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+            background-color: white;
+        }
+
+        .btn-primary {
+            background-color: #07301f;
+            color: white;
+            border: none;
+            position: relative;
+            left: -10px;
+        }
+
+        .btn-primary:hover {
+            background-color:rgb(255, 255, 255);
+            color: black;
+        }
+
+
+        .footer {
+            background-color: #07301f;
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+            gap: 20px;  /* Space between items */
+            padding: 20px;  /* Add some padding around the container */
+        }
+        
+        .course-card {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+        
+        .course-image {
+            width: 100%;  /* Make the image take full width of the card */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo">
+            <div class="brand-text">
+                <span class="brand-title">Sungabha</span>
+                <span class="brand-subtitle">Music Academy</span>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses_list' %} "class="active" >Courses</a>
+            <a href="contact.html">Contact</a>
+            <a href="team.html">Team</a>
+            <a href="about.html">About</a>
+            <a href="teach-with-us.html">Teach With Us</a>
+        </div>
+        <div>
+            <a href="login.html"><button class="btn-p">LOGIN</button></a>
+            <a href="register.html"><button class="btn-primary">REGISTER</button></a>
+        </div>
+    </nav>
+
+    <h1>Available Courses</h1>
+
+    <div class="course-container">
+
+    {% if courses %}
+        {% for course in courses %}
+            <div class="course-card">
+                <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+                <span>Price: Rs {{ course.price }}</span>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No courses available.</p>
+    {% endif %}
+
+    </div>
+</body>
+</html>
