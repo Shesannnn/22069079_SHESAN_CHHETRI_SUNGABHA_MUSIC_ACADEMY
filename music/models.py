@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import models
 
 class Course(models.Model):
     title = models.CharField(max_length=255)
@@ -8,3 +9,4 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
