@@ -1,3 +1,9 @@
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -303,10 +309,13 @@
             <a href="about.html">About</a>
             <a href="teach-with-us.html">Teach With Us</a>
         </div>
-        <div>
-            <a href="login.html"><button class="btn-p">LOGIN</button></a>
-            <a href="register.html"><button class="btn-primary">REGISTER</button></a>
-        </div>
+        {% if user.is_authenticated %}
+            <p>Hello, {{ user.username }}!</p>
+            {% else %}
+            <p>You are not logged in.</p>
+            <a href="{% url 'login' %}"><button>Login</button></a>
+            <a href="{% url 'register' %}"><button>Register</button></a>
+        {% endif %}
     </nav>
     
     

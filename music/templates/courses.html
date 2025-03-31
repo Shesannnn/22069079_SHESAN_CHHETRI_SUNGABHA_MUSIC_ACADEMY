@@ -23,81 +23,56 @@
             background-color: white;
         }
 
-        /* Logo and text container */
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px; /* Adds space between logo and text */
+            gap: 10px;
         }
 
-        /* Adjust logo size */
         .logo-container img {
-            height: 75px; /* Adjust as needed */
-            width: auto; /* Maintain aspect ratio */
+            height: 75px;
+            width: auto;
         }
 
-        /* Brand text styling */
         .brand-text {
             display: flex;
             flex-direction: column;
             line-height: 0.05;
         }
 
-        /* "Sungabha" bigger */
         .brand-title {
-            font-size: 25px; /* Adjust size */
+            font-size: 25px;
             font-weight: bold;
             color: black;
         }
 
-        /* "Music Academy" smaller and on a new line */
         .brand-subtitle {
-            font-size: 20px; /* Adjust size */
-            color: #555; /* Lighter color for contrast */
+            font-size: 20px;
+            color: #555;
         }
 
-        nav div:nth-child(2) { /* Targeting the div containing nav links */
+        nav div:nth-child(2) {
             display: flex;
-            gap: 30px; /* Adjust gap as needed */
+            gap: 30px;
             font-size: 15px;
         }
 
         nav a {
-            margin-right: 20px;
             text-decoration: none;
             color: #1a1a1a;
             font-weight: bold;
             position: relative;
         }
 
-        nav a:hover {
-            color: #555;
-        }
-
-        /* Highlight the active page (Home) */
         nav a.active {
-        color: #07301f;
-        }
-
-        /* Optional: Add an underline or border effect */
-        nav a.active::after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: #07301f;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
+            color: #07301f;
         }
 
         button {
             padding: 10px 20px;
-            border: 1px solid black;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-left: 10px;
             background-color: white;
         }
 
@@ -105,31 +80,11 @@
             background-color: #07301f;
             color: white;
             border: none;
-            position: relative;
-            left: -10px;
         }
 
         .btn-primary:hover {
-            background-color:rgb(255, 255, 255);
+            background-color: white;
             color: black;
-        }
-
-
-        .footer {
-            background-color: #07301f;
-            color: white;
-            padding: 30px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .footer a {
-            color: #999;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            color: white;
         }
 
         .course-container {
@@ -139,59 +94,42 @@
             padding: 20px;
             max-width: 80%;
             margin: 0 auto;
-            position: relative;
         }
-        
+
         .course-card {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
             background-color: white;
-            transform: scale(0.9);
             transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.px;
+            text-align: center;
+        }
 
-        }
-        
         .course-card:hover {
-            transform: scale(1);
+            transform: scale(1.05);
         }
-        
+
         .course-image {
             width: 100%;
             height: 300px;
             object-fit: cover;
             border-radius: 5px;
         }
-        
-        /* View All Button Styling */
-        .view-all-btn {
-            margin-top: 10px;
-            padding: 8px 20px;
-            background-color: #07301f;
-            color: white;
-            border: none;
+
+        .category-filter {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .category-filter select {
+            padding: 8px;
+            font-size: 16px;
             border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            font-weight: bold;
+            border: 1px solid #ccc;
         }
-        
-        .view-all-btn:hover {
-            background-color: white;
-            color: black;
-        }
-        
-        
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav>
         <div class="logo-container">
             <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo">
@@ -202,7 +140,7 @@
         </div>
         <div>
             <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'courses_list' %} "class="active" >Courses</a>
+            <a href="{% url 'courses_list' %}" class="active">Courses</a>
             <a href="contact.html">Contact</a>
             <a href="team.html">Team</a>
             <a href="about.html">About</a>
@@ -216,26 +154,31 @@
 
     <h1>Available Courses</h1>
 
-    <div class="course-container">
+    <div class="category-filter">
+        <form method="GET">
+            <label for="category">Filter by Category:</label>
+            <select name="category" id="category" onchange="this.form.submit()">
+                {% for cat in categories %}
+                    <option value="{{ cat }}" {% if cat == selected_category %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
 
+    <div class="course-container">
         {% if courses %}
             {% for course in courses %}
                 <div class="course-card">
                     <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
                     <h3>{{ course.title }}</h3>
                     <p>{{ course.description }}</p>
+                    <p>Category: {{ course.category }}</p>
                     <span>Price: Rs {{ course.price }}</span>
-                    
-                    <!-- View All Courses Button inside each card -->
-                    <a href="{% url 'courses_list' %}" class="view-all-btn">View All Courses</a>
                 </div>
             {% endfor %}
         {% else %}
-            <p>No courses available.</p>
+            <p style="text-align:center;">No courses available.</p>
         {% endif %}
-    
     </div>
-    
-    
 </body>
 </html>
