@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #07301f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .dashboard-container {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .logout-btn {
+            background-color: #e60023;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .logout-btn:hover {
+            background-color: #c3001f;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome, Student {{ request.user.username }}!</h1>
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+</header>
+
+<div class="dashboard-container">
+    <div class="card">
+        <h2>My Courses</h2>
+        <p>Access your enrolled courses and content.</p>
+    </div>
+    <div class="card">
+        <h2>Assignments</h2>
+        <p>View and submit your assignments.</p>
+    </div>
+    <div class="card">
+        <h2>Profile</h2>
+        <p>Update your profile and settings.</p>
+    </div>
+</div>
+
+</body>
+</html>

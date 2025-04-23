@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.title }} Payment | Sungabha Music Academy</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .left-section {
+            flex: 1.5;
+            min-width: 300px;
+        }
+
+        .right-section {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #f9fafb;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .course-image {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin: 20px 0 10px;
+            color: #111827;
+            font-weight: bold;
+        }
+
+        ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #4f46e5;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background-color: #e0f2fe;
+            padding: 15px;
+            border-left: 4px solid #0284c7;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #1d4ed8;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1e40af;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .highlight-box {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-section">
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a> &gt; 
+            <a href="{% url 'courses_list' %}">Courses</a> &gt; 
+            <a href="{% url 'course_detail' course.id %}">{{ course.title }}</a> &gt; 
+            Payment
+        </div>
+        {% if course.image %}
+            <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
+        {% endif %}
+        <h1>{{ course.title }}</h1>
+        <p>{{ course.description }}</p>
+    </div>
+
+    <div class="right-section" id="payment-form">
+        
+        <!-- Level Information moved here -->
+        <div class="section-title">Level Information</div>
+        {% for level in course.levels.all %}
+            <div class="highlight-box">
+                <strong>{{ level.name }}</strong><br>
+                Language: {{ level.language }}<br>
+                Format: {{ level.format }}<br>
+                Access: {{ level.access }}<br>
+                Certificate: {{ level.certificate }}<br>
+                Duration: {{ level.duration }} months<br>
+                Price: USD {{ level.price }} / Session
+            </div>
+        {% endfor %}
+
+        <!-- Payment Form Section -->
+        <form method="post">
+            {% csrf_token %}
+            <label for="level">Choose Level</label>
+            <select name="level" id="level" required>
+                {% for level in course.levels.all %}
+                    <option value="{{ level.id }}">{{ level.name }} - USD {{ level.price }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn">Pay Now</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

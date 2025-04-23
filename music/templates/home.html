@@ -12,14 +12,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sungabha Music Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
             color: #1a1a1a;
+            line-height: 1.6;
         }
 
         nav {
@@ -150,7 +152,7 @@
         }
 
         .hero-image {
-            border-radius: 35%;
+            border-radius: 10%;
             width: 550px;
             height: 450px;
             object-fit: cover;
@@ -212,7 +214,8 @@
         }
 
         .discover-image-full img {
-            width: 59.3%;
+            width: 60.5%;
+            height: 60.5%;
             border-radius: 15px;
         }
 
@@ -256,8 +259,7 @@
         }
         
         .course-content {
-            padding: 20px;
-            text-align: left;
+            text-align: center;
         }
         
         .course-content h3 {
@@ -308,14 +310,25 @@
             <a href="team.html">Team</a>
             <a href="about.html">About</a>
             <a href="teach-with-us.html">Teach With Us</a>
+    
+            {% if user.is_authenticated %}
+                {% if user.profile.role == 'Teacher' %}
+                    <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
+                {% elif user.profile.role == 'Student' %}
+                    <a href="{% url 'student_dashboard' %}">Dashboard</a>
+                {% endif %}
+            {% endif %}
         </div>
-        {% if user.is_authenticated %}
-            <p>Hello, {{ user.username }}!</p>
+    
+        <div>
+            {% if user.is_authenticated %}
+                <p>Hello, {{ user.username }}!</p>
             {% else %}
-            <p>You are not logged in.</p>
-            <a href="{% url 'login' %}"><button>Login</button></a>
-            <a href="{% url 'register' %}"><button>Register</button></a>
-        {% endif %}
+                <p>You are not logged in.</p>
+                <a href="{% url 'login' %}"><button>Login</button></a>
+                <a href="{% url 'register' %}"><button>Register</button></a>
+            {% endif %}
+        </div>
     </nav>
     
     
@@ -354,36 +367,21 @@
 <section class="courses">
     <h2>Join Sungabha Music Academy To Empower Talent Across All Levels</h2>
     <div class="courses-grid">
-        <div class="course-card">
-            <img src="{% static 'images/Class1.png'%}" alt="Drum Class">
-            <div class="course-content">
-                <h3>Drum Class</h3>
-                <p>Are you ready to take the role of drummers? At Sungabha Music Academy, we offer an exciting drum class designed for beginners and aspiring drummers of all ages.</p>
-            </div>
-        </div>
-        <div class="course-card">
-            <img src="{% static 'images/Class2.png'%}" alt="Guitar Class">
-            <div class="course-content">
-                <h3>Guitar Class</h3>
-                <p>Are you ready to unleash your best chord and dive into the wonderful world of guitar music? Our course is structured to enhance your skills and technique.</p>
-            </div>
-        </div>
-        <div class="course-card">
-            <img src="{% static 'images/Class3.png'%}" alt="Bass Class">
-            <div class="course-content">
-                <h3>Bass Class</h3>
-                <p>Unlock the magic of bass with our professional instructors. This course is ideal for beginners and those looking to refine their skills.</p>
-            </div>
-        </div>
-        <div class="course-card">
-            <img src="{% static 'images/Class4.png'%}" alt="Vocal Class">
-            <div class="course-content">
-                <h3>Vocal Class</h3>
-                <p>Train your voice to express beautiful melodies and become a confident singer. Our vocal lessons cater to all skill levels.</p>
-            </div>
-        </div>
+        {% for course in home_courses %}
+            <a href="{% url 'courses_list' %}" style="text-decoration: none; color: inherit;">
+                <div class="course-card">
+                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                    <div class="course-content">
+                        <h3>{{ course.title }}</h3>
+                        <p>{{ course.description }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
     </div>
+    
 </section>
+
 
 
     <!-- Footer -->

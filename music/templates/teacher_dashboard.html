@@ -1,0 +1,285 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+    
+        /* Header */
+        header {
+            background: #07301f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+    
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #e60023;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+    
+        .logout-btn:hover {
+            background-color: #c3001f;
+        }
+    
+        /* Layout */
+        .main-container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 80px);
+        }
+    
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #ffffff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    
+        .sidebar button {
+            background: #07301f;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+    
+        .sidebar button:hover {
+            background: #055536;
+        }
+    
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+    
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+    
+        .card h2, .card h3 {
+            margin-top: 0;
+        }
+    
+        /* Lists */
+        ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+    
+        ul li {
+            margin-bottom: 5px;
+        }
+    
+        /* Form Styles */
+        form {
+            margin-top: 20px;
+        }
+    
+        form input[type="text"],
+        form textarea,
+        form select,
+        form input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+    
+        form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+    
+        form button[type="submit"] {
+            background-color: #07301f;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        form button[type="submit"]:hover {
+            background-color: #055536;
+        }
+    
+        /* Section animations */
+        .section {
+            transition: all 0.5s ease;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h1>Welcome, {{ request.user.username }}!</h1>
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+</header>
+
+<div class="main-container">
+    <div class="sidebar">
+        <button onclick="showSection('classes')">My Classes</button>
+        <button onclick="showSection('assignments')">Assignments</button>
+        <button onclick="showSection('students')">Students</button>
+        <button onclick="showSection('levels')">Levels</button>
+    </div>
+
+    <div class="content" id="content-area">
+        
+        <!-- Default welcome card -->
+        <div class="card">
+            <h2>Welcome!</h2>
+            <p>Select an option from the sidebar to get started.</p>
+        </div>
+
+        <!-- My Classes Section -->
+        <div class="card section" id="classes-section" style="display: none;">
+            <h2>My Classes</h2>
+            {% if courses %}
+                <ul>
+                    {% for course in courses %}
+                        <li>
+                            <strong>{{ course.title }}</strong> ({{ course.category }})
+                            <br>
+                            Students: 
+                            {% if course.students.all %}
+                                {{ course.students.count }}
+                                <ul>
+                                    {% for student in course.students.all %}
+                                        <li>{{ student.username }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                0
+                            {% endif %}
+                            Assignments:
+                            <ul>
+                                {% for assignment in course.assignments.all %}
+                                    <li>{{ assignment.title }}</li>
+                                {% empty %}
+                                    <li>No assignments yet.</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No classes assigned yet.</p>
+            {% endif %}
+
+            <h3>Add New Course</h3>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add Course</button>
+            </form>
+        </div>
+
+        <!-- Assignments Section -->
+        <div class="card section" id="assignments-section" style="display: none;">
+            <h2>Assignments</h2>
+            {% if courses %}
+                {% for course in courses %}
+                    <h3>{{ course.title }}</h3>
+                    <ul>
+                        {% for assignment in course.assignments.all %}
+                            <li>{{ assignment.title }}</li>
+                        {% empty %}
+                            <li>No assignments for this course.</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% else %}
+                <p>No courses available.</p>
+            {% endif %}
+        </div>
+
+        <!-- Students Section -->
+        <div class="card section" id="students-section" style="display: none;">
+            <h2>Students</h2>
+            {% if courses %}
+                {% for course in courses %}
+                    <h3>{{ course.title }}</h3>
+                    <ul>
+                        {% for student in course.students.all %}
+                            <li>{{ student.username }}</li>
+                        {% empty %}
+                            <li>No students enrolled.</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% else %}
+                <p>No courses available.</p>
+            {% endif %}
+        </div>
+
+        <!-- Levels Section -->
+        <div class="card section" id="levels-section" style="display: none;">
+            <h2>Levels</h2>
+            {% if levels %}
+                <ul>
+                    {% for level in levels %}
+                        <li>{{ level.title }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No levels assigned yet.</p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+<script>
+function showSection(section) {
+    document.querySelectorAll('.section').forEach(function(sec) {
+        sec.style.display = 'none';
+    });
+    document.getElementById(section + '-section').style.display = 'block';
+}
+</script>
+
+</body>
+</html>

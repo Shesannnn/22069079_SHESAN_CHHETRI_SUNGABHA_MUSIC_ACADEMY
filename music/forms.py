@@ -1,9 +1,15 @@
 from django import forms
 from django.contrib.auth import ( 
     authenticate, get_user_model 
-
 ) 
+from .models import Course
+
 User = get_user_model()
+
+REGISTER_ROLE_CHOICES = (
+    ('student', 'Student'),
+    ('teacher', 'Teacher'),
+)
 
 class UserLoginForm(forms.Form):
     username = forms.CharField()
@@ -27,10 +33,11 @@ class UserRegisterForm(forms.ModelForm):
     email = forms.EmailField(label='Email Address')
     email2 = forms.EmailField(label='Confirm Email')
     password = forms.CharField(widget=forms.PasswordInput)
+    role = forms.ChoiceField(choices=REGISTER_ROLE_CHOICES, required=True)  # <-- Only Teacher and Student
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'email2', 'password']
+        fields = ['username', 'email', 'email2', 'password', 'role']
 
     def clean(self):
         cleaned_data = super().clean()
@@ -44,3 +51,8 @@ class UserRegisterForm(forms.ModelForm):
             raise forms.ValidationError("This email is already being used")
 
         return cleaned_data
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['title', 'category', 'description', 'image']  # Include the fields you need

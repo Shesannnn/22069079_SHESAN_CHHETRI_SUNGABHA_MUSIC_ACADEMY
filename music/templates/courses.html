@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sungabha Music Academy</title>
     <style>
+        /* Base Styles */
         body {
             margin: 0;
             padding: 0;
@@ -15,6 +16,7 @@
             color: #1a1a1a;
         }
 
+        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -51,6 +53,7 @@
             color: #555;
         }
 
+        /* Navigation Links */
         nav div:nth-child(2) {
             display: flex;
             gap: 30px;
@@ -68,12 +71,14 @@
             color: #07301f;
         }
 
+        /* Buttons */
         button {
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
             background-color: white;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
@@ -85,8 +90,10 @@
         .btn-primary:hover {
             background-color: white;
             color: black;
+            border: 1px solid #07301f;
         }
 
+        /* Course List Container */
         .course-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -116,6 +123,7 @@
             border-radius: 5px;
         }
 
+        /* Category Dropdown */
         .category-filter {
             text-align: center;
             margin: 20px 0;
@@ -152,7 +160,7 @@
         </div>
     </nav>
 
-    <h1>Available Courses</h1>
+    <h1 style="text-align:center;">Available Courses</h1>
 
     <div class="category-filter">
         <form method="GET">
@@ -168,17 +176,22 @@
     <div class="course-container">
         {% if courses %}
             {% for course in courses %}
-                <div class="course-card">
-                    <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
-                    <h3>{{ course.title }}</h3>
-                    <p>{{ course.description }}</p>
-                    <p>Category: {{ course.category }}</p>
-                    <span>Price: Rs {{ course.price }}</span>
-                </div>
+                <a href="{% url 'course_detail' course.id %}" style="text-decoration: none; color: inherit;">
+                    <div class="course-card">
+                        {% if course.image %}
+                            <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
+                        {% else %}
+                            <img src="{% static 'images/default-course.jpg' %}" alt="No image" class="course-image">
+                        {% endif %}
+                        <h3>{{ course.title }}</h3>
+                        <p>{{ course.description }}</p>
+                    </div>
+                </a>
             {% endfor %}
         {% else %}
             <p style="text-align:center;">No courses available.</p>
         {% endif %}
     </div>
+    
 </body>
 </html>
