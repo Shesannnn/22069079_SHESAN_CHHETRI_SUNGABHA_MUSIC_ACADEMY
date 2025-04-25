@@ -12,156 +12,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sungabha Music Academy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Poppins', sans-serif;
             background-color: #f9fafb;
             color: #1a1a1a;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background-color: white;
+            padding: 20px 5%;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9); /* Subtle gradient */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        /* Logo and text container */
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px; /* Adds space between logo and text */
+            gap: 10px;
         }
 
-        /* Adjust logo size */
         .logo-container img {
-            height: 75px; /* Adjust as needed */
-            width: auto; /* Maintain aspect ratio */
+            height: 70px; /* Smaller for balance */
+            width: auto;
         }
 
-        /* Brand text styling */
         .brand-text {
             display: flex;
             flex-direction: column;
-            line-height: 0.05;
+            line-height:0.2;
         }
 
-        /* "Sungabha" bigger */
         .brand-title {
-            font-size: 25px; /* Adjust size */
-            font-weight: bold;
-            color: black;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #07301f;
         }
 
-        /* "Music Academy" smaller and on a new line */
         .brand-subtitle {
-            font-size: 20px; /* Adjust size */
-            color: #555; /* Lighter color for contrast */
+            font-size: 1rem;
+            color: #6b7280; /* Softer gray */
         }
 
-        nav div:nth-child(2) { /* Targeting the div containing nav links */
+        nav div:nth-child(2) {
             display: flex;
-            gap: 30px; /* Adjust gap as needed */
-            font-size: 15px;
+            gap: 25px;
+            font-size: 1rem;
         }
 
         nav a {
-            margin-right: 20px;
             text-decoration: none;
             color: #1a1a1a;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.3s ease;
             position: relative;
         }
 
         nav a:hover {
-            color: #555;
+            color: #059669; /* Vibrant green */
         }
 
-        /* Highlight the active page (Home) */
         nav a.active {
-        color: #07301f;
+            color: #059669;
         }
 
-        /* Optional: Add an underline or border effect */
         nav a.active::after {
             content: "";
-            display: block;
             width: 100%;
-            height: 3px;
-            background-color: #07301f;
+            height: 2px;
+            background-color: #059669;
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
         }
 
         button {
             padding: 10px 20px;
-            border: 1px solid black;
-            border-radius: 5px;
+            border: 1px solid #07301f;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            margin-left: 10px;
-            background-color: white;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            font-weight: 500;
         }
 
         .btn-primary {
-            background-color: #07301f;
+            background: linear-gradient(135deg, #059669, #07301f); /* Gradient button */
             color: white;
             border: none;
-            position: relative;
-            left: -10px;
         }
 
         .btn-primary:hover {
-            background-color:rgb(255, 255, 255);
-            color: black;
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
         }
 
+        /* Hero Section */
         .hero {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 50px;
-            background-color: white;
+            padding: 80px 5%;
+            background: linear-gradient(to right, #f9fafb, #e5e7eb); /* Soft gradient */
+            min-height: 80vh;
         }
 
         .hero-content {
-            max-width: 50%;
+            max-width: 45%;
         }
 
         .hero-content h1 {
-            font-size: 2.5em;
+            font-size: 3rem; /* Larger for impact */
+            font-weight: 700;
             color: #07301f;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
         .hero-content ul {
             list-style: none;
             padding: 0;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
 
         .hero-content li {
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: #4b5563;
         }
 
         .hero-image {
-            border-radius: 10%;
-            width: 550px;
-            height: 450px;
+            border-radius: 15px;
+            width: 600px;
+            height: 500px;
             object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Discover Section */
         .discover {
-            background-color: #07301f;
+            background: linear-gradient(135deg, #07301f, #059669); /* Gradient background */
             color: white;
-            padding: 50px;
+            padding: 80px 5%;
             text-align: center;
         }
 
@@ -169,16 +182,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
-            max-width: 1100px;
+            gap: 50px;
+            max-width: 1200px;
             margin: auto;
         }
 
         .discover img {
-            border-radius: 15px;
-            width: 350px;
-            height: 250px;
+            border-radius: 20px;
+            width: 400px;
+            height: 280px;
             object-fit: cover;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         .discover-text {
@@ -187,38 +201,44 @@
         }
 
         .discover-text h2 {
-            font-size: 2em;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .discover-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
         }
 
         .discover button {
-            padding: 10px 20px;
-            border: 1px solid white;
+            padding: 12px 25px;
+            border: 2px solid white;
             background: transparent;
             color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: 0.3s;
-            position: relative;
-            left: -10px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .discover button:hover {
             background-color: white;
             color: #07301f;
+            transform: translateY(-2px);
         }
 
         .discover-image-full {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .discover-image-full img {
-            width: 60.5%;
-            height: 60.5%;
-            border-radius: 15px;
+            width: 76.6%;
+            height: 70%;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
+        /* Courses Section - UNCHANGED from original */
         .courses {
             padding: 50px 10%;
             background-color: #f0f0f0;
@@ -273,23 +293,95 @@
             font-size: 0.95em;
             color: #555;
         }
-        
 
+        /* Footer */
         .footer {
-            background-color: #07301f;
+            background: linear-gradient(135deg, #07301f, #059669);
             color: white;
-            padding: 30px;
+            padding: 50px 5%;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .footer a {
-            color: #999;
+            color: #d1d5db;
             text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
         .footer a:hover {
             color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 5%;
+            }
+
+            .hero-content {
+                max-width: 80%;
+                margin-bottom: 2rem;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 500px;
+                height: auto;
+            }
+
+            .discover-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .discover-text {
+                max-width: 80%;
+                text-align: center;
+            }
+
+            .discover img {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            /* Courses section responsiveness */
+            .courses-grid {
+                grid-template-columns: 1fr; /* Stack cards on smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 5%;
+            }
+
+            nav div:nth-child(2) {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -297,20 +389,19 @@
     <!-- Navbar -->
     <nav>
         <div class="logo-container">
-            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo">
+            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo" aria-label="Sungabha Music Academy Logo">
             <div class="brand-text">
                 <span class="brand-title">Sungabha</span>
                 <span class="brand-subtitle">Music Academy</span>
             </div>
         </div>
         <div>
-            <a href="/" class="active">Home</a> 
+            <a href="/" class="active" aria-current="page">Home</a> 
             <a href="{% url 'courses_list' %}">Courses</a>
             <a href="contact.html">Contact</a>
             <a href="team.html">Team</a>
             <a href="about.html">About</a>
             <a href="teach-with-us.html">Teach With Us</a>
-    
             {% if user.is_authenticated %}
                 {% if user.profile.role == 'Teacher' %}
                     <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
@@ -319,84 +410,84 @@
                 {% endif %}
             {% endif %}
         </div>
-    
         <div>
             {% if user.is_authenticated %}
                 <p>Hello, {{ user.username }}!</p>
             {% else %}
                 <p>You are not logged in.</p>
-                <a href="{% url 'login' %}"><button>Login</button></a>
-                <a href="{% url 'register' %}"><button>Register</button></a>
+                <a href="{% url 'login' %}"><button aria-label="Login">Login</button></a>
+                <a href="{% url 'register' %}"><button aria-label="Register">Register</button></a>
             {% endif %}
         </div>
     </nav>
-    
-    
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
-            <h1>Online Music Class For Kids & Adults</h1>
+            <h1 id="hero-title">Online Music Class For Kids & Adults</h1>
             <ul>
-                <li>- Learn At Your Own Pace</li>
-                <li>- Making Learning Engaging & Fun</li>
+                <li>Learn At Your Own Pace</li>
+                <li>Making Learning Engaging & Fun</li>
             </ul>
-            <button class="btn-primary">Get Courses</button>
+            <button class="btn-primary" aria-label="Get Courses">Get Courses</button>
         </div>
         <div>
-            <img src="{% static 'images/Nice.jpg'%}" alt="Music Image" class="hero-image">
+            <img src="{% static 'images/Nice.jpg' %}" alt="Music class illustration" class="hero-image">
         </div>
     </section>
 
     <!-- Discover Section -->
-    <section class="discover">
+    <section class="discover" aria-labelledby="discover-title">
         <div class="discover-content">
-            <img src="{% static 'images/Sabin1.png'%}" alt="Musician performing">
+            <img src="{% static 'images/Sabin1.png' %}" alt="Musician performing">
             <div class="discover-text">
-                <h2>Discover Yourself With Music</h2>
+                <h2 id="discover-title">Discover Yourself With Music</h2>
                 <p>Unleash Your Potential Through the Power of Music</p>
-                <button>Learn More</button>
+                <button aria-label="Learn More">Learn More</button>
             </div>
         </div>
         <div class="discover-image-full">
-            <img src="{% static 'images/Trio1.png'%}" alt="Band performance">
+            <img src="{% static 'images/Trio1.png' %}" alt="Band performance">
         </div>
     </section>
 
-    <!-- Courses Section -->
-<section class="courses">
-    <h2>Join Sungabha Music Academy To Empower Talent Across All Levels</h2>
-    <div class="courses-grid">
-        {% for course in home_courses %}
-            <a href="{% url 'courses_list' %}" style="text-decoration: none; color: inherit;">
-                <div class="course-card">
-                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
-                    <div class="course-content">
-                        <h3>{{ course.title }}</h3>
-                        <p>{{ course.description }}</p>
+    <!-- Courses Section - UNCHANGED -->
+    <section class="courses" aria-labelledby="courses-title">
+        <h2 id="courses-title">Join Sungabha Music Academy To Empower Talent Across All Levels</h2>
+        <div class="courses-grid">
+            {% for course in home_courses %}
+                <a href="{% url 'courses_list' %}" style="text-decoration: none; color: inherit;" aria-label="View {{ course.title }} course">
+                    <div class="course-card">
+                        <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                        <div class="course-content">
+                            <h3>{{ course.title }}</h3>
+                            <p>{{ course.description }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        {% endfor %}
-    </div>
-    
-</section>
-
-
+                </a>
+            {% endfor %}
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" aria-label="Footer">
         <div>
             <h3>Sungabha Music Academy</h3>
             <p>Contact: sungabhamusicacademy@gmail.com<br>Phone: 987-4563210 | 068-522948</p>
         </div>
         <div>
             <h3>Menu</h3>
-            <a href="#">Home</a> | <a href="#">Courses</a> | <a href="#">Contact</a> | <a href="#">Team</a> | <a href="#">About</a>
+            <a href="#" aria-label="Home">Home</a> | 
+            <a href="#" aria-label="Courses">Courses</a> | 
+            <a href="#" aria-label="Contact">Contact</a> | 
+            <a href="#" aria-label="Team">Team</a> | 
+            <a href="#" aria-label="About">About</a>
         </div>
         <div>
             <h3>Connect</h3>
-            <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            <a href="#" aria-label="Facebook">Facebook</a> | 
+            <a href="#" aria-label="Twitter">Twitter</a> | 
+            <a href="#" aria-label="Instagram">Instagram</a>
         </div>
     </footer>
 </body>

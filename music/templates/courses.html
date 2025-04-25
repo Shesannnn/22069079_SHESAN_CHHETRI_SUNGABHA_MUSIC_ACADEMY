@@ -1,28 +1,44 @@
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sungabha Music Academy</title>
+    <title>Sungabha Music Academy - Courses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
-        body {
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #1a1a1a;
         }
 
-        /* Navigation Bar */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar - Matched with home.html */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background-color: white;
+            padding: 20px 5%;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo-container {
@@ -32,68 +48,125 @@
         }
 
         .logo-container img {
-            height: 75px;
+            height: 70px;
             width: auto;
         }
 
         .brand-text {
             display: flex;
             flex-direction: column;
-            line-height: 0.05;
+            line-height: 0.2;
         }
 
         .brand-title {
-            font-size: 25px;
-            font-weight: bold;
-            color: black;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #07301f;
         }
 
         .brand-subtitle {
-            font-size: 20px;
-            color: #555;
+            font-size: 1rem;
+            color: #6b7280;
         }
 
-        /* Navigation Links */
         nav div:nth-child(2) {
             display: flex;
-            gap: 30px;
-            font-size: 15px;
+            gap: 25px;
+            font-size: 1rem;
         }
 
         nav a {
             text-decoration: none;
             color: #1a1a1a;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.3s ease;
             position: relative;
         }
 
-        nav a.active {
-            color: #07301f;
+        nav a:hover {
+            color: #059669;
         }
 
-        /* Buttons */
+        nav a.active {
+            color: #059669;
+        }
+
+        nav a.active::after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: #059669;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+        }
+
+        /* Buttons - Matched with home.html */
         button {
             padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            background-color: white;
-            border: 1px solid transparent;
+            border: 1px solid #07301f;
+            border-radius: 8px;
+            cursor: toward;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            font-weight: 500;
         }
 
         .btn-primary {
-            background-color: #07301f;
+            background: linear-gradient(135deg, #059669, #07301f);
             color: white;
             border: none;
         }
 
         .btn-primary:hover {
-            background-color: white;
-            color: black;
-            border: 1px solid #07301f;
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
         }
 
-        /* Course List Container */
+        /* Heading - Aligned with home.html typography */
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #07301f;
+            margin: 40px 0;
+        }
+
+        /* Category Dropdown - Styled to match home.html aesthetic */
+        .category-filter {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .category-filter form {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-filter label {
+            font-size: 1.1rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        .category-filter select {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background-color: white;
+            color: #1a1a1a;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-filter select:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 5px rgba(5, 150, 105, 0.3);
+        }
+
+        /* Course List Container - UNCHANGED from original courses.html */
         .course-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -123,24 +196,97 @@
             border-radius: 5px;
         }
 
-        /* Category Dropdown */
-        .category-filter {
+        /* No Courses Message - Styled to match home.html */
+        .no-courses {
             text-align: center;
-            margin: 20px 0;
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin: 40px 0;
         }
 
-        .category-filter select {
-            padding: 8px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        /* Footer - Matched with home.html */
+        .footer {
+            background: linear-gradient(135deg, #07301f, #059669);
+            color: white;
+            padding: 50px 5%;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* Responsive Design - Matched with home.html */
+        @media (max-width: 1200px) {
+            .course-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .course-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 5%;
+            }
+
+            nav div:nth-child(2) {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .category-filter form {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .category-filter select {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .course-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar - Matched with home.html -->
     <nav>
         <div class="logo-container">
-            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo">
+            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo" aria-label="Sungabha Music Academy Logo">
             <div class="brand-text">
                 <span class="brand-title">Sungabha</span>
                 <span class="brand-subtitle">Music Academy</span>
@@ -148,22 +294,36 @@
         </div>
         <div>
             <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'courses_list' %}" class="active">Courses</a>
+            <a href="{% url 'courses_list' %}" class="active" aria-current="page">Courses</a>
             <a href="contact.html">Contact</a>
             <a href="team.html">Team</a>
             <a href="about.html">About</a>
             <a href="teach-with-us.html">Teach With Us</a>
+            {% if user.is_authenticated %}
+                {% if user.profile.role == 'Teacher' %}
+                    <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
+                {% elif user.profile.role == 'Student' %}
+                    <a href="{% url 'student_dashboard' %}">Dashboard</a>
+                {% endif %}
+            {% endif %}
         </div>
         <div>
-            <a href="login.html"><button class="btn-p">LOGIN</button></a>
-            <a href="register.html"><button class="btn-primary">REGISTER</button></a>
+            {% if user.is_authenticated %}
+                <p>Hello, {{ user.username }}!</p>
+            {% else %}
+                <p>You are not logged in.</p>
+                <a href="{% url 'login' %}"><button aria-label="Login">Login</button></a>
+                <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Register">Register</button></a>
+            {% endif %}
         </div>
     </nav>
 
-    <h1 style="text-align:center;">Available Courses</h1>
+    <!-- Heading -->
+    <h1>Available Courses</h1>
 
+    <!-- Category Dropdown -->
     <div class="category-filter">
-        <form method="GET">
+        <form method="GET" aria-label="Filter courses by category">
             <label for="category">Filter by Category:</label>
             <select name="category" id="category" onchange="this.form.submit()">
                 {% for cat in categories %}
@@ -173,15 +333,16 @@
         </form>
     </div>
 
+    <!-- Course List Container - UNCHANGED -->
     <div class="course-container">
         {% if courses %}
             {% for course in courses %}
-                <a href="{% url 'course_detail' course.id %}" style="text-decoration: none; color: inherit;">
+                <a href="{% url 'course_detail' course.id %}" style="text-decoration: none; color: inherit;" aria-label="View {{ course.title }} course">
                     <div class="course-card">
                         {% if course.image %}
                             <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
                         {% else %}
-                            <img src="{% static 'images/default-course.jpg' %}" alt="No image" class="course-image">
+                            <img src="{% static 'images/default-course.jpg' %}" alt="No image available for {{ course.title }}" class="course-image">
                         {% endif %}
                         <h3>{{ course.title }}</h3>
                         <p>{{ course.description }}</p>
@@ -189,9 +350,30 @@
                 </a>
             {% endfor %}
         {% else %}
-            <p style="text-align:center;">No courses available.</p>
+            <p class="no-courses">No courses available.</p>
         {% endif %}
     </div>
-    
+
+    <!-- Footer - Matched with home.html -->
+    <footer class="footer" aria-label="Footer">
+        <div>
+            <h3>Sungabha Music Academy</h3>
+            <p>Contact: sungabhamusicacademy@gmail.com<br>Phone: 987-4563210 | 068-522948</p>
+        </div>
+        <div>
+            <h3>Menu</h3>
+            <a href="{% url 'home' %}" aria-label="Home">Home</a> | 
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> | 
+            <a href="contact.html" aria-label="Contact">Contact</a> | 
+            <a href="team.html" aria-label="Team">Team</a> | 
+            <a href="about.html" aria-label="About">About</a>
+        </div>
+        <div>
+            <h3>Connect</h3>
+            <a href="#" aria-label="Facebook">Facebook</a> | 
+            <a href="#" aria-label="Twitter">Twitter</a> | 
+            <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+    </footer>
 </body>
 </html>

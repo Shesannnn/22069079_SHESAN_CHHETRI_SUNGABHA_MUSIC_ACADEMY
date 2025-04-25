@@ -3,16 +3,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ course.title }} Payment | Sungabha Music Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
-            color: #1f2937;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar - Matched with home.html */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 70px;
+            width: auto;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 0.2;
+        }
+
+        .brand-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #07301f;
+        }
+
+        .brand-subtitle {
+            font-size: 1rem;
+            color: #6b7280;
+        }
+
+        nav div:nth-child(2) {
+            display: flex;
+            gap: 25px;
+            font-size: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #059669;
+        }
+
+        nav a.active {
+            color: #059669;
+        }
+
+        nav a.active::after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: #059669;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 1px solid #07301f;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #059669, #07301f);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb - Updated to match home.html aesthetic */
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 15px;
+            padding: 0 20px;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #059669;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #34d399;
+        }
+
+        /* Heading - Aligned with home.html typography */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #07301f;
+            margin-bottom: 15px;
+        }
+
+        /* Payment Section - Updated colors */
         .container {
             max-width: 1200px;
             margin: 30px auto;
@@ -45,12 +175,6 @@
             display: block;
         }
 
-        h1 {
-            color: #1e3a8a;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
         .section-title {
             font-size: 20px;
             margin: 20px 0 10px;
@@ -63,31 +187,21 @@
             line-height: 1.6;
         }
 
-        .breadcrumb {
-            font-size: 14px;
-            color: #4f46e5;
-            margin-bottom: 15px;
-        }
-
-        .breadcrumb a {
-            color: #4f46e5;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-
         .highlight-box {
-            background-color: #e0f2fe;
+            background-color: #d1fae5; /* Changed from #e0f2fe (blue) to light green */
             padding: 15px;
-            border-left: 4px solid #0284c7;
+            border-left: 4px solid #059669; /* Changed from #0284c7 (blue) to green */
             border-radius: 6px;
             margin: 10px 0;
+            display: none; /* Hidden by default, shown via JS */
+        }
+
+        .highlight-box.active {
+            display: block; /* Show when selected */
         }
 
         .btn {
-            background-color: #1d4ed8;
+            background: linear-gradient(135deg, #059669, #07301f); /* Changed from #1d4ed8 (blue) to green gradient */
             color: white;
             padding: 12px;
             border: none;
@@ -96,11 +210,13 @@
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
-            transition: background-color 0.3s;
+            transition: background 0.3s, transform 0.2s; /* Added transform for consistency */
+            text-decoration: none; /* Prevents underline */
         }
 
         .btn:hover {
-            background-color: #1e40af;
+            background: linear-gradient(135deg, #34d399, #059669); /* Changed from #1e40af (blue) to lighter green gradient */
+            transform: translateY(-2px); /* Added for consistency with other buttons */
         }
 
         input, select {
@@ -119,66 +235,199 @@
             display: block;
         }
 
+        /* Footer - Matched with home.html */
+        .footer {
+            background: linear-gradient(135deg, #07301f, #059669);
+            color: white;
+            padding: 50px 5%;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* Responsive Design - Matched with home.html and original */
+        @media (max-width: 1024px) {
+            .container {
+                margin: 20px 5%;
+                padding: 15px;
+            }
+        }
+
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 5%;
+            }
+
+            nav div:nth-child(2) {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
             .container {
                 flex-direction: column;
                 gap: 20px;
             }
 
             h1 {
-                font-size: 24px;
+                font-size: 2rem;
             }
 
             .highlight-box {
                 font-size: 14px;
             }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="left-section">
-        <div class="breadcrumb">
-            <a href="{% url 'home' %}">Home</a> &gt; 
-            <a href="{% url 'courses_list' %}">Courses</a> &gt; 
-            <a href="{% url 'course_detail' course.id %}">{{ course.title }}</a> &gt; 
-            Payment
-        </div>
-        {% if course.image %}
-            <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
-        {% endif %}
-        <h1>{{ course.title }}</h1>
-        <p>{{ course.description }}</p>
-    </div>
-
-    <div class="right-section" id="payment-form">
-        
-        <!-- Level Information moved here -->
-        <div class="section-title">Level Information</div>
-        {% for level in course.levels.all %}
-            <div class="highlight-box">
-                <strong>{{ level.name }}</strong><br>
-                Language: {{ level.language }}<br>
-                Format: {{ level.format }}<br>
-                Access: {{ level.access }}<br>
-                Certificate: {{ level.certificate }}<br>
-                Duration: {{ level.duration }} months<br>
-                Price: USD {{ level.price }} / Session
+    <!-- Navbar - Matched with home.html -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo" aria-label="Sungabha Music Academy Logo">
+            <div class="brand-text">
+                <span class="brand-title">Sungabha</span>
+                <span class="brand-subtitle">Music Academy</span>
             </div>
-        {% endfor %}
+        </div>
+        <div>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses_list' %}" class="active" aria-current="page">Courses</a>
+            <a href="contact.html">Contact</a>
+            <a href="team.html">Team</a>
+            <a href="about.html">About</a>
+            <a href="teach-with-us.html">Teach With Us</a>
+            {% if user.is_authenticated %}
+                {% if user.profile.role == 'Teacher' %}
+                    <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
+                {% elif user.profile.role == 'Student' %}
+                    <a href="{% url 'student_dashboard' %}">Dashboard</a>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <p>Hello, {{ user.username }}!</p>
+            {% else %}
+                <p>You are not logged in.</p>
+                <a href="{% url 'login' %}"><button aria-label="Login">Login</button></a>
+                <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Register">Register</button></a>
+            {% endif %}
+        </div>
+    </nav>
 
-        <!-- Payment Form Section -->
-        <form method="post">
-            {% csrf_token %}
-            <label for="level">Choose Level</label>
-            <select name="level" id="level" required>
+    <!-- Payment Section - Updated colors -->
+    <div class="container">
+        <div class="left-section">
+            <div class="breadcrumb">
+                <a href="{% url 'home' %}">Home</a> > 
+                <a href="{% url 'courses_list' %}">Courses</a> > 
+                <a href="{% url 'course_detail' course.id %}">{{ course.title }}</a> > 
+                Payment
+            </div>
+            {% if course.image %}
+                <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-image">
+            {% endif %}
+            <h1>{{ course.title }}</h1>
+            <p>{{ course.description }}</p>
+        </div>
+
+        <div class="right-section" id="payment-form">
+            <!-- Level Information with Dropdown -->
+            <div class="section-title">Level Information</div>
+            <label for="level-info">Select Level</label>
+            <select name="level-info" id="level-info" onchange="showLevelInfo(this.value)">
                 {% for level in course.levels.all %}
-                    <option value="{{ level.id }}">{{ level.name }} - USD {{ level.price }}</option>
+                    <option value="{{ level.id }}">{{ level.name }}</option>
                 {% endfor %}
             </select>
-            <button type="submit" class="btn">Pay Now</button>
-        </form>
+            {% for level in course.levels.all %}
+                <div class="highlight-box" id="level-{{ level.id }}" {% if forloop.first %}style="display: block;"{% endif %}>
+                    <strong>{{ level.name }}</strong><br>
+                    Language: {{ level.language }}<br>
+                    Format: {{ level.format }}<br>
+                    Access: {{ level.access }}<br>
+                    Certificate: {{ level.certificate }}<br>
+                    Duration: {{ level.duration }} months<br>
+                    Price: USD {{ level.price }} / Session
+                </div>
+            {% endfor %}
+
+            <!-- Payment Form Section -->
+            <form method="post">
+                {% csrf_token %}
+                <label for="level">Choose Level</label>
+                <select name="level" id="level" required>
+                    {% for level in course.levels.all %}
+                        <option value="{{ level.id }}">{{ level.name }} - USD {{ level.price }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn">Pay Now</button>
+            </form>
+        </div>
     </div>
-</div>
+
+    <!-- Footer - Matched with home.html -->
+    <footer class="footer" aria-label="Footer">
+        <div>
+            <h3>Sungabha Music Academy</h3>
+            <p>Contact: sungabhamusicacademy@gmail.com<br>Phone: 987-4563210 | 068-522948</p>
+        </div>
+        <div>
+            <h3>Menu</h3>
+            <a href="{% url 'home' %}" aria-label="Home">Home</a> | 
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> | 
+            <a href="contact.html" aria-label="Contact">Contact</a> | 
+            <a href="team.html" aria-label="Team">Team</a> | 
+            <a href="about.html" aria-label="About">About</a>
+        </div>
+        <div>
+            <h3>Connect</h3>
+            <a href="#" aria-label="Facebook">Facebook</a> | 
+            <a href="#" aria-label="Twitter">Twitter</a> | 
+            <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Level Information Dropdown -->
+    <script>
+        function showLevelInfo(levelId) {
+            // Hide all highlight boxes
+            document.querySelectorAll('.highlight-box').forEach(box => {
+                box.style.display = 'none';
+            });
+            // Show the selected level's highlight box
+            document.getElementById(`level-${levelId}`).style.display = 'block';
+        }
+
+        // Show the first level by default on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstLevel = document.querySelector('#level-info').value;
+            showLevelInfo(firstLevel);
+        });
+    </script>
 </body>
 </html>

@@ -3,55 +3,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Teacher Dashboard</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | Sungabha Music Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f7fa;
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7fa;
+            color: #1a1a1a;
+            line-height: 1.6;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
         }
-    
-        /* Header */
-        header {
-            background: #07301f;
-            color: white;
-            padding: 20px;
-            text-align: center;
+
+        /* Navbar - Matched with home.html */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 70px;
+            width: auto;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 0.2;
+        }
+
+        .brand-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #07301f;
+        }
+
+        .brand-subtitle {
+            font-size: 1rem;
+            color: #6b7280;
+        }
+
+        nav div:nth-child(2) {
+            display: flex;
+            gap: 25px;
+            font-size: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 600;
+            transition: color 0.3s ease;
             position: relative;
         }
-    
-        .logout-btn {
+
+        nav a:hover {
+            color: #059669;
+        }
+
+        nav a.active {
+            color: #059669;
+        }
+
+        nav a.active::after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: #059669;
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #e60023;
-            border: none;
-            color: white;
+            bottom: -4px;
+            left: 0;
+        }
+
+        button {
             padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
+            border: 1px solid #07301f;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            font-weight: 500;
             text-decoration: none;
-            transition: background 0.3s;
         }
-    
-        .logout-btn:hover {
-            background-color: #c3001f;
+
+        .btn-primary {
+            background: linear-gradient(135deg, #059669, #07301f);
+            color: white;
+            border: none;
         }
-    
-        /* Layout */
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
+        }
+
+        /* Dashboard Content Section - UNCHANGED structure, enhanced styling */
         .main-container {
             display: flex;
             flex: 1;
             height: calc(100vh - 80px);
         }
-    
-        /* Sidebar */
+
         .sidebar {
             width: 250px;
             background: #ffffff;
@@ -61,7 +135,7 @@
             flex-direction: column;
             gap: 20px;
         }
-    
+
         .sidebar button {
             background: #07301f;
             color: white;
@@ -69,49 +143,100 @@
             padding: 15px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
         }
-    
+
         .sidebar button:hover {
             background: #055536;
+            transform: translateY(-2px);
         }
-    
-        /* Content */
+
         .content {
             flex: 1;
             padding: 40px;
             overflow-y: auto;
+            background-color: #f9fafb; /* Aligned with home.html */
         }
-    
-        /* Card */
+
         .card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             padding: 30px;
             margin-bottom: 30px;
+            transition: transform 0.3s ease;
         }
-    
-        .card h2, .card h3 {
-            margin-top: 0;
+
+        .card:hover {
+            transform: translateY(-5px);
         }
-    
-        /* Lists */
+
+        .card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #07301f;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 1rem 0;
+        }
+
         ul {
             padding-left: 20px;
-            list-style-type: disc;
+            list-style-type: none; /* Cleaner look */
         }
-    
+
         ul li {
-            margin-bottom: 5px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+            transition: background 0.3s ease;
         }
-    
-        /* Form Styles */
+
+        ul li:hover {
+            background: #e5e7eb;
+        }
+
+        ul li strong {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        /* Nested lists for students/assignments */
+        ul ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        ul ul li {
+            background: none;
+            padding: 5px 0;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            color: #4b5563;
+        }
+
+        ul ul li:hover {
+            background: none;
+            color: #059669;
+        }
+
+        /* Form Styles - Enhanced */
         form {
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
-    
+
         form input[type="text"],
         form textarea,
         form select,
@@ -119,167 +244,319 @@
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-    
+
+        form input:focus,
+        form textarea:focus,
+        form select:focus,
+        form input[type="file"]:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 5px rgba(5, 150, 105, 0.3);
+        }
+
         form textarea {
             resize: vertical;
             min-height: 100px;
         }
-    
+
         form button[type="submit"] {
-            background-color: #07301f;
+            background: linear-gradient(135deg, #059669, #07301f);
             color: white;
             padding: 12px 20px;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
         }
-    
+
         form button[type="submit"]:hover {
-            background-color: #055536;
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
         }
-    
-        /* Section animations */
+
         .section {
             transition: all 0.5s ease;
         }
-    </style>
 
+        /* No-data messages */
+        .no-data {
+            font-size: 1rem;
+            color: #6b7280;
+            text-align: center;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        /* Footer - Matched with home.html */
+        .footer {
+            background: linear-gradient(135deg, #07301f, #059669);
+            color: white;
+            padding: 50px 5%;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* Responsive Design - Matched with home.html */
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .sidebar button {
+                flex: 1 1 150px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 5%;
+            }
+
+            nav div:nth-child(2) {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .sidebar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sidebar button {
+                flex: 1 1 auto;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.2rem;
+            }
+
+            ul li {
+                padding: 10px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar - Matched with home.html, integrating logout -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo" aria-label="Sungabha Music Academy Logo">
+            <div class="brand-text">
+                <span class="brand-title">Sungabha</span>
+                <span class="brand-subtitle">Music Academy</span>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses_list' %}">Courses</a>
+            <a href="contact.html">Contact</a>
+            <a href="team.html">Team</a>
+            <a href="about.html">About</a>
+            <a href="teach-with-us.html">Teach With Us</a>
+            <a href="{% url 'teacher_dashboard' %}" class="active" aria-current="page">Dashboard</a>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <p>Hello, {{ user.username }}!</p>
+                <a href="{% url 'logout' %}"><button class="btn-primary" aria-label="Logout">Logout</button></a>
+            {% else %}
+                <p>You are not logged in.</p>
+                <a href="{% url 'login' %}"><button aria-label="Login">Login</button></a>
+                <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Register">Logout</button></a>
+            {% endif %}
+        </div>
+    </nav>
 
-<header>
-    <h1>Welcome, {{ request.user.username }}!</h1>
-    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
-</header>
-
-<div class="main-container">
-    <div class="sidebar">
-        <button onclick="showSection('classes')">My Classes</button>
-        <button onclick="showSection('assignments')">Assignments</button>
-        <button onclick="showSection('students')">Students</button>
-        <button onclick="showSection('levels')">Levels</button>
-    </div>
-
-    <div class="content" id="content-area">
-        
-        <!-- Default welcome card -->
-        <div class="card">
-            <h2>Welcome!</h2>
-            <p>Select an option from the sidebar to get started.</p>
+    <!-- Dashboard Content Section - UNCHANGED structure, enhanced styling -->
+    <div class="main-container">
+        <div class="sidebar">
+            <button onclick="showSection('classes')" aria-label="View My Classes">My Classes</button>
+            <button onclick="showSection('assignments')" aria-label="View Assignments">Assignments</button>
+            <button onclick="showSection('students')" aria-label="View Students">Students</button>
+            <button onclick="showSection('levels')" aria-label="View Levels">Levels</button>
         </div>
 
-        <!-- My Classes Section -->
-        <div class="card section" id="classes-section" style="display: none;">
-            <h2>My Classes</h2>
-            {% if courses %}
-                <ul>
-                    {% for course in courses %}
-                        <li>
-                            <strong>{{ course.title }}</strong> ({{ course.category }})
-                            <br>
-                            Students: 
-                            {% if course.students.all %}
-                                {{ course.students.count }}
-                                <ul>
-                                    {% for student in course.students.all %}
-                                        <li>{{ student.username }}</li>
+        <div class="content" id="content-area">
+            <!-- Default welcome card -->
+            <div class="card">
+                <h2>Welcome!</h2>
+                <p>Select an option from the sidebar to get started.</p>
+            </div>
+
+            <!-- My Classes Section -->
+            <div class="card section" id="classes-section" style="display: none;">
+                <h2>My Classes</h2>
+                {% if courses %}
+                    <ul role="list">
+                        {% for course in courses %}
+                            <li>
+                                <strong>{{ course.title }}</strong> ({{ course.category }})
+                                <br>
+                                <span>Students: {{ course.students.count }}</span>
+                                {% if course.students.all %}
+                                    <ul role="list">
+                                        {% for student in course.students.all %}
+                                            <li>{{ student.username }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                <span>Assignments:</span>
+                                <ul role="list">
+                                    {% for assignment in course.assignments.all %}
+                                        <li>{{ assignment.title }}</li>
+                                    {% empty %}
+                                        <li>No assignments yet.</li>
                                     {% endfor %}
                                 </ul>
-                            {% else %}
-                                0
-                            {% endif %}
-                            Assignments:
-                            <ul>
-                                {% for assignment in course.assignments.all %}
-                                    <li>{{ assignment.title }}</li>
-                                {% empty %}
-                                    <li>No assignments yet.</li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No classes assigned yet.</p>
-            {% endif %}
-
-            <h3>Add New Course</h3>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Add Course</button>
-            </form>
-        </div>
-
-        <!-- Assignments Section -->
-        <div class="card section" id="assignments-section" style="display: none;">
-            <h2>Assignments</h2>
-            {% if courses %}
-                {% for course in courses %}
-                    <h3>{{ course.title }}</h3>
-                    <ul>
-                        {% for assignment in course.assignments.all %}
-                            <li>{{ assignment.title }}</li>
-                        {% empty %}
-                            <li>No assignments for this course.</li>
+                            </li>
                         {% endfor %}
                     </ul>
-                {% endfor %}
-            {% else %}
-                <p>No courses available.</p>
-            {% endif %}
-        </div>
+                {% else %}
+                    <p class="no-data">No classes assigned yet.</p>
+                {% endif %}
 
-        <!-- Students Section -->
-        <div class="card section" id="students-section" style="display: none;">
-            <h2>Students</h2>
-            {% if courses %}
-                {% for course in courses %}
-                    <h3>{{ course.title }}</h3>
-                    <ul>
-                        {% for student in course.students.all %}
-                            <li>{{ student.username }}</li>
-                        {% empty %}
-                            <li>No students enrolled.</li>
+                <h3>Add New Course</h3>
+                <form method="post" enctype="multipart/form-data" aria-label="Add New Course">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" aria-label="Add Course">Add Course</button>
+                </form>
+            </div>
+
+            <!-- Assignments Section -->
+            <div class="card section" id="assignments-section" style="display: none;">
+                <h2>Assignments</h2>
+                {% if courses %}
+                    {% for course in courses %}
+                        <h3>{{ course.title }}</h3>
+                        <ul role="list">
+                            {% for assignment in course.assignments.all %}
+                                <li>{{ assignment.title }}</li>
+                            {% empty %}
+                                <li>No assignments for this course.</li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-data">No courses available.</p>
+                {% endif %}
+            </div>
+
+            <!-- Students Section -->
+            <div class="card section" id="students-section" style="display: none;">
+                <h2>Students</h2>
+                {% if courses %}
+                    {% for course in courses %}
+                        <h3>{{ course.title }}</h3>
+                        <ul role="list">
+                            {% for student in course.students.all %}
+                                <li>{{ student.username }}</li>
+                            {% empty %}
+                                <li>No students enrolled.</li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-data">No courses available.</p>
+                {% endif %}
+            </div>
+
+            <!-- Levels Section -->
+            <div class="card section" id="levels-section" style="display: none;">
+                <h2>Levels</h2>
+                {% if levels %}
+                    <ul role="list">
+                        {% for level in levels %}
+                            <li>{{ level.title }}</li>
                         {% endfor %}
                     </ul>
-                {% endfor %}
-            {% else %}
-                <p>No courses available.</p>
-            {% endif %}
+                {% else %}
+                    <p class="no-data">No levels assigned yet.</p>
+                {% endif %}
+            </div>
         </div>
-
-        <!-- Levels Section -->
-        <div class="card section" id="levels-section" style="display: none;">
-            <h2>Levels</h2>
-            {% if levels %}
-                <ul>
-                    {% for level in levels %}
-                        <li>{{ level.title }}</li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No levels assigned yet.</p>
-            {% endif %}
-        </div>
-
     </div>
-</div>
 
-<script>
-function showSection(section) {
-    document.querySelectorAll('.section').forEach(function(sec) {
-        sec.style.display = 'none';
-    });
-    document.getElementById(section + '-section').style.display = 'block';
-}
-</script>
+    <!-- Footer - Matched with home.html -->
+    <footer class="footer" aria-label="Footer">
+        <div>
+            <h3>Sungabha Music Academy</h3>
+            <p>Contact: sungabhamusicacademy@gmail.com<br>Phone: 987-4563210 | 068-522948</p>
+        </div>
+        <div>
+            <h3>Menu</h3>
+            <a href="{% url 'home' %}" aria-label="Home">Home</a> | 
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> | 
+            <a href="contact.html" aria-label="Contact">Contact</a> | 
+            <a href="team.html" aria-label="Team">Team</a> | 
+            <a href="about.html" aria-label="About">About</a>
+        </div>
+        <div>
+            <h3>Connect</h3>
+            <a href="#" aria-label="Facebook">Facebook</a> | 
+            <a href="#" aria-label="Twitter">Twitter</a> | 
+            <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+    </footer>
 
+    <!-- JavaScript - UNCHANGED -->
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(function(sec) {
+                sec.style.display = 'none';
+            });
+            document.getElementById(section + '-section').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
