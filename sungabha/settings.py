@@ -34,7 +34,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome to Sungabha eMusic Academy Admin",
 }
 
-
+APPEND_SLASH = True
 
 # Application definition
 
@@ -132,3 +132,24 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Authentication settings
+LOGIN_URL = 'login'  # URL name for login page (matches your login_view)
+LOGIN_REDIRECT_URL = 'home'  # Redirect after login (matches your home view)
+LOGOUT_REDIRECT_URL = 'login'  # Redirect after logout (matches your logout_view)
+
+# Khalti Configuration
+KHALTI_PUBLIC_KEY = "90bd2cb7db274be5b2bf86f2224396ad"  # Sandbox public key
+KHALTI_SECRET_KEY = "a0b90776e78440ada0756efc2f8ade9f"  # Sandbox secret key
+KHALTI_INITIATE_URL = "https://dev.khalti.com/api/v2/epayment/initiate/"  # Sandbox initiate URL
+KHALTI_VERIFY_URL = "https://dev.khalti.com/api/v2/epayment/lookup/"  # Corrected to lookup endpoint
+
+# Khalti Callback URL (replace with your actual domain)
+KHALTI_RETURN_URL = "http://localhost:8000/payment-success/"  # For local testing
+
+# Website URL (replace with your actual domain)
+WEBSITE_URL = "http://localhost:8000/"  # For local testing
+
+# Currency Conversion Rate (1 USD to NPR; adjust as needed)
+USD_TO_NPR_RATE = 130  # Example: 1 USD = 130 NPR

@@ -1,77 +1,685 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Sungabha Music Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fa;
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        header {
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7fa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar - Enhanced for Professional Look */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .brand-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #07301f;
+        }
+
+        .brand-subtitle {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        nav div:nth-child(2) {
+            display: flex;
+            gap: 30px;
+            font-size: 1.1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #059669;
+        }
+
+        nav a.active {
+            color: #059669;
+        }
+
+        nav a.active::after {
+            content: "";
+            width: 100%;
+            height: 3px;
+            background-color: #059669;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: 1px solid #07301f;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #059669, #07301f);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dashboard Content Section */
+        .main-container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #ffffff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar button {
             background: #07301f;
             color: white;
-            padding: 20px;
-            text-align: center;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
         }
-        .dashboard-container {
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+
+        .sidebar button:hover {
+            background: #055536;
+            transform: translateY(-2px);
         }
+
+        .content {
+            flex: 1;
+            padding: 60px 5%;
+            overflow-y: auto;
+            background-color: #f9fafb;
+        }
+
         .card {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 250px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.3s;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
-        .logout-btn {
-            background-color: #e60023;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
+
+        .card h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #07301f;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #059669;
+            margin: 1rem 0;
+        }
+
+        /* Table for Courses Section */
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 10px;
-            display: inline-block;
         }
-        .logout-btn:hover {
-            background-color: #c3001f;
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background-color: #d1fae5;
+            color: #111827;
+            font-weight: 600;
+        }
+
+        td {
+            color: #4b5563;
+        }
+
+        /* Form Styles for Profile Section */
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 5px rgba(5, 150, 105, 0.3);
+        }
+
+        form button[type="submit"] {
+            background: linear-gradient(135deg, #059669, #07301f);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        form button[type="submit"]:hover {
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            transition: all 0.5s ease;
+        }
+
+        /* Certificates Section */
+        .certificate-list {
+            display: grid;
+            gap: 30px;
+        }
+
+        .certificate-item {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .certificate-item h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-item p {
+            font-size: 1rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-item .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #059669, #07301f);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .certificate-item .download-btn:hover {
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
+        }
+
+        /* No-data messages */
+        .no-data {
+            font-size: 1.2rem;
+            color: #6b7280;
+            text-align: center;
+            padding: 30px;
+            background: #f9fafb;
+            border-radius: 10px;
+            border: 1px dashed #d1d5db;
+        }
+
+        /* Footer - Enhanced */
+        .footer {
+            background: linear-gradient(135deg, #07301f, #059669);
+            color: white;
+            padding: 60px 5%;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer p, .footer a {
+            font-size: 1rem;
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .sidebar button {
+                flex: 1 1 150px;
+            }
+
+            .content {
+                padding: 30px 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 5%;
+            }
+
+            nav div:nth-child(2) {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .logo-container img {
+                height: 60px;
+            }
+
+            .brand-title {
+                font-size: 1.5rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .sidebar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sidebar button {
+                flex: 1 1 auto;
+            }
+
+            .card h2 {
+                font-size: 1.8rem;
+            }
+
+            .card h3 {
+                font-size: 1.4rem;
+            }
+
+            .certificate-item h4 {
+                font-size: 1.4rem;
+            }
+
+            .notification-list {
+                margin-top: 20px;
+                padding: 20px;
+                background: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            }
+    
+            .notification-item {
+                padding: 15px;
+                border-bottom: 1px solid #e5e7eb;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            .notification-item:last-child {
+                border-bottom: none;
+            }
+    
+            .notification-item p {
+                margin: 0;
+                font-size: 1rem;
+                color: #1a1a1a;
+            }
+    
+            .notification-item form {
+                margin: 0;
+            }
+    
+            .notification-item button {
+                background: #059669;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+    
+            .notification-item button:hover {
+                background: #34d399;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar - Enhanced -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo" aria-label="Sungabha Music Academy Logo">
+            <div class="brand-text">
+                <span class="brand-title">Sungabha</span>
+                <span class="brand-subtitle">Music Academy</span>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses_list' %}">Courses</a>
+            <a href="contact.html">Contact</a>
+            <a href="team.html">Team</a>
+            <a href="about.html">About</a>
+            <a href="teach-with-us.html">Teach With Us</a>
+            <a href="{% url 'student_dashboard' %}" class="active" aria-current="page">Dashboard</a>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <p>Hello, {{ user.username }}!</p>
+                <a href="{% url 'logout' %}"><button class="btn-primary" aria-label="Logout">Logout</button></a>
+            {% else %}
+                <p>You are not logged in.</p>
+                <a href="{% url 'login' %}"><button aria-label="Login">Login</button></a>
+                <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Register">Register</button></a>
+            {% endif %}
+        </div>
+    </nav>
 
-<header>
-    <h1>Welcome, Student {{ request.user.username }}!</h1>
-    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
-</header>
+<!-- Dashboard Content Section -->
+<div class="main-container">
+    <div class="sidebar">
+        <button onclick="showSection('notifications')" aria-label="View Notifications">Notifications</button>
+        <button onclick="showSection('courses')" aria-label="View My Courses">My Courses</button>
+        <button onclick="showSection('assignments')" aria-label="View Assignments">Assignments</button>
+        <button onclick="showSection('certificates')" aria-label="View Certificates">Certificates</button>
+        <button onclick="showSection('profile')" aria-label="View Profile">Profile</button>
+    </div>
 
-<div class="dashboard-container">
-    <div class="card">
-        <h2>My Courses</h2>
-        <p>Access your enrolled courses and content.</p>
-    </div>
-    <div class="card">
-        <h2>Assignments</h2>
-        <p>View and submit your assignments.</p>
-    </div>
-    <div class="card">
-        <h2>Profile</h2>
-        <p>Update your profile and settings.</p>
-    </div>
-</div>
+        <div class="content" id="content-area">
+            <!-- Default welcome card -->
+            <div class="card">
+                <h2>Welcome, {{ user.username }}!</h2>
+                <p>Select an option from the sidebar to get started.</p>
+            </div>
 
+            <!-- Notifications Section -->
+            <div class="card section" id="notifications-section" style="display: none;">
+                <h2>Notifications</h2>
+                {% if notifications %}
+                    <div class="notification-list">
+                        {% for notification in notifications %}
+                            <div class="notification-item">
+                                <p>{{ notification.message }} ({{ notification.created_at|date:"Y-m-d H:i" }})</p>
+                                <form action="{% url 'mark_notification_read' notification.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" aria-label="Mark as Read">Mark as Read</button>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="no-data">No new notifications.</p>
+                {% endif %}
+            </div>
+
+            <!-- My Courses Section -->
+            <div class="card section" id="courses-section" style="display: none;">
+                <h2>My Courses</h2>
+                {% if paid_courses %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Course Title</th>
+                                <th>Category</th>
+                                <th>Teacher</th>
+                                <th>Progress</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for course in paid_courses %}
+                                <tr>
+                                    <td>{{ course.title }}</td>
+                                    <td>{{ course.category }}</td>
+                                    <td>{{ course.teacher.username }}</td>
+                                    <td>{{ course_progress|dictsort:course.id|first|floatformat:1 }}%</td>
+                                    <td>
+                                        <a href="{% url 'course_content' course.id %}">
+                                            <button class="btn-primary" aria-label="View Content for {{ course.title }}">View Content</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 20px; padding: 10px; background: #d1fae5; border-radius: 8px;">
+                        <strong>Total Amount Paid:</strong> NPR {{ total_amount_npr }}
+                    </div>
+                {% else %}
+                    <p class="no-data">You have not purchased any courses yet. <a href="{% url 'courses_list' %}">Browse courses</a>.</p>
+                {% endif %}
+            </div>
+
+            <!-- Assignments Section -->
+            <div class="card section" id="assignments-section" style="display: none;">
+                <h2>Assignments</h2>
+                {% if paid_courses %}
+                    {% for course in paid_courses %}
+                        <h3>{{ course.title }}</h3>
+                        <div class="certificate-list">
+                            {% with assignments=course_assignments|dictsort:course.id|first %}
+                                {% if assignments %}
+                                    {% for assignment in assignments %}
+                                        <div class="certificate-item">
+                                            <h4>{{ assignment.title }}</h4>
+                                            <p>Due: {{ assignment.due_date|date:"Y-m-d" }}</p>
+                                            <p>Description: {{ assignment.description|truncatewords:20 }}</p>
+                                        </div>
+                                    {% empty %}
+                                        <p class="no-data">No assignments for this course.</p>
+                                    {% endfor %}
+                                {% else %}
+                                    <p class="no-data">No assignments for this course.</p>
+                                {% endif %}
+                            {% endwith %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-data">No paid courses available. <a href="{% url 'courses_list' %}">Browse courses</a>.</p>
+                {% endif %}
+            </div>
+
+            <!-- Certificates Section -->
+            <div class="card section" id="certificates-section" style="display: none;">
+                <h2>Your Certificates</h2>
+                {% if certificates %}
+                    <div class="certificate-list">
+                        {% for certificate in certificates %}
+                            <div class="certificate-item">
+                                <h4>{{ certificate.course.title }}</h4>
+                                <p>Issued on: {{ certificate.issue_date|date:"Y-m-d" }}</p>
+                                {% if certificate.certificate_file %}
+                                    <a href="{{ certificate.certificate_file.url }}" class="download-btn" target="_blank" aria-label="Download Certificate for {{ certificate.course.title }}">Download Certificate</a>
+                                {% else %}
+                                    <p>Certificate issued (no file available).</p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="no-data">You have not received any certificates yet. Complete a course to earn one!</p>
+                {% endif %}
+            </div>
+
+            <!-- Profile Section -->
+            <div class="card section" id="profile-section" style="display: none;">
+                <h2>Your Profile</h2>
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email|default:"Not set" }}</p>
+                <p><strong>Role:</strong> {{ user.profile.role }}</p>
+                <h3>Update Profile</h3>
+                <form method="post" action="{% url 'update_profile' %}" aria-label="Update Profile">
+                    {% csrf_token %}
+                    <input type="text" name="username" value="{{ user.username }}" placeholder="Username" readonly>
+                    <input type="email" name="email" value="{{ user.email|default_if_none:'' }}" placeholder="Email">
+                    <button type="submit" aria-label="Update Profile">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - Unchanged -->
+    <footer class="footer" aria-label="Footer">
+        <div>
+            <h3>Sungabha Music Academy</h3>
+            <p>Contact: sungabhamusicacademy@gmail.com<br>Phone: 987-4563210 | 068-522948</p>
+        </div>
+        <div>
+            <h3>Menu</h3>
+            <a href="{% url 'home' %}" aria-label="Home">Home</a><br>
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a><br>
+            <a href="contact.html" aria-label="Contact">Contact</a><br>
+            <a href="team.html" aria-label="Team">Team</a><br>
+            <a href="about.html" aria-label="About">About</a>
+        </div>
+        <div>
+            <h3>Connect</h3>
+            <a href="#" aria-label="Facebook">Facebook</a><br>
+            <a href="#" aria-label="Twitter">Twitter</a><br>
+            <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Section Toggling -->
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(function(sec) {
+                sec.style.display = 'none';
+            });
+            document.getElementById(section + '-section').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

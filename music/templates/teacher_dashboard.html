@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +120,7 @@
             transform: translateY(-2px);
         }
 
-        /* Dashboard Content Section - UNCHANGED structure, enhanced styling */
+        /* Dashboard Content Section - Enhanced styling */
         .main-container {
             display: flex;
             flex: 1;
@@ -158,7 +159,7 @@
             flex: 1;
             padding: 40px;
             overflow-y: auto;
-            background-color: #f9fafb; /* Aligned with home.html */
+            background-color: #f9fafb;
         }
 
         .card {
@@ -190,7 +191,7 @@
 
         ul {
             padding-left: 20px;
-            list-style-type: none; /* Cleaner look */
+            list-style-type: none;
         }
 
         ul li {
@@ -227,6 +228,29 @@
         ul ul li:hover {
             background: none;
             color: #059669;
+        }
+
+        /* Table for Students Section */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background-color: #d1fae5;
+            color: #111827;
+            font-weight: 600;
+        }
+
+        td {
+            color: #4b5563;
         }
 
         /* Form Styles - Enhanced */
@@ -295,6 +319,8 @@
             background: #f9fafb;
             border-radius: 8px;
         }
+
+        
 
         /* Footer - Matched with home.html */
         .footer {
@@ -412,12 +438,12 @@
             {% else %}
                 <p>You are not logged in.</p>
                 <a href="{% url 'login' %}"><button aria-label="Login">Login</button></a>
-                <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Register">Logout</button></a>
+                <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Register">Register</button></a>
             {% endif %}
         </div>
     </nav>
 
-    <!-- Dashboard Content Section - UNCHANGED structure, enhanced styling -->
+    <!-- Dashboard Content Section -->
     <div class="main-container">
         <div class="sidebar">
             <button onclick="showSection('classes')" aria-label="View My Classes">My Classes</button>
@@ -429,38 +455,71 @@
         <div class="content" id="content-area">
             <!-- Default welcome card -->
             <div class="card">
-                <h2>Welcome!</h2>
+                <h2>Welcome, {{ user.username }}!</h2>
                 <p>Select an option from the sidebar to get started.</p>
             </div>
 
             <!-- My Classes Section -->
             <div class="card section" id="classes-section" style="display: none;">
                 <h2>My Classes</h2>
-                {% if courses %}
+                {% if course_data %}
                     <ul role="list">
-                        {% for course in courses %}
+                        {% for data in course_data %}
                             <li>
-                                <strong>{{ course.title }}</strong> ({{ course.category }})
-                                <br>
-                                <span>Students: {{ course.students.count }}</span>
-                                {% if course.students.all %}
-                                    <ul role="list">
-                                        {% for student in course.students.all %}
-                                            <li>{{ student.username }}</li>
-                                        {% endfor %}
-                                    </ul>
+                                <strong>{{ data.course.title }}</strong> ({{ data.course.category }})<br>
+                                <span>Enrolled Students: {{ data.enrolled_count }}</span><br>
+                                {% if data.students %}
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Student</th>
+                                                <th>Level</th>
+                                                <th>Amount Paid</th>
+                                                <th>Payment Date</th>
+                                                <th>Progress</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for student in data.students %}
+                                                <tr>
+                                                    <td>{{ student.user.username }}</td>
+                                                    <td>{{ student.level.name }}</td>
+                                                    <td>USD {{ student.amount }}</td>
+                                                    <td>{{ student.created_at|date:"Y-m-d" }}</td>
+                                                    <td>{{ student.progress|floatformat:1 }}%</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% else %}
+                                    <p class="no-data">No students have enrolled in this course yet.</p>
                                 {% endif %}
                                 <span>Assignments:</span>
                                 <ul role="list">
-                                    {% for assignment in course.assignments.all %}
-                                        <li>{{ assignment.title }}</li>
-                                    {% empty %}
+                                    {% if data.assignments %}
+                                        {% for assignment in data.assignments %}
+                                            <li>{{ assignment.title }} (Due: {{ assignment.due_date }})</li>
+                                        {% endfor %}
+                                    {% else %}
                                         <li>No assignments yet.</li>
-                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                                <span>Course Content:</span>
+                                <ul role="list">
+                                    {% if data.contents %}
+                                        {% for content in data.contents %}
+                                            <li>{{ content.title }} ({{ content.content_type }}) - Added on {{ content.created_at|date:"Y-m-d" }}</li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <li>No content available yet.</li>
+                                    {% endif %}
                                 </ul>
                             </li>
                         {% endfor %}
                     </ul>
+                    <div style="margin-top: 20px; padding: 10px; background: #d1fae5; border-radius: 8px;">
+                        <strong>Total Amount Paid by Students:</strong> USD {{ total_amount_usd }}
+                    </div>
                 {% else %}
                     <p class="no-data">No classes assigned yet.</p>
                 {% endif %}
@@ -468,23 +527,40 @@
                 <h3>Add New Course</h3>
                 <form method="post" enctype="multipart/form-data" aria-label="Add New Course">
                     {% csrf_token %}
+                    <input type="hidden" name="add_course" value="1">
                     {{ form.as_p }}
                     <button type="submit" aria-label="Add Course">Add Course</button>
+                </form>
+
+                <h3>Add Course Content</h3>
+                <form method="post" enctype="multipart/form-data" aria-label="Add Course Content">
+                    {% csrf_token %}
+                    <input type="hidden" name="add_content" value="1">
+                    <label for="course_id">Select Course:</label>
+                    <select name="course_id" id="course_id" required>
+                        {% for data in course_data %}
+                            <option value="{{ data.course.id }}">{{ data.course.title }}</option>
+                        {% endfor %}
+                    </select>
+                    {{ content_form.as_p }}
+                    <button type="submit" aria-label="Add Content">Add Content</button>
                 </form>
             </div>
 
             <!-- Assignments Section -->
             <div class="card section" id="assignments-section" style="display: none;">
                 <h2>Assignments</h2>
-                {% if courses %}
-                    {% for course in courses %}
-                        <h3>{{ course.title }}</h3>
+                {% if course_data %}
+                    {% for data in course_data %}
+                        <h3>{{ data.course.title }}</h3>
                         <ul role="list">
-                            {% for assignment in course.assignments.all %}
-                                <li>{{ assignment.title }}</li>
-                            {% empty %}
+                            {% if data.assignments %}
+                                {% for assignment in data.assignments %}
+                                    <li>{{ assignment.title }} (Due: {{ assignment.due_date }})</li>
+                                {% endfor %}
+                            {% else %}
                                 <li>No assignments for this course.</li>
-                            {% endfor %}
+                            {% endif %}
                         </ul>
                     {% endfor %}
                 {% else %}
@@ -494,17 +570,36 @@
 
             <!-- Students Section -->
             <div class="card section" id="students-section" style="display: none;">
-                <h2>Students</h2>
-                {% if courses %}
-                    {% for course in courses %}
-                        <h3>{{ course.title }}</h3>
-                        <ul role="list">
-                            {% for student in course.students.all %}
-                                <li>{{ student.username }}</li>
-                            {% empty %}
-                                <li>No students enrolled.</li>
-                            {% endfor %}
-                        </ul>
+                <h2>Enrolled Students</h2>
+                {% if course_data %}
+                    {% for data in course_data %}
+                        <h3>{{ data.course.title }}</h3>
+                        {% if data.students %}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Level</th>
+                                        <th>Amount Paid</th>
+                                        <th>Payment Date</th>
+                                        <th>Progress</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in data.students %}
+                                        <tr>
+                                            <td>{{ student.user.username }}</td>
+                                            <td>{{ student.level.name }}</td>
+                                            <td>USD {{ student.amount }}</td>
+                                            <td>{{ student.created_at|date:"Y-m-d" }}</td>
+                                            <td>{{ student.progress|floatformat:1 }}%</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p class="no-data">No students have enrolled in this course.</p>
+                        {% endif %}
                     {% endfor %}
                 {% else %}
                     <p class="no-data">No courses available.</p>
@@ -517,17 +612,21 @@
                 {% if levels %}
                     <ul role="list">
                         {% for level in levels %}
-                            <li>{{ level.title }}</li>
+                            <li>
+                                <strong>{{ level.name }}</strong><br>
+                                Price: USD {{ level.price }}<br>
+                                Duration: {{ level.duration }} months
+                            </li>
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <p class="no-data">No levels assigned yet.</p>
+                    <p class="no-data">No levels available.</p>
                 {% endif %}
             </div>
         </div>
     </div>
 
-    <!-- Footer - Matched with home.html -->
+    <!-- Footer - Unchanged -->
     <footer class="footer" aria-label="Footer">
         <div>
             <h3>Sungabha Music Academy</h3>
@@ -549,7 +648,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript - UNCHANGED -->
+    <!-- JavaScript - Unchanged -->
     <script>
         function showSection(section) {
             document.querySelectorAll('.section').forEach(function(sec) {

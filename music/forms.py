@@ -3,6 +3,7 @@ from django.contrib.auth import (
     authenticate, get_user_model 
 ) 
 from .models import Course
+from .models import CourseContent
 
 User = get_user_model()
 
@@ -56,3 +57,24 @@ class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = ['title', 'category', 'description', 'image']  # Include the fields you need
+
+class CourseContentForm(forms.ModelForm):
+    class Meta:
+        model = CourseContent
+        fields = ['title', 'content_type', 'file', 'text_content']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        content_type = cleaned_data.get('content_type')
+        file = cleaned_data.get('file')
+        text_content = cleaned_data.get('text_content')
+
+        if content_type in ['video', 'document'] and not file:
+            raise forms.ValidationError(f"A file is required for {content_type} content.")
+        if content_type == 'text' and not text_content:
+            raise forms.ValidationError("Text content is required for text type.")
+        if content_type in ['video', 'document'] and text_content:
+            raise forms.ValidationError(f"Text content should be empty for {content_type} type.")
+        if content_type == 'text' and file:
+            raise forms.ValidationError("File should be empty for text type.")
+        return cleaned_data

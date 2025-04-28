@@ -188,20 +188,20 @@
         }
 
         .highlight-box {
-            background-color: #d1fae5; /* Changed from #e0f2fe (blue) to light green */
+            background-color: #d1fae5;
             padding: 15px;
-            border-left: 4px solid #059669; /* Changed from #0284c7 (blue) to green */
+            border-left: 4px solid #059669;
             border-radius: 6px;
             margin: 10px 0;
-            display: none; /* Hidden by default, shown via JS */
+            display: none;
         }
 
         .highlight-box.active {
-            display: block; /* Show when selected */
+            display: block;
         }
 
         .btn {
-            background: linear-gradient(135deg, #059669, #07301f); /* Changed from #1d4ed8 (blue) to green gradient */
+            background: linear-gradient(135deg, #059669, #07301f);
             color: white;
             padding: 12px;
             border: none;
@@ -210,13 +210,13 @@
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
-            transition: background 0.3s, transform 0.2s; /* Added transform for consistency */
-            text-decoration: none; /* Prevents underline */
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #34d399, #059669); /* Changed from #1e40af (blue) to lighter green gradient */
-            transform: translateY(-2px); /* Added for consistency with other buttons */
+            background: linear-gradient(135deg, #34d399, #059669);
+            transform: translateY(-2px);
         }
 
         input, select {
@@ -233,6 +233,13 @@
             font-weight: bold;
             margin-bottom: 8px;
             display: block;
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
         }
 
         /* Footer - Matched with home.html */
@@ -376,16 +383,18 @@
                 </div>
             {% endfor %}
 
-            <!-- Payment Form Section -->
-            <form method="post">
+            <!-- Payment Form -->
+            <form id="khalti-payment-form" onsubmit="initiateKhaltiPayment(event)">
                 {% csrf_token %}
+                <input type="hidden" name="course_id" value="{{ course.id }}">
                 <label for="level">Choose Level</label>
                 <select name="level" id="level" required>
                     {% for level in course.levels.all %}
-                        <option value="{{ level.id }}">{{ level.name }} - USD {{ level.price }}</option>
+                        <option value="{{ level.id }}" data-price="{{ level.price }}">{{ level.name }} - USD {{ level.price }}</option>
                     {% endfor %}
                 </select>
                 <button type="submit" class="btn">Pay Now</button>
+                <div id="error-message" class="error-message"></div>
             </form>
         </div>
     </div>
@@ -412,22 +421,60 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Level Information Dropdown -->
+    <!-- JavaScript for Level Information Dropdown and Khalti Payment -->
     <script>
+        // Level Information Dropdown
         function showLevelInfo(levelId) {
-            // Hide all highlight boxes
             document.querySelectorAll('.highlight-box').forEach(box => {
                 box.style.display = 'none';
             });
-            // Show the selected level's highlight box
             document.getElementById(`level-${levelId}`).style.display = 'block';
         }
 
-        // Show the first level by default on page load
         document.addEventListener('DOMContentLoaded', () => {
             const firstLevel = document.querySelector('#level-info').value;
             showLevelInfo(firstLevel);
         });
+
+        // Khalti Payment Initiation
+        async function initiateKhaltiPayment(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const errorMessageDiv = document.getElementById('error-message');
+            errorMessageDiv.style.display = 'none'; // Hide error message initially
+            errorMessageDiv.textContent = '';
+
+            const form = document.getElementById('khalti-payment-form');
+            const formData = new FormData(form);
+            const csrftoken = formData.get('csrfmiddlewaretoken');
+
+            try {
+                const response = await fetch("{% url 'initiate_payment' %}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrftoken,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(formData).toString(),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.payment_url) {
+                    // Redirect to Khalti payment URL
+                    window.location.href = data.payment_url;
+                } else {
+                    // Display error message
+                    errorMessageDiv.textContent = data.error || 'Failed to initiate payment. Please try again.';
+                    errorMessageDiv.style.display = 'block';
+                }
+            } catch (error) {
+                // Handle network or other errors
+                errorMessageDiv.textContent = 'An error occurred while initiating payment. Please try again.';
+                errorMessageDiv.style.display = 'block';
+                console.error('Khalti Payment Error:', error);
+            }
+        }
     </script>
 </body>
 </html>
