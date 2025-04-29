@@ -10,6 +10,7 @@ class Profile(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)  # Phone number
 
     def __str__(self):
         return f"{self.user.username} - {self.role}"
@@ -39,7 +40,7 @@ class Level(models.Model):
     name = models.CharField(max_length=100, choices=LEVEL_CHOICES)
     description = models.TextField(default="No description available")
     duration = models.IntegerField(default=0, help_text="Duration in months")
-    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, help_text="Price in USD")
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, help_text="Price in Rs")
     language = models.CharField(max_length=50, default="English")
     format = models.CharField(max_length=100, default="1:1 lesson with Teacher")
     access = models.CharField(max_length=100, default="Mobile & Desktop Access")
@@ -80,7 +81,6 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-# Assignment model (For course-related assignments)
 class Assignment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='assignments')
     title = models.CharField(max_length=200)
@@ -89,6 +89,34 @@ class Assignment(models.Model):
 
     def __str__(self):
         return self.title
+
+# New model for assignment submissions
+class AssignmentSubmission(models.Model):
+    STATUS_CHOICES = (
+        ('Not Started', 'Not Started'),
+        ('In Progress', 'In Progress'),
+        ('Submitted', 'Submitted'),
+        ('Completed', 'Completed'),
+    )
+
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='submissions')
+    student = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='assignment_submissions',
+        limit_choices_to={'profile__role': 'Student'},
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Not Started')
+    submission_file = models.FileField(upload_to='assignment_submissions/', blank=True, null=True)
+    submission_text = models.TextField(blank=True, null=True)
+    submitted_at = models.DateTimeField(null=True, blank=True)
+    completed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        unique_together = ('assignment', 'student')  # Ensure one submission per student per assignment
+
+    def __str__(self):
+        return f"{self.student.username} - {self.assignment.title} - {self.status}"
 
 # Payment model (For handling course payments)
 class Payment(models.Model):
@@ -113,7 +141,7 @@ class Payment(models.Model):
     level = models.ForeignKey(Level, on_delete=models.CASCADE, related_name='payments')
     purchase_order_id = models.CharField(max_length=100, unique=True, default=uuid.uuid4)
     purchase_order_name = models.CharField(max_length=200)
-    amount = models.DecimalField(max_digits=10, decimal_places=2, help_text="Amount in USD")
+    amount = models.DecimalField(max_digits=10, decimal_places=2, help_text="Amount in Rs")
     amount_paisa = models.IntegerField(help_text="Amount in paisa (for Khalti)")
     pidx = models.CharField(max_length=100, null=True, blank=True)
     transaction_id = models.CharField(max_length=100, null=True, blank=True)
@@ -198,3 +226,12 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"Notification for {self.user.username}: {self.message}"
+
+class Teacher(models.Model):
+    name = models.CharField(max_length=255)
+    role = models.CharField(max_length=100)  # e.g., Vocal Coach, Guitar Instructor
+    bio = models.TextField()
+    picture = models.ImageField(upload_to='teachers/', blank=True, null=True)  # Stores the teacher’s picture
+
+    def __str__(self):
+        return self.name

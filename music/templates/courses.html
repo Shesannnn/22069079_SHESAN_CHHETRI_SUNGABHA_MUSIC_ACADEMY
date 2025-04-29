@@ -102,26 +102,60 @@
             left: 0;
         }
 
-        /* Buttons - Matched with home.html */
+        /* Button Styles - Matched with updated home.html */
         button {
-            padding: 10px 20px;
-            border: 1px solid #07301f;
+            padding: 12px 24px;
+            border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Outline Button (used in navbar for Login/Logout) */
+        button:not(.btn-primary) {
+            border: 2px solid #07301f;
+            background-color: transparent;
+            color: #07301f;
+        }
+
+        button:not(.btn-primary):hover {
+            background-color: #07301f;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Primary Button (used for Register) */
         .btn-primary {
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
             border: none;
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
         }
 
         .btn-primary:hover {
             background: linear-gradient(135deg, #34d399, #059669);
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(5, 150, 105, 0.4);
+            color: white;
+        }
+
+        /* Disabled Button State (Optional) */
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         /* Heading - Aligned with home.html typography */
@@ -308,10 +342,9 @@
         <div>
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'courses_list' %}" class="active" aria-current="page">Courses</a>
-            <a href="contact.html">Contact</a>
-            <a href="team.html">Team</a>
-            <a href="about.html">About</a>
-            <a href="teach-with-us.html">Teach With Us</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'team' %}">Team</a>
+            <a href="{% url 'about' %}">About</a>
             {% if user.is_authenticated %}
                 {% if user.profile.role == 'Teacher' %}
                     <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
@@ -376,11 +409,11 @@
         </div>
         <div>
             <h3>Menu</h3>
-            <a href="{% url 'home' %}" aria-label="Home">Home</a> | 
-            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> | 
-            <a href="contact.html" aria-label="Contact">Contact</a> | 
-            <a href="team.html" aria-label="Team">Team</a> | 
-            <a href="about.html" aria-label="About">About</a>
+            <a href="{% url 'home' %}" aria-label="Home">Home</a> |
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> |
+            <a href="{% url 'contact' %}" aria-label="Contact">Contact</a> |
+            <a href="{% url 'team' %}" aria-label="Team">Team</a> |
+            <a href="{% url 'about' %}" aria-label="About">About</a>
         </div>
         <div>
             <h3>Connect</h3>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sungabha Music Academy</title>
+    <title>Our Team | Sungabha Music Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -122,21 +122,19 @@
             justify-content: center;
         }
 
-        /* Outline Button (used in navbar for Login/Logout) */
-        button:not(.btn-primary):not(.discover button) {
+        button:not(.btn-primary) {
             border: 2px solid #07301f;
             background-color: transparent;
             color: #07301f;
         }
 
-        button:not(.btn-primary):not(.discover button):hover {
+        button:not(.btn-primary):hover {
             background-color: #07301f;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        /* Primary Button (used for Register, Get Courses, etc.) */
         .btn-primary {
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
@@ -151,186 +149,142 @@
             color: white;
         }
 
-        /* Discover Section Button */
-        .discover button {
-            padding: 12px 28px;
-            border: 2px solid white;
-            background: transparent;
-            color: white;
-            border-radius: 8px;
-            font-weight: 500;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .discover button:hover {
-            background-color: white;
-            color: #07301f;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Disabled Button State (Optional) */
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Team Hero Section */
+        .team-hero {
             padding: 80px 5%;
             background: linear-gradient(to right, #f9fafb, #e5e7eb);
-            min-height: 80vh;
+            text-align: center;
         }
 
-        .hero-content {
-            max-width: 45%;
-        }
-
-        .hero-content h1 {
+        .team-hero h1 {
             font-size: 3rem;
             font-weight: 700;
             color: #07301f;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
         }
 
-        .hero-content ul {
-            list-style: none;
-            padding: 0;
+        .team-hero p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Team Members Section */
+        .team-members {
+            padding: 80px 5%;
+            background-color: #f0f0f0;
+        }
+
+        .team-members h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #07301f;
+            text-align: center;
             margin-bottom: 2rem;
         }
 
-        .hero-content li {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: #4b5563;
+        /* Updated to match course-container */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 80%;
+            margin: 0 auto;
         }
 
-        .hero-image {
-            border-radius: 15px;
-            width: 600; /* Changed from 600px to maintain aspect ratio */
-            height: 500px;
-            object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+        /* Center when there are exactly 2 teachers */
+        .team-grid.two-teachers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+            max-width: 50%; /* Adjust width to fit 2 cards */
+            margin: 0 auto;
         }
 
-        .hero-image:hover {
-            transform: scale(1.02);
+        .team-grid.one-teacher {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-content: center;
+            max-width: 25%; /* Adjust width to fit 1 card */
+            margin: 0 auto;
         }
 
-        /* Discover Section */
-        .discover {
-            background: linear-gradient(135deg, #07301f, #059669);
-            color: white;
-            padding: 80px 5%;
+        .team-grid.three-teachers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+            max-width: 75%; /* Adjust width to fit 3 cards */
+            margin: 0 auto;
+        }
+
+        /* Updated to match course-card */
+        .team-card {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            transition: transform 0.3s;
             text-align: center;
         }
 
-        .discover-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            max-width: 1200px;
-            margin: auto;
+        .team-card:hover {
+            transform: scale(1.05);
         }
 
-        .discover img {
-            border-radius: 20px;
-            width: 400px;
-            height: 280px;
+        .team-card img {
+            width: 100%;
+            height: 300px;
             object-fit: cover;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
         }
 
-        .discover-text {
-            max-width: 50%;
-            text-align: left;
+        .team-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #059669;
+            margin: 1rem 0 0.5rem;
         }
 
-        .discover-text h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .team-card p.role {
+            font-size: 1rem;
+            color: #6b7280;
             margin-bottom: 1rem;
         }
 
-        .discover-text p {
-            font-size: 1.1rem;
+        .team-card p.bio {
+            font-size: 0.95rem;
+            color: #4b5563;
+            padding: 0 10px 10px;
+        }
+
+        /* No Teachers Message - Styled to match courses.html */
+        .no-teachers {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin: 40px 0;
+        }
+
+        /* Join Team Section */
+        .join-team {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #07301f, #059669);
+            color: white;
+            text-align: center;
+        }
+
+        .join-team h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
         }
 
-        .discover-image-full {
-            margin-top: 40px;
-        }
-
-        .discover-image-full img {
-            width: 76.6%;
-            height: 70%;
-            border-radius: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Courses Section */
-        .courses {
-            padding: 50px 10%;
-            background-color: #f0f0f0;
-            color: #1a1a1a;
-            text-align: center;
-        }
-
-        .courses h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .course-card {
-            background-color: white;
-            display: flex;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .course-card:hover {
-            transform: scale(1.03);
-        }
-
-        .course-card img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px 0 0 10px;
-        }
-
-        .course-content {
-            text-align: center;
-        }
-
-        .course-content h3 {
-            margin: 0;
-            color: #07301f;
-            font-size: 1.3em;
-        }
-
-        .course-content p {
-            margin-top: 10px;
-            font-size: 0.95em;
-            color: #555;
+        .join-team p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
 
         /* Footer */
@@ -360,42 +314,40 @@
             color: white;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 50px 5%;
+        /* Responsive Design - Updated to match courses.html */
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
-
-            .hero-content {
-                max-width: 80%;
-                margin-bottom: 2rem;
+            .team-grid.two-teachers {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 66.67%; /* Adjust for 2 cards in a 3-column layout */
             }
-
-            .hero-image {
-                width: 100%;
-                max-width: 500px;
-                height: auto;
-            }
-
-            .discover-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .discover-text {
-                max-width: 80%;
-                text-align: center;
-            }
-
-            .discover img {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .courses-grid {
+            .team-grid.one-teacher {
                 grid-template-columns: 1fr;
+                max-width: 33.33%; /* Adjust for 1 card in a 3-column layout */
+            }
+            .team-grid.three-teachers {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid.two-teachers {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%; /* Full width for 2 cards in a 2-column layout */
+            }
+            .team-grid.one-teacher {
+                grid-template-columns: 1fr;
+                max-width: 50%; /* Adjust for 1 card in a 2-column layout */
+            }
+            .team-grid.three-teachers {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
             }
         }
 
@@ -417,8 +369,45 @@
                 gap: 10px;
             }
 
-            .hero-content h1 {
+            .logo-container img {
+                height: 60px;
+            }
+
+            .brand-title {
+                font-size: 1.5rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .team-hero h1 {
                 font-size: 2rem;
+            }
+
+            .team-hero p,
+            .join-team p {
+                font-size: 1rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+
+            .team-grid.two-teachers,
+            .team-grid.one-teacher,
+            .team-grid.three-teachers {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+
+            .team-card img {
+                height: 300px; /* Keep consistent with courses.html */
+            }
+
+            .team-card h3 {
+                font-size: 1.3rem;
             }
 
             .footer {
@@ -446,10 +435,10 @@
             </div>
         </div>
         <div>
-            <a href="{% url 'home' %}" class="active" aria-current="page">Home</a>
+            <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'courses_list' %}">Courses</a>
             <a href="{% url 'contact' %}">Contact</a>
-            <a href="{% url 'team' %}">Team</a>
+            <a href="{% url 'team' %}" class="active" aria-current="page">Team</a>
             <a href="{% url 'about' %}">About</a>
             {% if user.is_authenticated %}
                 {% if user.profile.role == 'Teacher' %}
@@ -471,52 +460,39 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-content">
-            <h1 id="hero-title">Online Music Class For Kids & Adults</h1>
-            <ul>
-                <li>Learn At Your Own Pace</li>
-                <li>Making Learning Engaging & Fun</li>
-            </ul>
-            <button class="btn-primary" aria-label="Get Courses">Get Courses</button>
-        </div>
-        <div>
-            <img src="{% static 'images/Nice.jpg' %}" alt="Music class illustration" class="hero-image">
-        </div>
+    <!-- Team Hero Section -->
+    <section class="team-hero" aria-labelledby="team-hero-title">
+        <h1 id="team-hero-title">Meet Our Team</h1>
+        <p>Our dedicated instructors and staff at Sungabha Music Academy are passionate about music and committed to inspiring students. With diverse expertise and a shared love for teaching, they make every lesson engaging and transformative.</p>
+        <a href="{% url 'courses_list' %}"><button class="btn-primary" aria-label="Explore Courses">Explore Courses</button></a>
     </section>
 
-    <!-- Discover Section -->
-    <section class="discover" aria-labelledby="discover-title">
-        <div class="discover-content">
-            <img src="{% static 'images/Sabin1.png' %}" alt="Musician performing">
-            <div class="discover-text">
-                <h2 id="discover-title">Discover Yourself With Music</h2>
-                <p>Unleash Your Potential Through the Power of Music</p>
-                <button aria-label="Learn More">Learn More</button>
-            </div>
-        </div>
-        <div class="discover-image-full">
-            <img src="{% static 'images/Trio1.png' %}" alt="Band performance">
-        </div>
-    </section>
-
-    <!-- Courses Section -->
-    <section class="courses" aria-labelledby="courses-title">
-        <h2 id="courses-title">Join Sungabha Music Academy To Empower Talent Across All Levels</h2>
-        <div class="courses-grid">
-            {% for course in home_courses %}
-                <a href="{% url 'courses_list' %}" style="text-decoration: none; color: inherit;" aria-label="View {{ course.title }} course">
-                    <div class="course-card">
-                        <img src="{{ course.image.url }}" alt="{{ course.title }}">
-                        <div class="course-content">
-                            <h3>{{ course.title }}</h3>
-                            <p>{{ course.description }}</p>
-                        </div>
-                    </div>
-                </a>
+    <!-- Team Members Section -->
+    <section class="team-members" aria-labelledby="team-members-title">
+        <h2 id="team-members-title">Our Instructors</h2>
+        <div class="team-grid {% if teacher_count == 1 %}one-teacher{% elif teacher_count == 2 %}two-teachers{% elif teacher_count == 3 %}three-teachers{% endif %}">
+            {% for teacher in teachers %}
+                <div class="team-card">
+                    {% if teacher.picture %}
+                        <img src="{{ teacher.picture.url }}" alt="Instructor {{ teacher.name }}">
+                    {% else %}
+                        <img src="{% static 'images/default_teacher.jpg' %}" alt="Instructor {{ teacher.name }}">
+                    {% endif %}
+                    <h3>{{ teacher.name }}</h3>
+                    <p class="role">{{ teacher.role }}</p>
+                    <p class="bio">{{ teacher.bio }}</p>
+                </div>
+            {% empty %}
+                <p class="no-teachers">No instructors available at the moment.</p>
             {% endfor %}
         </div>
+    </section>
+
+    <!-- Join Team Section -->
+    <section class="join-team" aria-labelledby="join-team-title">
+        <h2 id="join-team-title">Join Our Team</h2>
+        <p>Are you passionate about music and teaching? We’re always looking for talented instructors to join Sungabha Music Academy. Share your expertise and inspire the next generation of musicians.</p>
+        <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Apply Now">Apply Now</button></a>
     </section>
 
     <!-- Footer -->
@@ -527,10 +503,10 @@
         </div>
         <div>
             <h3>Menu</h3>
-            <a href="{% url 'home' %}" aria-label="Home">Home</a> |
-            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> |
-            <a href="{% url 'contact' %}" aria-label="Contact">Contact</a> |
-            <a href="{% url 'team' %}" aria-label="Team">Team</a> |
+            <a href="{% url 'home' %}" aria-label="Home">Home</a> | 
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> | 
+            <a href="{% url 'contact' %}" aria-label="Contact">Contact</a> | 
+            <a href="{% url 'team' %}" aria-label="Team">Team</a> | 
             <a href="{% url 'about' %}" aria-label="About">About</a>
         </div>
         <div>

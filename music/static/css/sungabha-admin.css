@@ -1,0 +1,51 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Base styles */
+body {
+    font-family: 'Poppins', sans-serif !important;
+    background: #f9fafb !important;
+}
+
+/* Header and sidebar gradient */
+.navbar, .main-sidebar {
+    background: linear-gradient(135deg, #07301f, #059669) !important;
+    color: white !important;
+}
+
+.brand-image, .brand-link img, .main-header .logo img {
+    height: 30px !important;
+    width: auto !important;
+    max-width: 60px;
+    object-fit: contain;
+    margin-right: 6px;
+}
+
+/* Buttons */
+.btn-primary, .btn-success {
+    background: linear-gradient(135deg, #059669, #07301f) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background: linear-gradient(135deg, #34d399, #059669) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Form inputs */
+.form-control {
+    border-radius: 8px !important;
+    border: 1px solid #d1d5db !important;
+}
+
+.form-control:focus {
+    border-color: #059669 !important;
+    box-shadow: 0 0 5px rgba(5, 150, 105, 0.3) !important;
+}
+
+/* Cards and panels */
+.card, .content-wrapper {
+    border-radius: 10px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}

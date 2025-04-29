@@ -1,0 +1,24 @@
+{% extends "jazzmin/login.html" %}
+{% load static i18n %}
+
+{% block login_form %}
+<div style="text-align: center; padding: 20px;">
+    <img src="{% static 'images/Logo.png' %}" alt="Sungabha Music Academy Logo" style="height: 70px; margin-bottom: 20px;">
+    <h2 style="font-family: 'Poppins', sans-serif; color: #07301f;">Sungabha Music Academy Admin</h2>
+</div>
+{{ block.super }}
+<style>
+    .login-box {
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background: #f9fafb;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #059669, #07301f);
+        border: none;
+    }
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #34d399, #059669);
+    }
+</style>
+{% endblock %}

@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Payment Successful | Sungabha Music Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f9fafb;
@@ -20,8 +23,11 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        /* Navbar - Matched with course_payment.html */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -33,144 +39,156 @@
             top: 0;
             z-index: 1000;
         }
-
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-
         .logo-container img {
             height: 70px;
             width: auto;
+            object-fit: contain;
         }
-
         .brand-text {
             display: flex;
             flex-direction: column;
-            line-height: 0.2;
+            line-height: 1.2;
         }
-
         .brand-title {
             font-size: 1.8rem;
             font-weight: 700;
             color: #07301f;
         }
-
         .brand-subtitle {
             font-size: 1rem;
             color: #6b7280;
+            font-weight: 400;
         }
-
         nav div:nth-child(2) {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             font-size: 1rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #1a1a1a;
             font-weight: 600;
-            transition: color 0.3s ease;
+        }
+        nav a {
+            color: #1a1a1a;
             position: relative;
+            transition: color 0.3s ease;
         }
-
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #059669;
         }
-
-        nav a.active {
-            color: #059669;
-        }
-
         nav a.active::after {
             content: "";
-            width: 100%;
-            height: 2px;
-            background-color: #059669;
             position: absolute;
             bottom: -4px;
             left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #059669;
         }
-
+        nav div:nth-child(3) {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        nav p {
+            font-size: 1rem;
+            color: #4b5563;
+            margin: 0;
+        }
         button {
             padding: 10px 20px;
             border: 1px solid #07301f;
             border-radius: 8px;
+            background-color: transparent;
+            font-size: 0.95rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
-            background-color: transparent;
-            font-weight: 500;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
             border: none;
         }
-
         .btn-primary:hover {
             background: linear-gradient(135deg, #34d399, #059669);
             transform: translateY(-2px);
         }
-
-        /* Success Section */
+        /* Main Content */
         .container {
             max-width: 800px;
             margin: 50px auto;
-            padding: 20px;
-            text-align: center;
+            padding: 30px;
             background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-
         h1 {
             font-size: 2.5rem;
             font-weight: 700;
             color: #07301f;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-
         p {
             font-size: 1.1rem;
             color: #4b5563;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
-
         .success-box {
-            background-color: #d1fae5;
+            background-color: #ecfdf5;
             padding: 20px;
+            border-radius: 8px;
             border-left: 4px solid #059669;
-            border-radius: 6px;
             margin: 20px 0;
+            text-align: left;
         }
-
         .success-box p {
-            margin: 5px 0;
+            font-size: 1rem;
+            margin: 8px 0;
         }
-
+        .success-box strong {
+            color: #1a1a1a;
+        }
+        .message-box {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 1rem;
+        }
+        .message-box.success {
+            background-color: #ecfdf5;
+            border-left: 4px solid #059669;
+        }
+        .message-box.error {
+            background-color: #fee2e2;
+            border-left: 4px solid #dc2626;
+        }
+        .message-box i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
         .btn {
+            display: inline-block;
+            padding: 12px 24px;
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
-            padding: 12px 24px;
-            border: none;
             border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
             text-decoration: none;
-            display: inline-block;
-            margin: 10px 5px; /* Adjusted margin for multiple buttons */
-            transition: background 0.3s, transform 0.2s;
+            margin: 10px 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
-
         .btn:hover {
             background: linear-gradient(135deg, #34d399, #059669);
             transform: translateY(-2px);
         }
-
-        /* Footer - Matched with course_payment.html */
+        /* Footer */
         .footer {
             background: linear-gradient(135deg, #07301f, #059669);
             color: white;
@@ -180,49 +198,82 @@
             gap: 20px;
             flex-wrap: wrap;
         }
-
+        .footer div {
+            flex: 1;
+            min-width: 200px;
+        }
         .footer h3 {
             font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
-
-        .footer a {
-            color: #d1d5db;
-            text-decoration: none;
+        .footer p, .footer a {
             font-size: 0.95rem;
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+        }
+        .footer a {
+            display: inline-block;
             transition: color 0.3s ease;
         }
-
         .footer a:hover {
             color: white;
         }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
                 padding: 15px 5%;
             }
-
+            .logo-container {
+                margin-bottom: 10px;
+            }
             nav div:nth-child(2) {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 text-align: center;
             }
-
-            .container {
-                margin: 20px 5%;
-                padding: 15px;
+            nav div:nth-child(3) {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
             }
-
+            .container {
+                margin: 30px 5%;
+                padding: 20px;
+            }
             h1 {
                 font-size: 2rem;
             }
-
+            .success-box {
+                padding: 15px;
+            }
             .footer {
                 flex-direction: column;
                 text-align: center;
+                padding: 30px 5%;
+            }
+            .footer div {
+                margin-bottom: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .brand-title {
+                font-size: 1.5rem;
+            }
+            .brand-subtitle {
+                font-size: 0.9rem;
+            }
+            .logo-container img {
+                height: 60px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -240,10 +291,9 @@
         <div>
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'courses_list' %}">Courses</a>
-            <a href="contact.html">Contact</a>
-            <a href="team.html">Team</a>
-            <a href="about.html">About</a>
-            <a href="teach-with-us.html">Teach With Us</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'team' %}">Team</a>
+            <a href="{% url 'about' %}">About</a>
             {% if user.is_authenticated %}
                 {% if user.profile.role == 'Teacher' %}
                     <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
@@ -255,6 +305,7 @@
         <div>
             {% if user.is_authenticated %}
                 <p>Hello, {{ user.username }}!</p>
+                <a href="{% url 'logout' %}"><button aria-label="Logout">Logout</button></a>
             {% else %}
                 <p>You are not logged in.</p>
                 <a href="{% url 'login' %}"><button aria-label="Login">Login</button></a>
@@ -266,16 +317,27 @@
     <!-- Success Section -->
     <div class="container">
         <h1>Payment Successful!</h1>
-        <p>Thank you for your payment. You are now enrolled in the course.</p>
+        <!-- Display Django messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message-box {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                    <i class="fa {% if message.tags == 'success' %}fa-check-circle{% else %}fa-times-circle{% endif %}"></i>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <p>Thank you for your payment, {{ current_user|default:'Unknown' }}. You are now enrolled in the course.</p>
         <div class="success-box">
-            <p><strong>Course:</strong> {{ payment.course.title }}</p>
-            <p><strong>Level:</strong> {{ payment.level.name }}</p>
-            <p><strong>Amount:</strong> USD {{ payment.amount }}</p>
-            <p><strong>Transaction ID:</strong> {{ payment.transaction_id }}</p>
-            <p><strong>Date:</strong> {{ payment.created_at }}</p>
+            <p><strong>Paid by:</strong> {{ current_user|default:'N/A' }}</p>
+            <p><strong>Course:</strong> {{ course_title|default:'N/A' }}</p>
+            <p><strong>Level:</strong> {{ level_name|default:'N/A' }}</p>
+            <p><strong>Amount:</strong> NPR {{ amount|default:'N/A' }}</p>
+            <p><strong>Transaction ID:</strong> {{ transaction_id|default:'N/A' }}</p>
+            <p><strong>Date:</strong> {{ created_at|date:'Y-m-d H:i'|default:'N/A' }}</p>
         </div>
         <a href="{% url 'student_dashboard' %}" class="btn">Go to Dashboard</a>
         <a href="{% url 'download_invoice' payment.id %}" class="btn">Download Invoice</a>
+        <a href="{% url 'course_content' payment.course.id %}" class="btn">Start Learning Now</a>
     </div>
 
     <!-- Footer -->
@@ -286,16 +348,16 @@
         </div>
         <div>
             <h3>Menu</h3>
-            <a href="{% url 'home' %}" aria-label="Home">Home</a> | 
-            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> | 
-            <a href="contact.html" aria-label="Contact">Contact</a> | 
-            <a href="team.html" aria-label="Team">Team</a> | 
-            <a href="about.html" aria-label="About">About</a>
+            <a href="{% url 'home' %}" aria-label="Home">Home</a> |
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> |
+            <a href="{% url 'contact' %}" aria-label="Contact">Contact</a> |
+            <a href="{% url 'team' %}" aria-label="Team">Team</a> |
+            <a href="{% url 'about' %}" aria-label="About">About</a>
         </div>
         <div>
             <h3>Connect</h3>
-            <a href="#" aria-label="Facebook">Facebook</a> | 
-            <a href="#" aria-label="Twitter">Twitter</a> | 
+            <a href="#" aria-label="Facebook">Facebook</a> |
+            <a href="#" aria-label="Twitter">Twitter</a> |
             <a href="#" aria-label="Instagram">Instagram</a>
         </div>
     </footer>

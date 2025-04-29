@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sungabha Music Academy</title>
+    <title>Contact Us | Sungabha Music Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -122,21 +122,19 @@
             justify-content: center;
         }
 
-        /* Outline Button (used in navbar for Login/Logout) */
-        button:not(.btn-primary):not(.discover button) {
+        button:not(.btn-primary) {
             border: 2px solid #07301f;
             background-color: transparent;
             color: #07301f;
         }
 
-        button:not(.btn-primary):not(.discover button):hover {
+        button:not(.btn-primary):hover {
             background-color: #07301f;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        /* Primary Button (used for Register, Get Courses, etc.) */
         .btn-primary {
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
@@ -151,186 +149,133 @@
             color: white;
         }
 
-        /* Discover Section Button */
-        .discover button {
-            padding: 12px 28px;
-            border: 2px solid white;
-            background: transparent;
-            color: white;
-            border-radius: 8px;
-            font-weight: 500;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .discover button:hover {
-            background-color: white;
-            color: #07301f;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Disabled Button State (Optional) */
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Contact Hero Section */
+        .contact-hero {
             padding: 80px 5%;
             background: linear-gradient(to right, #f9fafb, #e5e7eb);
-            min-height: 80vh;
+            text-align: center;
         }
 
-        .hero-content {
-            max-width: 45%;
-        }
-
-        .hero-content h1 {
+        .contact-hero h1 {
             font-size: 3rem;
             font-weight: 700;
             color: #07301f;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
         }
 
-        .hero-content ul {
-            list-style: none;
-            padding: 0;
+        .contact-hero p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Contact Form Section */
+        .contact-form {
+            padding: 80px 5%;
+            background-color: #f0f0f0;
+        }
+
+        .contact-form h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #07301f;
+            text-align: center;
             margin-bottom: 2rem;
         }
 
-        .hero-content li {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: #4b5563;
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .hero-image {
-            border-radius: 15px;
-            width: 600; /* Changed from 600px to maintain aspect ratio */
-            height: 500px;
-            object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-image:hover {
-            transform: scale(1.02);
-        }
-
-        /* Discover Section */
-        .discover {
-            background: linear-gradient(135deg, #07301f, #059669);
-            color: white;
-            padding: 80px 5%;
-            text-align: center;
-        }
-
-        .discover-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .discover img {
-            border-radius: 20px;
-            width: 400px;
-            height: 280px;
-            object-fit: cover;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .discover-text {
-            max-width: 50%;
-            text-align: left;
-        }
-
-        .discover-text h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .discover-text p {
-            font-size: 1.1rem;
+        .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .discover-image-full {
-            margin-top: 40px;
-        }
-
-        .discover-image-full img {
-            width: 76.6%;
-            height: 70%;
-            border-radius: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Courses Section */
-        .courses {
-            padding: 50px 10%;
-            background-color: #f0f0f0;
-            color: #1a1a1a;
-            text-align: center;
-        }
-
-        .courses h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .course-card {
-            background-color: white;
-            display: flex;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .course-card:hover {
-            transform: scale(1.03);
-        }
-
-        .course-card img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px 0 0 10px;
-        }
-
-        .course-content {
-            text-align: center;
-        }
-
-        .course-content h3 {
-            margin: 0;
+        .form-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
             color: #07301f;
-            font-size: 1.3em;
+            margin-bottom: 0.5rem;
         }
 
-        .course-content p {
-            margin-top: 10px;
-            font-size: 0.95em;
-            color: #555;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #059669;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #07301f, #059669);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p,
+        .info-card a {
+            font-size: 1rem;
+            color: #d1d5db;
+        }
+
+        .info-card a:hover {
+            color: white;
         }
 
         /* Footer */
@@ -362,39 +307,16 @@
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 50px 5%;
+            .contact-hero h1 {
+                font-size: 2.5rem;
             }
 
-            .hero-content {
-                max-width: 80%;
-                margin-bottom: 2rem;
+            .contact-form h2,
+            .contact-info h2 {
+                font-size: 2rem;
             }
 
-            .hero-image {
-                width: 100%;
-                max-width: 500px;
-                height: auto;
-            }
-
-            .discover-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .discover-text {
-                max-width: 80%;
-                text-align: center;
-            }
-
-            .discover img {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .courses-grid {
+            .info-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -417,8 +339,29 @@
                 gap: 10px;
             }
 
-            .hero-content h1 {
+            .logo-container img {
+                height: 60px;
+            }
+
+            .brand-title {
+                font-size: 1.5rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .contact-hero h1 {
                 font-size: 2rem;
+            }
+
+            .contact-hero p,
+            .contact-info p {
+                font-size: 1rem;
+            }
+
+            .form-container {
+                padding: 20px;
             }
 
             .footer {
@@ -446,9 +389,9 @@
             </div>
         </div>
         <div>
-            <a href="{% url 'home' %}" class="active" aria-current="page">Home</a>
+            <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'courses_list' %}">Courses</a>
-            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'contact' %}" class="active" aria-current="page">Contact</a>
             <a href="{% url 'team' %}">Team</a>
             <a href="{% url 'about' %}">About</a>
             {% if user.is_authenticated %}
@@ -471,51 +414,57 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-content">
-            <h1 id="hero-title">Online Music Class For Kids & Adults</h1>
-            <ul>
-                <li>Learn At Your Own Pace</li>
-                <li>Making Learning Engaging & Fun</li>
-            </ul>
-            <button class="btn-primary" aria-label="Get Courses">Get Courses</button>
-        </div>
-        <div>
-            <img src="{% static 'images/Nice.jpg' %}" alt="Music class illustration" class="hero-image">
+    <!-- Contact Hero Section -->
+    <section class="contact-hero" aria-labelledby="contact-hero-title">
+        <h1 id="contact-hero-title">Get in Touch</h1>
+        <p>Have questions or want to learn more about our music classes? Reach out to Sungabha Music Academy, and our team will be happy to assist you!</p>
+        <a href="{% url 'courses_list' %}"><button class="btn-primary" aria-label="Explore Courses">Explore Courses</button></a>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form" aria-labelledby="contact-form-title">
+        <h2 id="contact-form-title">Send Us a Message</h2>
+        <div class="form-container">
+            <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" aria-label="Send Message">Send Message</button>
+            </form>
         </div>
     </section>
 
-    <!-- Discover Section -->
-    <section class="discover" aria-labelledby="discover-title">
-        <div class="discover-content">
-            <img src="{% static 'images/Sabin1.png' %}" alt="Musician performing">
-            <div class="discover-text">
-                <h2 id="discover-title">Discover Yourself With Music</h2>
-                <p>Unleash Your Potential Through the Power of Music</p>
-                <button aria-label="Learn More">Learn More</button>
+    <!-- Contact Info Section -->
+    <section class="contact-info" aria-labelledby="contact-info-title">
+        <h2 id="contact-info-title">Contact Information</h2>
+        <p>Connect with us through email, phone, or social media. We’re here to answer your questions and help you start your musical journey.</p>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Email</h3>
+                <p><a href="mailto:sungabhamusicacademy@gmail.com">sungabhamusicacademy@gmail.com</a></p>
             </div>
-        </div>
-        <div class="discover-image-full">
-            <img src="{% static 'images/Trio1.png' %}" alt="Band performance">
-        </div>
-    </section>
-
-    <!-- Courses Section -->
-    <section class="courses" aria-labelledby="courses-title">
-        <h2 id="courses-title">Join Sungabha Music Academy To Empower Talent Across All Levels</h2>
-        <div class="courses-grid">
-            {% for course in home_courses %}
-                <a href="{% url 'courses_list' %}" style="text-decoration: none; color: inherit;" aria-label="View {{ course.title }} course">
-                    <div class="course-card">
-                        <img src="{{ course.image.url }}" alt="{{ course.title }}">
-                        <div class="course-content">
-                            <h3>{{ course.title }}</h3>
-                            <p>{{ course.description }}</p>
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
+            <div class="info-card">
+                <h3>Phone</h3>
+                <p>987-4563210 | 068-522948</p>
+            </div>
+            <div class="info-card">
+                <h3>Social Media</h3>
+                <p>
+                    <a href="#" aria-label="Facebook">Facebook</a> | 
+                    <a href="#" aria-label="Twitter">Twitter</a> | 
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                </p>
+            </div>
         </div>
     </section>
 

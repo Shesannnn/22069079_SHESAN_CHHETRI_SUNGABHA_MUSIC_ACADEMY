@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
-from .models import Course, Level, Payment, Profile, HomeCourse, Assignment, CourseContent, Certificate
+from .models import Course, Level, Payment, Profile, HomeCourse, Assignment, CourseContent, Certificate, Teacher
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
@@ -140,3 +140,13 @@ class CertificateAdmin(admin.ModelAdmin):
         except Exception as e:
             print(f"Error issuing certificate: {str(e)}")
             raise
+
+# Jazzmin-specific: Order sections in change form
+    jazzmin_section_order = ("General", "Details")
+    # Use collapsible form layout
+    changeform_format = "collapsible"
+
+@admin.register(Teacher)
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ('name', 'role')
+    search_fields = ('name', 'role')

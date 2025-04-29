@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sungabha Music Academy</title>
+    <title>About Us | Sungabha Music Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* Navbar - Copied from home.html */
         nav {
             display: flex;
             justify-content: space-between;
@@ -103,7 +103,7 @@
             left: 0;
         }
 
-        /* Button Styles */
+        /* Button Styles - Copied from home.html */
         button {
             padding: 12px 24px;
             border: none;
@@ -123,13 +123,13 @@
         }
 
         /* Outline Button (used in navbar for Login/Logout) */
-        button:not(.btn-primary):not(.discover button) {
+        button:not(.btn-primary) {
             border: 2px solid #07301f;
             background-color: transparent;
             color: #07301f;
         }
 
-        button:not(.btn-primary):not(.discover button):hover {
+        button:not(.btn-primary):hover {
             background-color: #07301f;
             color: white;
             transform: translateY(-2px);
@@ -151,35 +151,8 @@
             color: white;
         }
 
-        /* Discover Section Button */
-        .discover button {
-            padding: 12px 28px;
-            border: 2px solid white;
-            background: transparent;
-            color: white;
-            border-radius: 8px;
-            font-weight: 500;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .discover button:hover {
-            background-color: white;
-            color: #07301f;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Disabled Button State (Optional) */
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Hero Section */
-        .hero {
+        /* About Us Sections */
+        .about-hero {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -188,11 +161,11 @@
             min-height: 80vh;
         }
 
-        .hero-content {
-            max-width: 45%;
+        .about-hero-content {
+            max-width: 50%;
         }
 
-        .hero-content h1 {
+        .about-hero-content h1 {
             font-size: 3rem;
             font-weight: 700;
             color: #07301f;
@@ -200,140 +173,113 @@
             line-height: 1.2;
         }
 
-        .hero-content ul {
-            list-style: none;
-            padding: 0;
+        .about-hero-content p {
+            font-size: 1.1rem;
+            color: #4b5563;
             margin-bottom: 2rem;
         }
 
-        .hero-content li {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: #4b5563;
-        }
-
-        .hero-image {
+        .about-hero-image {
             border-radius: 15px;
-            width: 600; /* Changed from 600px to maintain aspect ratio */
-            height: 500px;
+            width: 600px;
+            height: 400px;
             object-fit: cover;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .hero-image:hover {
+        .about-hero-image:hover {
             transform: scale(1.02);
         }
 
-        /* Discover Section */
-        .discover {
+        /* Mission Section */
+        .mission {
+            padding: 80px 5%;
             background: linear-gradient(135deg, #07301f, #059669);
             color: white;
-            padding: 80px 5%;
             text-align: center;
         }
 
-        .discover-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .discover img {
-            border-radius: 20px;
-            width: 400px;
-            height: 280px;
-            object-fit: cover;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .discover-text {
-            max-width: 50%;
-            text-align: left;
-        }
-
-        .discover-text h2 {
+        .mission h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .discover-text p {
-            font-size: 1.1rem;
             margin-bottom: 1.5rem;
         }
 
-        .discover-image-full {
-            margin-top: 40px;
+        .mission p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
 
-        .discover-image-full img {
-            width: 76.6%;
-            height: 70%;
-            border-radius: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Courses Section */
-        .courses {
-            padding: 50px 10%;
+        /* Values Section */
+        .values {
+            padding: 80px 5%;
             background-color: #f0f0f0;
-            color: #1a1a1a;
             text-align: center;
         }
 
-        .courses h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            font-weight: bold;
+        .values h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #07301f;
+            margin-bottom: 2rem;
         }
 
-        .courses-grid {
+        .values-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .course-card {
-            background-color: white;
-            display: flex;
+        .value-card {
+            background: white;
             border-radius: 10px;
-            overflow: hidden;
+            padding: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .course-card:hover {
-            transform: scale(1.03);
+        .value-card:hover {
+            transform: translateY(-5px);
         }
 
-        .course-card img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px 0 0 10px;
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 1rem;
         }
 
-        .course-content {
+        .value-card p {
+            font-size: 1rem;
+            color: #4b5563;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 5%;
+            background: linear-gradient(to right, #f9fafb, #e5e7eb);
             text-align: center;
         }
 
-        .course-content h3 {
-            margin: 0;
+        .team h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
             color: #07301f;
-            font-size: 1.3em;
+            margin-bottom: 2rem;
         }
 
-        .course-content p {
-            margin-top: 10px;
-            font-size: 0.95em;
-            color: #555;
+        .team p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
 
-        /* Footer */
+        /* Footer - Copied from home.html */
         .footer {
             background: linear-gradient(135deg, #07301f, #059669);
             color: white;
@@ -360,41 +306,26 @@
             color: white;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Copied from home.html */
         @media (max-width: 1024px) {
-            .hero {
+            .about-hero {
                 flex-direction: column;
                 text-align: center;
                 padding: 50px 5%;
             }
 
-            .hero-content {
+            .about-hero-content {
                 max-width: 80%;
                 margin-bottom: 2rem;
             }
 
-            .hero-image {
+            .about-hero-image {
                 width: 100%;
                 max-width: 500px;
                 height: auto;
             }
 
-            .discover-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .discover-text {
-                max-width: 80%;
-                text-align: center;
-            }
-
-            .discover img {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .courses-grid {
+            .values-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -417,7 +348,13 @@
                 gap: 10px;
             }
 
-            .hero-content h1 {
+            .about-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .mission h2,
+            .values h2,
+            .team h2 {
                 font-size: 2rem;
             }
 
@@ -436,7 +373,7 @@
         {% endfor %}
     {% endif %}
 
-    <!-- Navbar -->
+    <!-- Navbar - Copied from home.html -->
     <nav>
         <div class="logo-container">
             <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo" aria-label="Sungabha Music Academy Logo">
@@ -446,11 +383,11 @@
             </div>
         </div>
         <div>
-            <a href="{% url 'home' %}" class="active" aria-current="page">Home</a>
+            <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'courses_list' %}">Courses</a>
             <a href="{% url 'contact' %}">Contact</a>
             <a href="{% url 'team' %}">Team</a>
-            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'about' %}" class="active" aria-current="page">About</a>
             {% if user.is_authenticated %}
                 {% if user.profile.role == 'Teacher' %}
                     <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
@@ -471,55 +408,52 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-content">
-            <h1 id="hero-title">Online Music Class For Kids & Adults</h1>
-            <ul>
-                <li>Learn At Your Own Pace</li>
-                <li>Making Learning Engaging & Fun</li>
-            </ul>
-            <button class="btn-primary" aria-label="Get Courses">Get Courses</button>
+    <!-- About Us Hero Section -->
+    <section class="about-hero" aria-labelledby="about-hero-title">
+        <div class="about-hero-content">
+            <h1 id="about-hero-title">About Sungabha Music Academy</h1>
+            <p>At Sungabha Music Academy, we believe music is a universal language that inspires, connects, and transforms lives. Our mission is to empower individuals of all ages to discover their musical potential through engaging, personalized, and fun learning experiences.</p>
+            <a href="{% url 'courses_list' %}"><button class="btn-primary" aria-label="Explore Courses">Explore Courses</button></a>
         </div>
         <div>
-            <img src="{% static 'images/Nice.jpg' %}" alt="Music class illustration" class="hero-image">
+            <img src="{% static 'images/5s.jpg' %}" alt="Music class illustration" class="about-hero-image">
         </div>
     </section>
 
-    <!-- Discover Section -->
-    <section class="discover" aria-labelledby="discover-title">
-        <div class="discover-content">
-            <img src="{% static 'images/Sabin1.png' %}" alt="Musician performing">
-            <div class="discover-text">
-                <h2 id="discover-title">Discover Yourself With Music</h2>
-                <p>Unleash Your Potential Through the Power of Music</p>
-                <button aria-label="Learn More">Learn More</button>
+    <!-- Mission Section -->
+    <section class="mission" aria-labelledby="mission-title">
+        <h2 id="mission-title">Our Mission</h2>
+        <p>We are dedicated to making music education accessible, engaging, and transformative. By offering online classes tailored for kids and adults, we aim to foster creativity, build confidence, and nurture a lifelong love for music.</p>
+        <a href="{% url 'register' %}"><button class="btn-primary" aria-label="Join Us">Join Us</button></a>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values" aria-labelledby="values-title">
+        <h2 id="values-title">Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Creativity</h3>
+                <p>We encourage students to express themselves through music, fostering innovation and originality in every lesson.</p>
+            </div>
+            <div class="value-card">
+                <h3>Inclusivity</h3>
+                <p>Our academy welcomes learners of all ages, backgrounds, and skill levels, creating a supportive community for everyone.</p>
+            </div>
+            <div class="value-card">
+                <h3>Excellence</h3>
+                <p>We strive for excellence in teaching, ensuring our instructors deliver high-quality, engaging, and impactful lessons.</p>
             </div>
         </div>
-        <div class="discover-image-full">
-            <img src="{% static 'images/Trio1.png' %}" alt="Band performance">
-        </div>
     </section>
 
-    <!-- Courses Section -->
-    <section class="courses" aria-labelledby="courses-title">
-        <h2 id="courses-title">Join Sungabha Music Academy To Empower Talent Across All Levels</h2>
-        <div class="courses-grid">
-            {% for course in home_courses %}
-                <a href="{% url 'courses_list' %}" style="text-decoration: none; color: inherit;" aria-label="View {{ course.title }} course">
-                    <div class="course-card">
-                        <img src="{{ course.image.url }}" alt="{{ course.title }}">
-                        <div class="course-content">
-                            <h3>{{ course.title }}</h3>
-                            <p>{{ course.description }}</p>
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
+    <!-- Team Section -->
+    <section class="team" aria-labelledby="team-title">
+        <h2 id="team-title">Our Team</h2>
+        <p>Our passionate instructors and staff are the heart of Sungabha Music Academy. With diverse expertise and a shared love for music, they guide students on their musical journey. Learn more about our team and their stories.</p>
+        <a href="team.html"><button class="btn-primary" aria-label="Meet Our Team">Meet Our Team</button></a>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - Copied from home.html -->
     <footer class="footer" aria-label="Footer">
         <div>
             <h3>Sungabha Music Academy</h3>

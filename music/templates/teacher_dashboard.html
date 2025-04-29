@@ -17,7 +17,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f4f7fa;
+            background-color: #f9fafb;
             color: #1a1a1a;
             line-height: 1.6;
             display: flex;
@@ -25,7 +25,7 @@
             min-height: 100vh;
         }
 
-        /* Navbar - Matched with home.html */
+        /* Navbar - Consistent with home.html */
         nav {
             display: flex;
             justify-content: space-between;
@@ -70,6 +70,13 @@
             display: flex;
             gap: 25px;
             font-size: 1rem;
+            align-items: center;
+        }
+
+        nav div:nth-child(3) {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         nav a {
@@ -98,99 +105,138 @@
             left: 0;
         }
 
+        /* Button Styles - Consistent with home.html */
         button {
-            padding: 10px 20px;
-            border: 1px solid #07301f;
+            padding: 12px 24px;
+            border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
             font-weight: 500;
-            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Outline Button (used in navbar for Login/Logout) */
+        button:not(.btn-primary) {
+            border: 2px solid #07301f;
+            background-color: transparent;
+            color: #07301f;
+        }
+
+        button:not(.btn-primary):hover {
+            background-color: #07301f;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Primary Button (used for Register, Logout, etc.) */
         .btn-primary {
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
             border: none;
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
         }
 
         .btn-primary:hover {
             background: linear-gradient(135deg, #34d399, #059669);
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(5, 150, 105, 0.4);
+            color: white;
         }
 
-        /* Dashboard Content Section - Enhanced styling */
+        /* Dashboard Content Section */
         .main-container {
             display: flex;
             flex: 1;
-            height: calc(100vh - 80px);
+            padding: 40px 5%;
         }
 
         .sidebar {
             width: 250px;
-            background: #ffffff;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #07301f, #059669);
+            border-radius: 15px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar button {
-            background: #07301f;
+            background: transparent;
+            border: 2px solid white;
             color: white;
-            border: none;
-            padding: 15px;
             border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
-            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
         }
 
         .sidebar button:hover {
-            background: #055536;
+            background-color: white;
+            color: #07301f;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .content {
             flex: 1;
-            padding: 40px;
+            padding: 0 40px;
             overflow-y: auto;
-            background-color: #f9fafb;
         }
 
         .card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 30px;
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .card h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #07301f;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
         .card h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #059669;
             margin: 1rem 0;
         }
 
+        .card h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #059669;
+            margin: 0.5rem 0;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
         ul {
-            padding-left: 20px;
+            padding-left: 0;
             list-style-type: none;
         }
 
@@ -234,18 +280,18 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         th, td {
-            padding: 12px;
+            padding: 15px;
             text-align: left;
             border-bottom: 1px solid #e5e7eb;
         }
 
         th {
-            background-color: #d1fae5;
-            color: #111827;
+            background: linear-gradient(135deg, #059669, #07301f);
+            color: white;
             font-weight: 600;
         }
 
@@ -253,12 +299,18 @@
             color: #4b5563;
         }
 
-        /* Form Styles - Enhanced */
+        /* Form Styles */
         form {
             margin-top: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
+        }
+
+        form label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1a1a1a;
         }
 
         form input[type="text"],
@@ -267,7 +319,6 @@
         form input[type="file"] {
             width: 100%;
             padding: 12px;
-            margin-bottom: 15px;
             border: 1px solid #d1d5db;
             border-radius: 8px;
             font-size: 1rem;
@@ -298,7 +349,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
-            text-decoration: none;
         }
 
         form button[type="submit"]:hover {
@@ -312,17 +362,27 @@
 
         /* No-data messages */
         .no-data {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #6b7280;
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             background: #f9fafb;
-            border-radius: 8px;
+            border-radius: 10px;
+            border: 1px dashed #d1d5db;
         }
 
-        
+        /* Total Amount Paid Section */
+        .total-amount {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
 
-        /* Footer - Matched with home.html */
+        /* Footer - Consistent with home.html */
         .footer {
             background: linear-gradient(135deg, #07301f, #059669);
             color: white;
@@ -349,10 +409,11 @@
             color: white;
         }
 
-        /* Responsive Design - Matched with home.html */
+        /* Responsive Design - Consistent with home.html */
         @media (max-width: 1024px) {
             .main-container {
                 flex-direction: column;
+                padding: 20px 5%;
             }
 
             .sidebar {
@@ -360,6 +421,7 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
+                border-radius: 10px;
             }
 
             .sidebar button {
@@ -367,7 +429,7 @@
             }
 
             .content {
-                padding: 20px;
+                padding: 0 20px;
             }
         }
 
@@ -384,6 +446,23 @@
                 text-align: center;
             }
 
+            nav div:nth-child(3) {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo-container img {
+                height: 60px;
+            }
+
+            .brand-title {
+                font-size: 1.5rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.9rem;
+            }
+
             .sidebar {
                 flex-direction: column;
                 align-items: stretch;
@@ -394,15 +473,11 @@
             }
 
             .card h2 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .card h3 {
-                font-size: 1.2rem;
-            }
-
-            ul li {
-                padding: 10px;
+                font-size: 1.4rem;
             }
 
             .footer {
@@ -413,7 +488,7 @@
     </style>
 </head>
 <body>
-    <!-- Navbar - Matched with home.html, integrating logout -->
+    <!-- Navbar -->
     <nav>
         <div class="logo-container">
             <img src="{% static 'images/LogoR.png' %}" alt="Sungabha Music Academy Logo" aria-label="Sungabha Music Academy Logo">
@@ -425,10 +500,9 @@
         <div>
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'courses_list' %}">Courses</a>
-            <a href="contact.html">Contact</a>
-            <a href="team.html">Team</a>
-            <a href="about.html">About</a>
-            <a href="teach-with-us.html">Teach With Us</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'team' %}">Team</a>
+            <a href="{% url 'about' %}">About</a>
             <a href="{% url 'teacher_dashboard' %}" class="active" aria-current="page">Dashboard</a>
         </div>
         <div>
@@ -484,7 +558,7 @@
                                                 <tr>
                                                     <td>{{ student.user.username }}</td>
                                                     <td>{{ student.level.name }}</td>
-                                                    <td>USD {{ student.amount }}</td>
+                                                    <td>Rs {{ student.amount }}</td>
                                                     <td>{{ student.created_at|date:"Y-m-d" }}</td>
                                                     <td>{{ student.progress|floatformat:1 }}%</td>
                                                 </tr>
@@ -497,8 +571,23 @@
                                 <span>Assignments:</span>
                                 <ul role="list">
                                     {% if data.assignments %}
-                                        {% for assignment in data.assignments %}
-                                            <li>{{ assignment.title }} (Due: {{ assignment.due_date }})</li>
+                                        {% for assignment_data in data.assignments %}
+                                            <li>
+                                                {{ assignment_data.assignment.title }} (Due: {{ assignment_data.assignment.due_date }})
+                                                <ul role="list">
+                                                    {% for submission in assignment_data.submissions %}
+                                                        <li>{{ submission.student.username }}: {{ submission.status }}
+                                                            {% if submission.submitted_at %}
+                                                                (Submitted on {{ submission.submitted_at|date:"Y-m-d H:i" }})
+                                                            {% elif submission.completed_at %}
+                                                                (Completed on {{ submission.completed_at|date:"Y-m-d H:i" }})
+                                                            {% endif %}
+                                                        </li>
+                                                    {% empty %}
+                                                        <li>No submissions yet.</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
                                         {% endfor %}
                                     {% else %}
                                         <li>No assignments yet.</li>
@@ -517,8 +606,8 @@
                             </li>
                         {% endfor %}
                     </ul>
-                    <div style="margin-top: 20px; padding: 10px; background: #d1fae5; border-radius: 8px;">
-                        <strong>Total Amount Paid by Students:</strong> USD {{ total_amount_usd }}
+                    <div class="total-amount">
+                        <strong>Total Amount Paid by Students:</strong> Rs {{ total_amount_npr }}
                     </div>
                 {% else %}
                     <p class="no-data">No classes assigned yet.</p>
@@ -555,13 +644,48 @@
                         <h3>{{ data.course.title }}</h3>
                         <ul role="list">
                             {% if data.assignments %}
-                                {% for assignment in data.assignments %}
-                                    <li>{{ assignment.title }} (Due: {{ assignment.due_date }})</li>
+                                {% for assignment_data in data.assignments %}
+                                    <li>
+                                        {{ assignment_data.assignment.title }} (Due: {{ assignment_data.assignment.due_date }})
+                                        <ul role="list">
+                                            {% for submission in assignment_data.submissions %}
+                                                <li>{{ submission.student.username }}: {{ submission.status }}
+                                                    {% if submission.submitted_at %}
+                                                        (Submitted on {{ submission.submitted_at|date:"Y-m-d H:i" }})
+                                                    {% elif submission.completed_at %}
+                                                        (Completed on {{ submission.completed_at|date:"Y-m-d H:i" }})
+                                                    {% endif %}
+                                                    {% if submission.submission_file %}
+                                                        - <a href="{{ submission.submission_file.url }}" target="_blank">Download Submission</a>
+                                                    {% endif %}
+                                                    {% if submission.submission_text %}
+                                                        <br>Submission Text: {{ submission.submission_text|truncatewords:10 }}
+                                                    {% endif %}
+                                                </li>
+                                            {% empty %}
+                                                <li>No submissions yet.</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
                                 {% endfor %}
                             {% else %}
                                 <li>No assignments for this course.</li>
                             {% endif %}
                         </ul>
+                        <!-- Form to add a new assignment -->
+                        <h4>Add New Assignment for {{ data.course.title }}</h4>
+                        <form method="post" aria-label="Add New Assignment">
+                            {% csrf_token %}
+                            <input type="hidden" name="add_assignment" value="1">
+                            <input type="hidden" name="course_id" value="{{ data.course.id }}">
+                            <label for="title">Title:</label>
+                            <input type="text" name="title" id="title" required>
+                            <label for="description">Description:</label>
+                            <textarea name="description" id="description" required></textarea>
+                            <label for="due_date">Due Date (YYYY-MM-DD):</label>
+                            <input type="date" name="due_date" id="due_date" required>
+                            <button type="submit" aria-label="Add Assignment">Add Assignment</button>
+                        </form>
                     {% endfor %}
                 {% else %}
                     <p class="no-data">No courses available.</p>
@@ -590,7 +714,7 @@
                                         <tr>
                                             <td>{{ student.user.username }}</td>
                                             <td>{{ student.level.name }}</td>
-                                            <td>USD {{ student.amount }}</td>
+                                            <td>Rs {{ student.amount }}</td>
                                             <td>{{ student.created_at|date:"Y-m-d" }}</td>
                                             <td>{{ student.progress|floatformat:1 }}%</td>
                                         </tr>
@@ -614,7 +738,7 @@
                         {% for level in levels %}
                             <li>
                                 <strong>{{ level.name }}</strong><br>
-                                Price: USD {{ level.price }}<br>
+                                Price: Rs {{ level.price }}<br>
                                 Duration: {{ level.duration }} months
                             </li>
                         {% endfor %}
@@ -626,7 +750,7 @@
         </div>
     </div>
 
-    <!-- Footer - Unchanged -->
+    <!-- Footer -->
     <footer class="footer" aria-label="Footer">
         <div>
             <h3>Sungabha Music Academy</h3>
@@ -634,11 +758,11 @@
         </div>
         <div>
             <h3>Menu</h3>
-            <a href="{% url 'home' %}" aria-label="Home">Home</a> | 
-            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> | 
-            <a href="contact.html" aria-label="Contact">Contact</a> | 
-            <a href="team.html" aria-label="Team">Team</a> | 
-            <a href="about.html" aria-label="About">About</a>
+            <a href="{% url 'home' %}" aria-label="Home">Home</a> |
+            <a href="{% url 'courses_list' %}" aria-label="Courses">Courses</a> |
+            <a href="{% url 'contact' %}" aria-label="Contact">Contact</a> |
+            <a href="{% url 'team' %}" aria-label="Team">Team</a> |
+            <a href="{% url 'about' %}" aria-label="About">About</a>
         </div>
         <div>
             <h3>Connect</h3>
@@ -648,7 +772,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript - Unchanged -->
+    <!-- JavaScript -->
     <script>
         function showSection(section) {
             document.querySelectorAll('.section').forEach(function(sec) {
