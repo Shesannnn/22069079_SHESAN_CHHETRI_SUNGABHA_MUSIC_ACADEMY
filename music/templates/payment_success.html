@@ -1,21 +1,20 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Payment Successful | Sungabha Music Academy</title>
+    <title>Payment Success - Sungabha Music Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reuse styles from home.html for consistency */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f9fafb;
@@ -23,256 +22,271 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        /* Navbar */
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 1.5rem 5%;
             background: linear-gradient(135deg, #ffffff, #f1f5f9);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 0.625rem;
         }
+
         .logo-container img {
-            height: 70px;
+            height: 4.375rem;
             width: auto;
-            object-fit: contain;
         }
+
         .brand-text {
             display: flex;
             flex-direction: column;
             line-height: 1.2;
         }
+
         .brand-title {
             font-size: 1.8rem;
             font-weight: 700;
             color: #07301f;
         }
+
         .brand-subtitle {
             font-size: 1rem;
             color: #6b7280;
-            font-weight: 400;
         }
-        nav div:nth-child(2) {
+
+        .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 1.5625rem;
             font-size: 1rem;
-            font-weight: 600;
+            align-items: center;
         }
+
+        .nav-auth {
+            display: flex;
+            align-items: center;
+            gap: 0.9375rem;
+        }
+
         nav a {
+            text-decoration: none;
             color: #1a1a1a;
-            position: relative;
+            font-weight: 600;
             transition: color 0.3s ease;
+            position: relative;
         }
-        nav a:hover, nav a.active {
+
+        nav a:hover {
             color: #059669;
         }
+
+        nav a.active {
+            color: #059669;
+        }
+
         nav a.active::after {
             content: "";
-            position: absolute;
-            bottom: -4px;
-            left: 0;
             width: 100%;
             height: 2px;
             background-color: #059669;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
         }
-        nav div:nth-child(3) {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        nav p {
-            font-size: 1rem;
-            color: #4b5563;
-            margin: 0;
-        }
-        button {
-            padding: 10px 20px;
-            border: 1px solid #07301f;
-            border-radius: 8px;
-            background-color: transparent;
-            font-size: 0.95rem;
-            font-weight: 500;
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
             cursor: pointer;
+            color: #07301f;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03125rem;
             transition: all 0.3s ease;
         }
+
+        button:not(.btn-primary) {
+            border: 2px solid #07301f;
+            background-color: transparent;
+            color: #07301f;
+        }
+
+        button:not(.btn-primary):hover {
+            background-color: #07301f;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
         .btn-primary {
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
             border: none;
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
         }
+
         .btn-primary:hover {
             background: linear-gradient(135deg, #34d399, #059669);
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(5, 150, 105, 0.4);
         }
-        /* Main Content */
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        .payment-success {
+            padding: 5rem 5%;
             text-align: center;
+            background: linear-gradient(to right, #f9fafb, #e5e7eb);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        h1 {
+
+        .payment-success h1 {
             font-size: 2.5rem;
             font-weight: 700;
             color: #07301f;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
-        p {
+
+        .payment-success p {
             font-size: 1.1rem;
             color: #4b5563;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
-        .success-box {
-            background-color: #ecfdf5;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #059669;
-            margin: 20px 0;
-            text-align: left;
+
+        .payment-success .details {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.625rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 37.5rem;
+            width: 100%;
+            margin-bottom: 2rem;
         }
-        .success-box p {
+
+        .payment-success .details p {
             font-size: 1rem;
-            margin: 8px 0;
+            margin: 0.5rem 0;
         }
-        .success-box strong {
-            color: #1a1a1a;
-        }
-        .message-box {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-size: 1rem;
-        }
-        .message-box.success {
-            background-color: #ecfdf5;
-            border-left: 4px solid #059669;
-        }
-        .message-box.error {
-            background-color: #fee2e2;
-            border-left: 4px solid #dc2626;
-        }
-        .message-box i {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #059669, #07301f);
-            color: white;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            margin: 10px 5px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .btn:hover {
-            background: linear-gradient(135deg, #34d399, #059669);
-            transform: translateY(-2px);
-        }
-        /* Footer */
+
         .footer {
             background: linear-gradient(135deg, #07301f, #059669);
             color: white;
-            padding: 50px 5%;
+            padding: 3.125rem 5%;
             display: flex;
             justify-content: space-between;
-            gap: 20px;
+            gap: 1.25rem;
             flex-wrap: wrap;
         }
-        .footer div {
-            flex: 1;
-            min-width: 200px;
-        }
+
         .footer h3 {
             font-size: 1.5rem;
-            font-weight: 600;
             margin-bottom: 1rem;
         }
-        .footer p, .footer a {
-            font-size: 0.95rem;
-            color: #d1d5db;
-            margin-bottom: 0.5rem;
-        }
+
         .footer a {
-            display: inline-block;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
+
         .footer a:hover {
             color: white;
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 5%;
+                flex-wrap: wrap;
+                padding: 0.9375rem 5%;
             }
-            .logo-container {
-                margin-bottom: 10px;
-            }
-            nav div:nth-child(2) {
+
+            .nav-links {
+                display: none;
                 flex-direction: column;
-                gap: 12px;
+                width: 100%;
                 text-align: center;
+                padding: 1.25rem 0;
             }
-            nav div:nth-child(3) {
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-auth {
+                display: none;
                 flex-direction: column;
-                gap: 10px;
+                width: 100%;
                 text-align: center;
+                gap: 0.625rem;
             }
-            .container {
-                margin: 30px 5%;
-                padding: 20px;
+
+            .nav-auth.active {
+                display: flex;
             }
-            h1 {
+
+            .hamburger {
+                display: block;
+            }
+
+            .payment-success h1 {
                 font-size: 2rem;
             }
-            .success-box {
-                padding: 15px;
+
+            .payment-success .details {
+                padding: 1.5rem;
             }
+
             .footer {
                 flex-direction: column;
                 text-align: center;
-                padding: 30px 5%;
-            }
-            .footer div {
-                margin-bottom: 20px;
             }
         }
+
         @media (max-width: 480px) {
+            .logo-container img {
+                height: 3.125rem;
+            }
+
             .brand-title {
                 font-size: 1.5rem;
             }
+
             .brand-subtitle {
                 font-size: 0.9rem;
             }
-            .logo-container img {
-                height: 60px;
-            }
-            h1 {
+
+            .payment-success h1 {
                 font-size: 1.8rem;
             }
-            .btn {
-                padding: 10px 20px;
+
+            .payment-success p {
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 0.625rem 1.25rem;
                 font-size: 0.9rem;
             }
         }
@@ -288,21 +302,18 @@
                 <span class="brand-subtitle">Music Academy</span>
             </div>
         </div>
-        <div>
-            <a href="{% url 'home' %}">Home</a>
+        <button class="hamburger" aria-label="Toggle Menu">☰</button>
+        <div class="nav-links">
+            <a href="{% url 'home' %}" aria-current="page">Home</a>
             <a href="{% url 'courses_list' %}">Courses</a>
             <a href="{% url 'contact' %}">Contact</a>
             <a href="{% url 'team' %}">Team</a>
             <a href="{% url 'about' %}">About</a>
-            {% if user.is_authenticated %}
-                {% if user.profile.role == 'Teacher' %}
-                    <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
-                {% elif user.profile.role == 'Student' %}
-                    <a href="{% url 'student_dashboard' %}">Dashboard</a>
-                {% endif %}
+            {% if user.is_authenticated and user.profile.role == 'Student' %}
+                <a href="{% url 'student_dashboard' %}">Dashboard</a>
             {% endif %}
         </div>
-        <div>
+        <div class="nav-auth">
             {% if user.is_authenticated %}
                 <p>Hello, {{ user.username }}!</p>
                 <a href="{% url 'logout' %}"><button aria-label="Logout">Logout</button></a>
@@ -314,31 +325,20 @@
         </div>
     </nav>
 
-    <!-- Success Section -->
-    <div class="container">
-        <h1>Payment Successful!</h1>
-        <!-- Display Django messages -->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="message-box {% if message.tags == 'success' %}success{% else %}error{% endif %}">
-                    <i class="fa {% if message.tags == 'success' %}fa-check-circle{% else %}fa-times-circle{% endif %}"></i>
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-        <p>Thank you for your payment, {{ current_user|default:'Unknown' }}. You are now enrolled in the course.</p>
-        <div class="success-box">
-            <p><strong>Paid by:</strong> {{ current_user|default:'N/A' }}</p>
-            <p><strong>Course:</strong> {{ course_title|default:'N/A' }}</p>
-            <p><strong>Level:</strong> {{ level_name|default:'N/A' }}</p>
-            <p><strong>Amount:</strong> NPR {{ amount|default:'N/A' }}</p>
-            <p><strong>Transaction ID:</strong> {{ transaction_id|default:'N/A' }}</p>
-            <p><strong>Date:</strong> {{ created_at|date:'Y-m-d H:i'|default:'N/A' }}</p>
+    <!-- Payment Success Section -->
+    <section class="payment-success" aria-labelledby="payment-success-title">
+        <h1 id="payment-success-title">Payment Successful!</h1>
+        <p>Thank you, {{ payment_user }}, for your purchase. You are now enrolled in {{ course_title }} - {{ level_name }}.</p>
+        <div class="details">
+            <p><strong>Course:</strong> {{ course_title }}</p>
+            <p><strong>Level:</strong> {{ level_name }}</p>
+            <p><strong>Amount:</strong> NPR {{ amount }}</p>
+            <p><strong>Transaction ID:</strong> {{ transaction_id }}</p>
+            <p><strong>Date:</strong> {{ created_at|date:"Y-m-d H:i:s" }}</p>
         </div>
-        <a href="{% url 'student_dashboard' %}" class="btn">Go to Dashboard</a>
-        <a href="{% url 'download_invoice' payment.id %}" class="btn">Download Invoice</a>
-        <a href="{% url 'course_content' payment.course.id %}" class="btn">Start Learning Now</a>
-    </div>
+        <a href="{% url 'download_invoice' payment.id %}"><button class="btn-primary" aria-label="Download Invoice">Download Invoice</button></a>
+        <a href="{% url 'student_dashboard' %}"><button aria-label="Go to Dashboard">Go to Dashboard</button></a>
+    </section>
 
     <!-- Footer -->
     <footer class="footer" aria-label="Footer">
@@ -361,5 +361,15 @@
             <a href="#" aria-label="Instagram">Instagram</a>
         </div>
     </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.nav-auth').classList.toggle('active');
+            document.querySelector('.hamburger').textContent = 
+                document.querySelector('.nav-links').classList.contains('active') ? '✕' : '☰';
+        });
+    </script>
 </body>
 </html>

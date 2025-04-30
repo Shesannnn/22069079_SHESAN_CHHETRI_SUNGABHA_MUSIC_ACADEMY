@@ -39,7 +39,6 @@ def courses_list(request):
     all_categories = ['All'] + [choice[0] for choice in Course.CATEGORY_CHOICES]
     courses = Course.objects.all() if category == 'All' else Course.objects.filter(category=category)
     logger.debug(f"Rendering courses list: category={category}, user={request.user.username if request.user.is_authenticated else 'Anonymous'}")
-    # Note: Ensure courses.html uses {% url 'about' %} for the About link to avoid /courses/about.html 404 error
     return render(request, 'courses.html', {
         'courses': courses,
         'categories': all_categories,
@@ -60,11 +59,12 @@ def login_view(request):
             if user:
                 login(request, user)
                 logger.info(f"User {username} logged in")
+                request.session.modified = True
                 return redirect(next_url or 'home')
-            else:
-                logger.warning(f"Failed login attempt for username: {username}")
-                messages.error(request, "Invalid username or password.")
         else:
+            # Display form errors as messages
+            for error in form.non_field_errors():
+                messages.error(request, error)
             logger.error(f"Form errors: {form.errors}")
     return render(request, 'login.html', {'form': form})
 
@@ -88,8 +88,10 @@ def register_view(request):
     return render(request, "register.html", {'form': form})
 
 def logout_view(request):
-    request.session.flush()  # Clear all session data
+    request.session.pop('payment_id', None)
+    request.session.pop('payment_user', None)
     logout(request)
+    logger.info(f"User {request.user.username if request.user.is_authenticated else 'Anonymous'} logged out")
     return redirect('login')
 
 # Course detail view
@@ -105,7 +107,7 @@ def course_detail_payment(request, course_id):
     logger.debug(f"Rendering course payment: course_id={course_id}, user={request.user.username}")
     return render(request, 'course_detail_payment.html', {'course': course})
 
-# Teacher Dashboard View (Updated)
+# Teacher Dashboard View
 @login_required
 def teacher_dashboard_view(request):
     user = request.user
@@ -117,7 +119,6 @@ def teacher_dashboard_view(request):
         logger.warning(f"Redirecting: User {user.username} is not a teacher")
         return redirect('home')
 
-    # Handle adding a new course
     if request.method == 'POST' and 'add_course' in request.POST:
         form = CourseForm(request.POST, request.FILES)
         if form.is_valid():
@@ -138,7 +139,6 @@ def teacher_dashboard_view(request):
     else:
         form = CourseForm()
 
-    # Handle adding new course content
     if request.method == 'POST' and 'add_content' in request.POST:
         content_form = CourseContentForm(request.POST, request.FILES)
         if content_form.is_valid():
@@ -162,7 +162,6 @@ def teacher_dashboard_view(request):
     else:
         content_form = CourseContentForm()
 
-    # Handle adding a new assignment
     if request.method == 'POST' and 'add_assignment' in request.POST:
         course_id = request.POST.get('course_id')
         course = get_object_or_404(Course, id=course_id, teacher=user)
@@ -178,7 +177,6 @@ def teacher_dashboard_view(request):
                 description=description,
                 due_date=due_date
             )
-            # Create AssignmentSubmission entries for each student enrolled in the course
             for student in course.students.all():
                 AssignmentSubmission.objects.create(
                     assignment=assignment,
@@ -211,7 +209,6 @@ def teacher_dashboard_view(request):
         } for payment in payments]
         enrolled_count = len(students)
         assignments = Assignment.objects.filter(course=course)
-        # Fetch submissions for each assignment
         assignment_data = []
         for assignment in assignments:
             submissions = AssignmentSubmission.objects.filter(assignment=assignment)
@@ -256,8 +253,7 @@ def student_dashboard_view(request):
     enrolled_courses = [payment.course for payment in completed_payments]
     total_amount_npr = sum(float(payment.amount) for payment in completed_payments)
 
-    from datetime import datetime, timedelta
-    # Create a list of dictionaries for course assignments
+    from datetime import datetime
     course_assignments = []
     for course in enrolled_courses:
         assignments = Assignment.objects.filter(course=course)
@@ -272,12 +268,10 @@ def student_dashboard_view(request):
                 'assignment': assignment,
                 'submission': submission
             })
-        # Add a dictionary for this course and its assignments to the list
         course_assignments.append({
             'course': course,
             'assignments': assignment_data
         })
-        # Add due date notifications
         for assignment in assignments:
             if assignment.due_date:
                 days_until_due = (assignment.due_date - datetime.now().date()).days
@@ -296,7 +290,7 @@ def student_dashboard_view(request):
         'user': user,
         'paid_courses': enrolled_courses,
         'total_amount_npr': round(total_amount_npr, 2),
-        'course_assignments': course_assignments,  # Now a list of dictionaries
+        'course_assignments': course_assignments,
         'course_progress': course_progress,
         'notifications': notifications,
         'certificates': certificates,
@@ -329,7 +323,6 @@ def submit_assignment(request, assignment_id):
                 submission.submission_file = submission_file
             submission.submitted_at = timezone.now()
             submission.save()
-            # Notify the teacher if they exist
             if assignment.course.teacher:
                 Notification.objects.create(
                     user=assignment.course.teacher,
@@ -343,7 +336,6 @@ def submit_assignment(request, assignment_id):
             submission.status = 'Completed'
             submission.completed_at = timezone.now()
             submission.save()
-            # Notify the teacher if they exist
             if assignment.course.teacher:
                 Notification.objects.create(
                     user=assignment.course.teacher,
@@ -359,15 +351,30 @@ def submit_assignment(request, assignment_id):
 
 @login_required
 def user_dashboard(request):
-    role = request.user.profile.role
-    logger.debug(f"Redirecting user {request.user.username} to {role} dashboard")
-    if role == 'Teacher':
+    user = request.user
+    logger.debug(f"Accessing user_dashboard for user: {user.username}, Authenticated: {user.is_authenticated}")
+    
+    try:
+        profile = user.profile
+    except Profile.DoesNotExist:
+        logger.error(f"User {user.username} has no Profile object")
+        messages.error(request, "Your account is missing a profile. Please contact support.")
+        Profile.objects.create(user=user, role='Student')
+        return redirect('home')
+    
+    role = profile.role.strip()
+    logger.debug(f"User {user.username} has role: '{role}'")
+    
+    if role.lower() == 'teacher':
+        logger.info(f"Redirecting {user.username} to teacher_dashboard")
         return redirect('teacher_dashboard')
-    elif role == 'Student':
+    elif role.lower() == 'student':
+        logger.info(f"Redirecting {user.username} to student_dashboard")
         return redirect('student_dashboard')
     else:
+        logger.warning(f"User {user.username} has unknown role: '{role}'. Redirecting to home.")
         return redirect('home')
-
+    
 @login_required
 def initiate_payment(request):
     if request.method != "POST":
@@ -397,6 +404,9 @@ def initiate_payment(request):
         messages.error(request, "You have already enrolled in this course level.")
         return JsonResponse({'error': 'Already enrolled'}, status=400)
 
+    request.session.pop('payment_id', None)
+    request.session.pop('payment_user', None)
+
     payment = Payment.objects.create(
         user=user,
         course=course,
@@ -406,9 +416,9 @@ def initiate_payment(request):
         amount_paisa=amount_paisa,
         status='Initiated'
     )
-    request.session['payment_id'] = payment.id
+    request.session['payment_id'] = str(payment.id)
     request.session['payment_user'] = user.username
-    logger.info(f"Created payment: ID={payment.id}, user={user.username}")
+    logger.info(f"Created payment: ID={payment.id}, user={user.username}, session: payment_id={request.session['payment_id']}, payment_user={request.session['payment_user']}")
 
     return_url = f"{settings.KHALTI_RETURN_URL}?payment_id={payment.id}"
     payload = {
@@ -453,21 +463,46 @@ def initiate_payment(request):
         logger.error(f"JSON decode error: {str(e)}")
         return JsonResponse({"error": "Payment service returned an invalid response. Please try again later."}, status=500)
 
+@login_required
 def payment_success(request):
-    logger.debug(f"Payment success called: GET={request.GET}, user={request.user.username if request.user.is_authenticated else 'Anonymous'}")
+    logger.debug(f"Payment success called: GET={request.GET}, Session={request.session.items()}")
     payment_id = request.GET.get('payment_id') or request.session.get('payment_id')
     if not payment_id:
         logger.error("Payment ID missing")
         messages.error(request, "Payment ID is required")
         return HttpResponseBadRequest("Payment ID is required")
 
-    payment = get_object_or_404(Payment, id=payment_id)
-    logger.info(f"Found payment: ID={payment.id}, user={payment.user.username}, pidx={payment.pidx}, status={payment.status}")
+    try:
+        payment = get_object_or_404(Payment, id=payment_id)
+    except Payment.DoesNotExist:
+        logger.error(f"Payment {payment_id} not found")
+        messages.error(request, "Payment not found")
+        return HttpResponseBadRequest("Payment not found")
+
+    logger.info(f"Found payment: ID={payment.id}, user={payment.user.username if payment.user else 'None'}")
 
     if not request.user.is_authenticated:
         logger.error("Unauthenticated user in payment_success")
         messages.error(request, "You must be logged in to process this payment.")
         return redirect('login')
+
+    session_payment_user = request.session.get('payment_user')
+    if session_payment_user and session_payment_user != request.user.username:
+        logger.error(f"Session user mismatch: session_payment_user={session_payment_user}, authenticated={request.user.username}")
+        messages.error(request, "Session mismatch. Please initiate a new payment.")
+        request.session.pop('payment_id', None)
+        request.session.pop('payment_user', None)
+        return HttpResponseBadRequest("Session mismatch. Please initiate a new payment.")
+
+    if not payment.user:
+        logger.error(f"Payment {payment_id} has no associated user")
+        messages.error(request, "Invalid payment record. Please contact support.")
+        return HttpResponseBadRequest("Invalid payment record.")
+
+    if payment.user != request.user:
+        logger.error(f"User mismatch: authenticated={request.user.username}, payment_user={payment.user.username}")
+        messages.error(request, "You are not authorized to process this payment.")
+        return HttpResponseBadRequest("You are not authorized to process this payment.")
 
     pidx = request.GET.get('pidx')
     transaction_id = request.GET.get('transaction_id') or request.GET.get('txnId')
@@ -504,8 +539,9 @@ def payment_success(request):
                 message=f"Payment successful! You are now enrolled in {course.title} - {payment.level.name}.",
                 is_read=False
             )
-            messages.success(request, f"Payment successful! {payment.user.username} is now enrolled in {course.title} - {payment.level.name}.")
-            request.session['payment_id'] = payment.id
+            messages.success(request, f"Payment successful! You are now enrolled in {course.title} - {payment.level.name}.")
+            request.session.pop('payment_id', None)
+            request.session.pop('payment_user', None)
             logger.info(f"Payment {payment.id} completed, redirecting to success page")
             return redirect('payment_success_page', payment_id=payment.id)
         else:
@@ -518,7 +554,7 @@ def payment_success(request):
             )
             messages.error(request, f"Payment failed or was canceled. Status: {status or 'Unknown'}")
             logger.warning(f"Payment {payment.id} failed: status={status}")
-            return redirect('payment_failure_page', payment_id=payment.id)
+            return redirect('payment_failure_page', payment_id=payment_id)
     else:
         khalti_verify_url = settings.KHALTI_VERIFY_URL
         headers = {
@@ -530,7 +566,7 @@ def payment_success(request):
             response = requests.post(khalti_verify_url, headers=headers, json=payload)
             response_data = response.json()
             logger.debug(f"Khalti verification: status={response.status_code}, body={response_data}")
-            if response.status_code == 200 and response_data.get('state', '').lower() == 'completed':
+            if response.status_code == 200 and response_data.get('status', '').lower() == 'completed':
                 payment.status = 'Completed'
                 payment.transaction_id = transaction_id or response_data.get('transaction_id', f"KH-{payment.id}")
                 payment.save()
@@ -550,12 +586,13 @@ def payment_success(request):
                     message=f"Payment successful! You are now enrolled in {course.title} - {payment.level.name}.",
                     is_read=False
                 )
-                messages.success(request, f"Payment successful! {payment.user.username} is now enrolled in {course.title} - {payment.level.name}.")
-                request.session['payment_id'] = payment.id
+                messages.success(request, f"Payment successful! You are now enrolled in {course.title} - {payment.level.name}.")
+                request.session.pop('payment_id', None)
+                request.session.pop('payment_user', None)
                 logger.info(f"Payment {payment.id} verified, redirecting to success page")
                 return redirect('payment_success_page', payment_id=payment.id)
             else:
-                payment.status = response_data.get('state', 'Failed')
+                payment.status = response_data.get('status', 'Failed')
                 payment.save()
                 Notification.objects.create(
                     user=payment.user,
@@ -564,7 +601,7 @@ def payment_success(request):
                 )
                 messages.error(request, f"Payment verification failed: {response_data.get('message', 'Unknown error')}")
                 logger.warning(f"Payment {payment.id} verification failed")
-                return redirect('payment_failure_page', payment_id=payment.id)
+                return redirect('payment_failure_page', payment_id=payment_id)
         except requests.RequestException as e:
             logger.error(f"Khalti verification error: {str(e)}")
             payment.status = 'Failed'
@@ -575,21 +612,25 @@ def payment_success(request):
                 is_read=False
             )
             messages.error(request, f"Error verifying payment: {str(e)}")
-            return redirect('payment_failure_page', payment_id=payment.id)
-
+            return redirect('payment_failure_page', payment_id=payment_id)
+             
 @never_cache
 @login_required
 def payment_success_page(request, payment_id):
-    logger.debug(f"Accessing payment_success_page: payment_id={payment_id}, user={request.user.username if request.user.is_authenticated else 'Anonymous'}")
-    payment = get_object_or_404(Payment, id=payment_id)
-    logger.info(f"Payment details: ID={payment.id}, user={payment.user.username}, course={payment.course.title if payment.course else 'N/A'}, status={payment.status}")
+    logger.debug(f"Accessing payment_success_page: payment_id={payment_id}")
+    try:
+        payment = get_object_or_404(Payment, id=payment_id)
+    except Payment.DoesNotExist:
+        logger.error(f"Payment {payment_id} not found")
+        messages.error(request, "Payment not found")
+        return HttpResponseBadRequest("Payment not found")
 
-    has_completed_payment = Payment.objects.filter(user=request.user, status='Completed').exists()
-    logger.debug(f"Checking user payment status: user={request.user.username}, has_completed_payment={has_completed_payment}")
-    if not has_completed_payment:
-        logger.error(f"User {request.user.username} has no completed payments")
-        messages.error(request, "You must have made at least one successful payment to view this page.")
-        return HttpResponseBadRequest("You must have made at least one successful payment to view this page.")
+    logger.info(f"Payment details: ID={payment.id}, user={payment.user.username}")
+
+    if payment.user != request.user:
+        logger.error(f"User mismatch: authenticated={request.user.username}, payment_user={payment.user.username}")
+        messages.error(request, "You are not authorized to view this payment.")
+        return HttpResponseBadRequest("You are not authorized to view this payment.")
 
     if payment.status != 'Completed':
         logger.warning(f"Payment {payment_id} status is {payment.status}")
@@ -606,14 +647,14 @@ def payment_success_page(request, payment_id):
         'payment_user': payment.user.username,
         'current_user': request.user.username,
     }
-    logger.info(f"Rendering payment_success.html for payment {payment_id} by user {request.user.username}")
+    logger.info(f"Rendering payment_success.html for payment {payment_id}")
     return render(request, 'payment_success.html', context)
 
 @never_cache
 def payment_failure_page(request, payment_id):
-    logger.debug(f"Accessing payment_failure_page: payment_id={payment_id}, user={request.user.username if request.user.is_authenticated else 'Anonymous'}")
+    logger.debug(f"Accessing payment_failure_page: payment_id={payment_id}")
     payment = get_object_or_404(Payment, id=payment_id)
-    logger.info(f"Payment details: ID={payment.id}, user={payment.user.username}, status={payment.status}")
+    logger.info(f"Payment details: ID={payment.id}, user={payment.user.username}")
 
     if not request.user.is_authenticated:
         logger.warning(f"Unauthenticated user accessing payment {payment_id}")
@@ -621,7 +662,7 @@ def payment_failure_page(request, payment_id):
 
     if request.user != payment.user:
         logger.error(f"User mismatch: authenticated={request.user.username}, payment_user={payment.user.username}")
-        return HttpResponseBadRequest(f"You are not authorized to view this payment (authenticated: {request.user.username}, payment user: {payment.user.username})")
+        return HttpResponseBadRequest(f"You are not authorized to view this payment")
 
     context = {
         'payment': payment,
@@ -643,24 +684,16 @@ def update_profile(request):
         user = request.user
 
         try:
-            # Validate email format
             validate_email(email)
-
-            # Check if the new username is different and already exists
             if username != user.username:
                 if User.objects.filter(username=username).exclude(id=user.id).exists():
-                    messages.error(request, 'This username is already taken. Please choose a different one.')
+                    messages.error(request, 'This username is already taken.')
                     return redirect('student_dashboard')
-
-            # Validate phone number format (optional, can be empty)
             if phone_number:
-                # Example regex for phone number: allows + followed by digits, or just digits
                 phone_pattern = r'^\+?\d{10,15}$'
                 if not re.match(phone_pattern, phone_number):
-                    messages.error(request, 'Please enter a valid phone number (e.g., +1234567890 or 1234567890).')
+                    messages.error(request, 'Please enter a valid phone number.')
                     return redirect('student_dashboard')
-
-            # Update the user's username, email, and phone number
             user.username = username
             user.email = email
             user.profile.phone_number = phone_number if phone_number else None
@@ -670,11 +703,10 @@ def update_profile(request):
         except ValidationError:
             messages.error(request, 'Please enter a valid email address.')
         except IntegrityError:
-            messages.error(request, 'An error occurred while updating your profile. Please try again.')
+            messages.error(request, 'An error occurred while updating your profile.')
         except Exception as e:
             messages.error(request, f'Error updating profile: {str(e)}')
         return redirect('student_dashboard')
-    # If GET request, redirect to dashboard
     return redirect('student_dashboard')
 
 @login_required
@@ -688,7 +720,6 @@ def delete_phone_number(request):
         except Exception as e:
             messages.error(request, f'Error deleting phone number: {str(e)}')
         return redirect('student_dashboard')
-    # If GET request, redirect to dashboard
     return redirect('student_dashboard')
 
 @login_required
@@ -754,7 +785,7 @@ def download_invoice(request, payment_id):
 @login_required
 def course_content_view(request, course_id):
     user = request.user
-    logger.debug(f"Accessing course content: course_id={course_id}, user={user.username}, role={user.profile.role if hasattr(user, 'profile') else 'No profile'}")
+    logger.debug(f"Accessing course content: course_id={course_id}, user={user.username}")
     if not hasattr(user, 'profile') or user.profile.role != 'Student':
         logger.warning(f"Redirecting: User {user.username} is not a student")
         return redirect('home')
@@ -793,21 +824,11 @@ def mark_notification_read(request, notification_id):
     return redirect('student_dashboard')
 
 def about(request):
-    """
-    View to render the About Us page.
-    """
-    context = {
-        'user': request.user,
-    }
+    context = {'user': request.user}
     return render(request, 'about.html', context)
 
 def team(request):
-    """
-    View to render the Team page.
-    """
-    context = {
-        'user': request.user,
-    }
+    context = {'user': request.user}
     return render(request, 'team.html', context)
 
 def contact(request):
@@ -815,32 +836,18 @@ def contact(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         message = request.POST.get('message')
-
-        # Compose the email
         subject = f'Contact Form Submission from {name}'
         body = f'Name: {name}\nEmail: {email}\nMessage: {message}'
-        from_email = email  # Use the user's email as the sender
+        from_email = email
         recipient_list = ['sungabhamusicacademy@gmail.com']
-
         try:
-            # Send the email
-            send_mail(
-                subject,
-                body,
-                from_email,
-                recipient_list,
-                fail_silently=False,
-            )
+            send_mail(subject, body, from_email, recipient_list, fail_silently=False)
             messages.success(request, 'Your message has been sent successfully!')
         except Exception as e:
             messages.error(request, 'Failed to send your message. Please try again later.')
-            # Optionally log the error for debugging
-            print(f"Email sending failed: {str(e)}")
-
         return redirect('contact')
-
     return render(request, 'contact.html')
 
 def team(request):
-    teachers = Teacher.objects.all()  # Fetch all teachers from the database
+    teachers = Teacher.objects.all()
     return render(request, 'team.html', {'teachers': teachers})

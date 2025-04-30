@@ -15,9 +15,9 @@ JAZZMIN_SETTINGS = {
     "site_title": "Sungabha Music Academy Admin",
     "site_header": "Sungabha Music Academy",
     "site_brand": "Sungabha Admin",
-    "site_logo": "images/LogoR.png",
+    "site_logo": "images/Logo.png",
     "site_logo_classes": None,
-    "site_icon": "images/LogoR.png",
+    "site_icon": "images/Logo.png",
     "welcome_sign": "Welcome to Sungabha Music Academy Admin",
     "copyright": "Sungabha Music Academy 2025",
     # Top Menu Links
@@ -148,6 +148,7 @@ KHALTI_RETURN_URL = "http://localhost:8000/payment/success/"
 WEBSITE_URL = "http://localhost:8000/"  # For local testing
 
 # Session Settings for Local Testing
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_SECURE = False  # For http://localhost
 SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_HTTPONLY = True

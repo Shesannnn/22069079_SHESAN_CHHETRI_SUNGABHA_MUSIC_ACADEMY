@@ -671,3 +671,569 @@ DEBUG 2025-04-30 03:19:23,910 views Rendering courses list: category=All, user=B
 DEBUG 2025-04-30 03:19:25,256 views Rendering home page for user: Bibash
 DEBUG 2025-04-30 03:19:26,191 views Rendering courses list: category=All, user=Bibash
 DEBUG 2025-04-30 03:19:27,997 views Rendering home page for user: Bibash
+DEBUG 2025-04-30 03:59:29,085 views Rendering home page for user: Bibash
+DEBUG 2025-04-30 04:00:52,079 views Rendering home page for user: shesan
+DEBUG 2025-04-30 04:01:30,323 views Rendering courses list: category=All, user=shesan
+DEBUG 2025-04-30 04:01:36,223 views Rendering home page for user: shesan
+DEBUG 2025-04-30 04:06:11,865 views Rendering home page for user: shesan
+DEBUG 2025-04-30 04:06:37,769 views Accessing student dashboard: user=shesan, role=Student
+DEBUG 2025-04-30 04:07:06,719 views Login attempt: form_valid=True
+DEBUG 2025-04-30 04:07:06,719 views Authenticating user: Naya
+INFO 2025-04-30 04:07:07,089 views User Naya logged in
+DEBUG 2025-04-30 04:07:07,110 views Rendering home page for user: Naya
+DEBUG 2025-04-30 04:07:07,987 views Accessing student dashboard: user=Naya, role=Student
+DEBUG 2025-04-30 04:14:10,895 views Accessing student dashboard: user=Naya, role=Student
+DEBUG 2025-04-30 04:14:10,898 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 04:14:26,902 views Login attempt: form_valid=True
+DEBUG 2025-04-30 04:14:26,902 views Authenticating user: Mister
+INFO 2025-04-30 04:14:27,329 views User Mister logged in
+DEBUG 2025-04-30 04:14:27,345 views Rendering home page for user: Mister
+DEBUG 2025-04-30 04:14:28,178 views Accessing teacher dashboard: user=Mister
+DEBUG 2025-04-30 04:22:07,466 views Accessing teacher dashboard: user=Mister
+WARNING 2025-04-30 04:22:07,476 views Payment 60 for course Western Vocals has no associated profile.
+WARNING 2025-04-30 04:22:07,476 views Payment 61 for course Western Vocals has no associated profile.
+WARNING 2025-04-30 04:22:07,477 views Payment 63 for course Western Vocals has no associated profile.
+WARNING 2025-04-30 04:22:07,477 views Payment 64 for course Western Vocals has no associated profile.
+WARNING 2025-04-30 04:22:07,477 views Payment 65 for course Western Vocals has no associated profile.
+WARNING 2025-04-30 04:22:07,477 views Payment 69 for course Western Vocals has no associated profile.
+WARNING 2025-04-30 04:22:07,479 views Payment 68 for course Drum Class has no associated profile.
+DEBUG 2025-04-30 04:22:07,480 views Rendering teacher dashboard: courses=2
+DEBUG 2025-04-30 04:22:34,732 views Rendering courses list: category=All, user=Mister
+DEBUG 2025-04-30 04:22:36,210 views Rendering course detail: course_id=13, user=Mister
+DEBUG 2025-04-30 04:22:38,836 views Rendering course payment: course_id=13, user=Mister
+DEBUG 2025-04-30 04:22:41,128 views Initiating payment: user=Mister, course=Eastern Vocals, level=Foundation
+INFO 2025-04-30 04:22:41,135 views Created payment: ID=71, user=Mister
+DEBUG 2025-04-30 04:22:41,729 views Khalti API response: status=200, body={"pidx":"MTdCcKZtUzBTtxFu6E6Rif","payment_url":"https://test-pay.khalti.com/?pidx=MTdCcKZtUzBTtxFu6E6Rif","expires_at":"2025-04-30T04:52:40.423579+05:45","expires_in":1800}
+INFO 2025-04-30 04:22:41,733 views Payment initiated: pidx=MTdCcKZtUzBTtxFu6E6Rif
+DEBUG 2025-04-30 04:22:59,458 views Payment success called: GET=<QueryDict: {'payment_id': ['71'], 'pidx': ['MTdCcKZtUzBTtxFu6E6Rif'], 'transaction_id': ['WBH65hQkFRhQ5d4SrFASQd'], 'tidx': ['WBH65hQkFRhQ5d4SrFASQd'], 'txnId': ['WBH65hQkFRhQ5d4SrFASQd'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['082be6b1-239b-43b8-9256-6dbd28727b73'], 'purchase_order_name': ['Eastern Vocals - Foundation']}>, user=Mandu
+INFO 2025-04-30 04:22:59,460 views Found payment: ID=71, user=Mister, pidx=MTdCcKZtUzBTtxFu6E6Rif, status=Initiated
+DEBUG 2025-04-30 04:22:59,465 views Enrolling user Mister in course Eastern Vocals
+INFO 2025-04-30 04:22:59,470 views User Mister enrolled in course Eastern Vocals
+INFO 2025-04-30 04:22:59,473 views Updated user Mister's role to Student
+INFO 2025-04-30 04:22:59,478 views Payment 71 completed, redirecting to success page
+DEBUG 2025-04-30 04:22:59,496 views Accessing payment_success_page: payment_id=71, user=Mandu
+INFO 2025-04-30 04:22:59,499 views Payment details: ID=71, user=Mister, course=Eastern Vocals, status=Completed
+DEBUG 2025-04-30 04:22:59,501 views Checking user payment status: user=Mandu, has_completed_payment=False
+ERROR 2025-04-30 04:22:59,501 views User Mandu has no completed payments
+DEBUG 2025-04-30 04:38:11,147 views Rendering home page for user: Mister
+DEBUG 2025-04-30 04:38:12,394 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 04:38:12,397 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 04:42:16,461 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 04:42:16,464 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 04:42:17,986 views Rendering home page for user: Mister
+DEBUG 2025-04-30 04:42:19,095 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 04:42:19,096 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 04:42:24,783 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 04:42:24,785 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 04:42:34,856 views Login attempt: form_valid=True
+DEBUG 2025-04-30 04:42:34,857 views Authenticating user: Naya
+INFO 2025-04-30 04:42:35,252 views User Naya logged in
+DEBUG 2025-04-30 04:42:35,268 views Rendering home page for user: Naya
+DEBUG 2025-04-30 04:42:37,004 views Accessing student dashboard: user=Naya, role=Student
+DEBUG 2025-04-30 04:42:37,006 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 04:43:16,736 views Login attempt: form_valid=True
+DEBUG 2025-04-30 04:43:16,736 views Authenticating user: Bibash
+INFO 2025-04-30 04:43:17,116 views User Bibash logged in
+DEBUG 2025-04-30 04:43:17,130 views Rendering home page for user: Bibash
+DEBUG 2025-04-30 04:43:18,175 views Accessing student dashboard: user=Bibash, role=Student
+DEBUG 2025-04-30 04:43:18,178 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 04:43:26,016 views Rendering courses list: category=All, user=Bibash
+DEBUG 2025-04-30 04:43:27,313 views Rendering course detail: course_id=14, user=Bibash
+DEBUG 2025-04-30 04:43:29,460 views Rendering course payment: course_id=14, user=Bibash
+DEBUG 2025-04-30 04:43:31,279 views Initiating payment: user=Bibash, course=Western Vocals, level=Foundation
+INFO 2025-04-30 04:43:31,286 views Created payment: ID=72, user=Bibash
+DEBUG 2025-04-30 04:43:31,741 views Khalti API response: status=200, body={"pidx":"GLTMsq4DEJtzFcKwKGVdJo","payment_url":"https://test-pay.khalti.com/?pidx=GLTMsq4DEJtzFcKwKGVdJo","expires_at":"2025-04-30T05:13:30.399494+05:45","expires_in":1800}
+INFO 2025-04-30 04:43:31,747 views Payment initiated: pidx=GLTMsq4DEJtzFcKwKGVdJo
+DEBUG 2025-04-30 04:43:47,649 views Payment success called: GET=<QueryDict: {'payment_id': ['72'], 'pidx': ['GLTMsq4DEJtzFcKwKGVdJo'], 'transaction_id': ['JFqHueijS4jVUTT8VZdyLV'], 'tidx': ['JFqHueijS4jVUTT8VZdyLV'], 'txnId': ['JFqHueijS4jVUTT8VZdyLV'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['33ea08f7-171c-4047-8308-d1b37ac3779b'], 'purchase_order_name': ['Western Vocals - Foundation']}>, user=Mandu
+INFO 2025-04-30 04:43:47,651 views Found payment: ID=72, user=Bibash, pidx=GLTMsq4DEJtzFcKwKGVdJo, status=Initiated
+DEBUG 2025-04-30 04:43:47,656 views Enrolling user Bibash in course Western Vocals
+INFO 2025-04-30 04:43:47,661 views User Bibash enrolled in course Western Vocals
+INFO 2025-04-30 04:43:47,668 views Payment 72 completed, redirecting to success page
+DEBUG 2025-04-30 04:43:47,686 views Accessing payment_success_page: payment_id=72, user=Mandu
+INFO 2025-04-30 04:43:47,688 views Payment details: ID=72, user=Bibash, course=Western Vocals, status=Completed
+DEBUG 2025-04-30 04:43:47,689 views Checking user payment status: user=Mandu, has_completed_payment=False
+ERROR 2025-04-30 04:43:47,689 views User Mandu has no completed payments
+DEBUG 2025-04-30 04:57:47,141 views Rendering home page for user: Anonymous
+DEBUG 2025-04-30 04:57:54,512 views Login attempt: form_valid=True
+DEBUG 2025-04-30 04:57:54,513 views Authenticating user: Bibash
+INFO 2025-04-30 04:57:54,874 views User Bibash logged in
+DEBUG 2025-04-30 04:57:54,888 views Rendering home page for user: Bibash
+DEBUG 2025-04-30 04:57:55,734 views Accessing student dashboard: user=Bibash, role=Student
+DEBUG 2025-04-30 04:57:55,741 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Bibash - New Assignment 1 - Not Started>}]}]
+DEBUG 2025-04-30 04:58:09,413 views Rendering courses list: category=All, user=Bibash
+DEBUG 2025-04-30 04:58:10,006 views Rendering home page for user: Bibash
+DEBUG 2025-04-30 04:58:11,215 views Accessing student dashboard: user=Bibash, role=Student
+DEBUG 2025-04-30 04:58:11,221 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Bibash - New Assignment 1 - Not Started>}]}]
+DEBUG 2025-04-30 04:59:56,799 views Rendering home page for user: Bibash
+DEBUG 2025-04-30 05:00:03,350 views Rendering courses list: category=All, user=Bibash
+DEBUG 2025-04-30 05:00:04,685 views Rendering home page for user: Bibash
+DEBUG 2025-04-30 05:02:19,308 views Rendering home page for user: Anonymous
+DEBUG 2025-04-30 05:06:22,982 views Rendering courses list: category=All, user=Anonymous
+DEBUG 2025-04-30 05:06:25,145 views Rendering home page for user: Anonymous
+DEBUG 2025-04-30 05:12:06,705 views Login attempt: form_valid=True
+DEBUG 2025-04-30 05:12:06,706 views Authenticating user: Naya
+INFO 2025-04-30 05:12:07,098 views User Naya logged in
+DEBUG 2025-04-30 05:12:07,125 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:18:29,729 views Rendering register page: form_errors=
+DEBUG 2025-04-30 05:23:58,742 views Rendering home page for user: Anonymous
+DEBUG 2025-04-30 05:24:06,274 views Rendering home page for user: Anonymous
+DEBUG 2025-04-30 05:24:11,259 views Login attempt: form_valid=True
+DEBUG 2025-04-30 05:24:11,259 views Authenticating user: Naya
+INFO 2025-04-30 05:24:11,632 views User Naya logged in
+DEBUG 2025-04-30 05:24:11,646 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:24:22,689 views Rendering courses list: category=All, user=Naya
+DEBUG 2025-04-30 05:24:27,659 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:26:13,256 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:26:32,797 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:26:49,430 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:14,950 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:39,561 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:43,285 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:49,356 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:51,466 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:51,799 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:52,064 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:57,053 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:58,076 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:58,308 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:29:58,523 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:30:14,985 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:30:15,617 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:30:15,856 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:30:31,514 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:14,286 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:15,313 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:15,581 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:15,822 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:16,041 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:16,260 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:16,432 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:31:17,735 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:32:46,053 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:32:52,234 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:33:05,058 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:33:06,239 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:33:14,564 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:33:18,792 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:33:36,712 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:33:37,778 views Rendering home page for user: Naya
+DEBUG 2025-04-30 05:46:11,844 views Rendering courses list: category=All, user=Naya
+DEBUG 2025-04-30 05:50:11,777 views Rendering courses list: category=Flute, user=Naya
+DEBUG 2025-04-30 05:50:13,303 views Rendering courses list: category=Singing, user=Naya
+DEBUG 2025-04-30 05:50:14,348 views Rendering courses list: category=Instruments, user=Naya
+DEBUG 2025-04-30 05:51:28,354 views Rendering courses list: category=Singing, user=Naya
+DEBUG 2025-04-30 05:53:23,930 views Rendering courses list: category=Instruments, user=Naya
+DEBUG 2025-04-30 05:53:24,892 views Rendering courses list: category=Singing, user=Naya
+DEBUG 2025-04-30 05:53:26,481 views Rendering course detail: course_id=13, user=Naya
+DEBUG 2025-04-30 05:57:36,910 views Rendering course payment: course_id=13, user=Naya
+DEBUG 2025-04-30 06:00:17,138 views Initiating payment: user=Naya, course=Eastern Vocals, level=Foundation
+INFO 2025-04-30 06:00:17,166 views Created payment: ID=73, user=Naya
+DEBUG 2025-04-30 06:00:17,655 views Khalti API response: status=200, body={"pidx":"vuFjCxnVeDooj3u3CxGgWB","payment_url":"https://test-pay.khalti.com/?pidx=vuFjCxnVeDooj3u3CxGgWB","expires_at":"2025-04-30T06:30:16.176287+05:45","expires_in":1800}
+INFO 2025-04-30 06:00:17,661 views Payment initiated: pidx=vuFjCxnVeDooj3u3CxGgWB
+DEBUG 2025-04-30 06:05:41,349 views Rendering courses list: category=All, user=Naya
+DEBUG 2025-04-30 06:05:42,848 views Rendering course detail: course_id=13, user=Naya
+DEBUG 2025-04-30 06:05:44,141 views Rendering course payment: course_id=13, user=Naya
+DEBUG 2025-04-30 06:08:22,325 views Payment success called: GET=<QueryDict: {'payment_id': ['73'], 'pidx': ['vuFjCxnVeDooj3u3CxGgWB'], 'transaction_id': ['8PA537JBW9sep3nzC643MT'], 'tidx': ['8PA537JBW9sep3nzC643MT'], 'txnId': ['8PA537JBW9sep3nzC643MT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['0d6a34a0-52d1-4551-ac19-d1f706f74ddf'], 'purchase_order_name': ['Eastern Vocals - Foundation']}>, user=Mandu
+INFO 2025-04-30 06:08:22,329 views Found payment: ID=73, user=Naya, pidx=vuFjCxnVeDooj3u3CxGgWB, status=Initiated
+DEBUG 2025-04-30 06:08:22,337 views Enrolling user Naya in course Eastern Vocals
+INFO 2025-04-30 06:08:22,346 views User Naya enrolled in course Eastern Vocals
+INFO 2025-04-30 06:08:22,359 views Payment 73 completed, redirecting to success page
+DEBUG 2025-04-30 06:08:22,385 views Accessing payment_success_page: payment_id=73, user=Mandu
+INFO 2025-04-30 06:08:22,387 views Payment details: ID=73, user=Naya, course=Eastern Vocals, status=Completed
+DEBUG 2025-04-30 06:08:22,388 views Checking user payment status: user=Mandu, has_completed_payment=False
+ERROR 2025-04-30 06:08:22,389 views User Mandu has no completed payments
+DEBUG 2025-04-30 06:12:47,672 views Accessing payment_success_page: payment_id=73, user=Mandu
+INFO 2025-04-30 06:12:47,674 views Payment details: ID=73, user=Naya, course=Eastern Vocals, status=Completed
+ERROR 2025-04-30 06:12:47,675 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:12:48,778 views Accessing payment_success_page: payment_id=73, user=Mandu
+INFO 2025-04-30 06:12:48,779 views Payment details: ID=73, user=Naya, course=Eastern Vocals, status=Completed
+ERROR 2025-04-30 06:12:48,780 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:12:49,081 views Accessing payment_success_page: payment_id=73, user=Mandu
+INFO 2025-04-30 06:12:49,083 views Payment details: ID=73, user=Naya, course=Eastern Vocals, status=Completed
+ERROR 2025-04-30 06:12:49,084 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:12:57,852 views Initiating payment: user=Naya, course=Eastern Vocals, level=Foundation
+WARNING 2025-04-30 06:12:57,854 views User Naya already paid for Eastern Vocals - Foundation
+DEBUG 2025-04-30 06:12:59,589 views Initiating payment: user=Naya, course=Eastern Vocals, level=Foundation
+WARNING 2025-04-30 06:12:59,591 views User Naya already paid for Eastern Vocals - Foundation
+DEBUG 2025-04-30 06:13:02,750 views Initiating payment: user=Naya, course=Eastern Vocals, level=Advanced
+INFO 2025-04-30 06:13:02,758 views Created payment: ID=74, user=Naya
+DEBUG 2025-04-30 06:13:03,128 views Khalti API response: status=200, body={"pidx":"mwyAHPbC84gwTDe5idMbGW","payment_url":"https://test-pay.khalti.com/?pidx=mwyAHPbC84gwTDe5idMbGW","expires_at":"2025-04-30T06:43:01.632648+05:45","expires_in":1800}
+INFO 2025-04-30 06:13:03,134 views Payment initiated: pidx=mwyAHPbC84gwTDe5idMbGW
+DEBUG 2025-04-30 06:13:18,261 views Payment success called: GET=<QueryDict: {'payment_id': ['74'], 'pidx': ['mwyAHPbC84gwTDe5idMbGW'], 'transaction_id': ['6z4WuTPZL9cezRAtusBSHT'], 'tidx': ['6z4WuTPZL9cezRAtusBSHT'], 'txnId': ['6z4WuTPZL9cezRAtusBSHT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['9e682e99-b81b-4d3a-90b4-e3d76c5c469c'], 'purchase_order_name': ['Eastern Vocals - Advanced']}>, user=Mandu
+INFO 2025-04-30 06:13:18,264 views Found payment: ID=74, user=Naya, pidx=mwyAHPbC84gwTDe5idMbGW, status=Initiated
+ERROR 2025-04-30 06:13:18,265 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:13:46,536 views Payment success called: GET=<QueryDict: {'payment_id': ['74'], 'pidx': ['mwyAHPbC84gwTDe5idMbGW'], 'transaction_id': ['6z4WuTPZL9cezRAtusBSHT'], 'tidx': ['6z4WuTPZL9cezRAtusBSHT'], 'txnId': ['6z4WuTPZL9cezRAtusBSHT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['9e682e99-b81b-4d3a-90b4-e3d76c5c469c'], 'purchase_order_name': ['Eastern Vocals - Advanced']}>, user=Mandu
+INFO 2025-04-30 06:13:46,537 views Found payment: ID=74, user=Naya, pidx=mwyAHPbC84gwTDe5idMbGW, status=Initiated
+ERROR 2025-04-30 06:13:46,537 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:13:47,044 views Payment success called: GET=<QueryDict: {'payment_id': ['74'], 'pidx': ['mwyAHPbC84gwTDe5idMbGW'], 'transaction_id': ['6z4WuTPZL9cezRAtusBSHT'], 'tidx': ['6z4WuTPZL9cezRAtusBSHT'], 'txnId': ['6z4WuTPZL9cezRAtusBSHT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['9e682e99-b81b-4d3a-90b4-e3d76c5c469c'], 'purchase_order_name': ['Eastern Vocals - Advanced']}>, user=Mandu
+INFO 2025-04-30 06:13:47,046 views Found payment: ID=74, user=Naya, pidx=mwyAHPbC84gwTDe5idMbGW, status=Initiated
+ERROR 2025-04-30 06:13:47,046 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:13:47,249 views Payment success called: GET=<QueryDict: {'payment_id': ['74'], 'pidx': ['mwyAHPbC84gwTDe5idMbGW'], 'transaction_id': ['6z4WuTPZL9cezRAtusBSHT'], 'tidx': ['6z4WuTPZL9cezRAtusBSHT'], 'txnId': ['6z4WuTPZL9cezRAtusBSHT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['9e682e99-b81b-4d3a-90b4-e3d76c5c469c'], 'purchase_order_name': ['Eastern Vocals - Advanced']}>, user=Mandu
+INFO 2025-04-30 06:13:47,251 views Found payment: ID=74, user=Naya, pidx=mwyAHPbC84gwTDe5idMbGW, status=Initiated
+ERROR 2025-04-30 06:13:47,251 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:13:47,424 views Payment success called: GET=<QueryDict: {'payment_id': ['74'], 'pidx': ['mwyAHPbC84gwTDe5idMbGW'], 'transaction_id': ['6z4WuTPZL9cezRAtusBSHT'], 'tidx': ['6z4WuTPZL9cezRAtusBSHT'], 'txnId': ['6z4WuTPZL9cezRAtusBSHT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['9e682e99-b81b-4d3a-90b4-e3d76c5c469c'], 'purchase_order_name': ['Eastern Vocals - Advanced']}>, user=Mandu
+INFO 2025-04-30 06:13:47,425 views Found payment: ID=74, user=Naya, pidx=mwyAHPbC84gwTDe5idMbGW, status=Initiated
+ERROR 2025-04-30 06:13:47,426 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:15:42,168 views Payment success called: GET=<QueryDict: {'payment_id': ['74'], 'pidx': ['mwyAHPbC84gwTDe5idMbGW'], 'transaction_id': ['6z4WuTPZL9cezRAtusBSHT'], 'tidx': ['6z4WuTPZL9cezRAtusBSHT'], 'txnId': ['6z4WuTPZL9cezRAtusBSHT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['9e682e99-b81b-4d3a-90b4-e3d76c5c469c'], 'purchase_order_name': ['Eastern Vocals - Advanced']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:15:42,170 views Found payment: ID=74, user=Naya, pidx=mwyAHPbC84gwTDe5idMbGW, status=Initiated
+ERROR 2025-04-30 06:15:42,170 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:15:44,612 views Payment success called: GET=<QueryDict: {'payment_id': ['74'], 'pidx': ['mwyAHPbC84gwTDe5idMbGW'], 'transaction_id': ['6z4WuTPZL9cezRAtusBSHT'], 'tidx': ['6z4WuTPZL9cezRAtusBSHT'], 'txnId': ['6z4WuTPZL9cezRAtusBSHT'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['9e682e99-b81b-4d3a-90b4-e3d76c5c469c'], 'purchase_order_name': ['Eastern Vocals - Advanced']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:15:44,614 views Found payment: ID=74, user=Naya, pidx=mwyAHPbC84gwTDe5idMbGW, status=Initiated
+ERROR 2025-04-30 06:15:44,615 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:15:46,985 views Rendering course payment: course_id=13, user=Naya
+DEBUG 2025-04-30 06:15:49,153 views Rendering course payment: course_id=13, user=Naya
+DEBUG 2025-04-30 06:15:51,716 views Initiating payment: user=Naya, course=Eastern Vocals, level=Beginner
+INFO 2025-04-30 06:15:51,723 views Created payment: ID=75, user=Naya, session: payment_id=75, payment_user=Naya
+DEBUG 2025-04-30 06:15:52,048 views Khalti API response: status=200, body={"pidx":"8XkKQTuQQbPqXqHFFzjY3i","payment_url":"https://test-pay.khalti.com/?pidx=8XkKQTuQQbPqXqHFFzjY3i","expires_at":"2025-04-30T06:45:50.545579+05:45","expires_in":1800}
+INFO 2025-04-30 06:15:52,054 views Payment initiated: pidx=8XkKQTuQQbPqXqHFFzjY3i
+DEBUG 2025-04-30 06:16:06,486 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:16:06,488 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:16:06,488 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:03,135 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:03,137 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:03,137 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:04,320 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:04,321 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:04,321 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:04,864 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:04,865 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:04,865 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:05,082 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:05,084 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:05,084 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:05,267 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:05,268 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:05,269 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:05,444 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:05,446 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:05,446 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:05,590 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:05,591 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:05,591 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:05,773 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:05,774 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:05,774 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:18:05,945 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:18:05,947 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:18:05,947 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:23:40,752 views Rendering home page for user: Naya
+DEBUG 2025-04-30 06:23:46,962 views Rendering courses list: category=All, user=Naya
+DEBUG 2025-04-30 06:23:49,837 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:23:49,840 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:23:49,840 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:23:50,578 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:23:50,580 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:23:50,580 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:23:50,935 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:23:50,937 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:23:50,937 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:23:51,166 views Payment success called: GET=<QueryDict: {'payment_id': ['75'], 'pidx': ['8XkKQTuQQbPqXqHFFzjY3i'], 'transaction_id': ['88ijxW3j56ZE3jUF8tZuoG'], 'tidx': ['88ijxW3j56ZE3jUF8tZuoG'], 'txnId': ['88ijxW3j56ZE3jUF8tZuoG'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['fb95fcb4-a4bc-4943-9867-0a81d3f28ca8'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:23:51,168 views Found payment: ID=75, user=Naya, pidx=8XkKQTuQQbPqXqHFFzjY3i, status=Initiated
+ERROR 2025-04-30 06:23:51,169 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:23:53,515 views Rendering course detail: course_id=14, user=Naya
+DEBUG 2025-04-30 06:23:56,935 views Rendering course payment: course_id=14, user=Naya
+DEBUG 2025-04-30 06:23:58,238 views Initiating payment: user=Naya, course=Western Vocals, level=Beginner
+INFO 2025-04-30 06:23:58,247 views Created payment: ID=76, user=Naya, session: payment_id=76, payment_user=Naya
+DEBUG 2025-04-30 06:23:58,598 views Khalti API response: status=200, body={"pidx":"hwZRWrd9nsqtABJNtw5n9C","payment_url":"https://test-pay.khalti.com/?pidx=hwZRWrd9nsqtABJNtw5n9C","expires_at":"2025-04-30T06:53:57.087359+05:45","expires_in":1800}
+INFO 2025-04-30 06:23:58,603 views Payment initiated: pidx=hwZRWrd9nsqtABJNtw5n9C
+DEBUG 2025-04-30 06:24:15,085 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu
+INFO 2025-04-30 06:24:15,086 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated
+ERROR 2025-04-30 06:24:15,086 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:46,797 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:46,799 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:46,799 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:47,354 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:47,356 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:47,356 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:47,580 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:47,582 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:47,582 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:47,788 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:47,790 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:47,790 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:48,002 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:48,004 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:48,004 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:48,221 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:48,223 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:48,223 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:48,452 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:48,453 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:48,454 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:48,670 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:48,672 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:48,673 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:48,866 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:48,868 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:48,868 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:27:49,042 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:27:49,044 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Initiated, course=Western Vocals
+ERROR 2025-04-30 06:27:49,044 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:28:30,303 views Rendering course payment: course_id=14, user=shesan
+DEBUG 2025-04-30 06:28:32,334 views Payment success called: GET=<QueryDict: {'payment_id': ['76'], 'pidx': ['hwZRWrd9nsqtABJNtw5n9C'], 'transaction_id': ['PKVVLDLBx7KEdnd63ZG3CV'], 'tidx': ['PKVVLDLBx7KEdnd63ZG3CV'], 'txnId': ['PKVVLDLBx7KEdnd63ZG3CV'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['f2ff6c32-48d4-482d-92a9-807486c045fb'], 'purchase_order_name': ['Western Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '13'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ed0cc145afa88a71417e1a1b93cb7cb58f813b8892185d8c762e7fe2b2ed6f6d'), ('payment_id', 73), ('payment_user', 'Mandu')]), User=Mandu, Authenticated=True, SessionID=6nh2mf2bwx7z2mw5l4zm5ncxn2b5180b
+INFO 2025-04-30 06:28:32,335 views Found payment: ID=76, user=Naya, pidx=hwZRWrd9nsqtABJNtw5n9C, status=Completed, course=Western Vocals
+ERROR 2025-04-30 06:28:32,336 views User mismatch: authenticated=Mandu, payment_user=Naya
+DEBUG 2025-04-30 06:29:44,965 views Accessing student dashboard: user=Mandu, role=Student
+DEBUG 2025-04-30 06:29:44,968 views Rendering student dashboard: courses=0, course_assignments=[]
+INFO 2025-04-30 06:29:45,710 views User Anonymous logged out
+DEBUG 2025-04-30 06:29:51,892 views Login attempt: form_valid=True
+DEBUG 2025-04-30 06:29:51,893 views Authenticating user: Naya
+INFO 2025-04-30 06:29:52,271 views User Naya logged in
+DEBUG 2025-04-30 06:29:52,283 views Rendering home page for user: Naya
+DEBUG 2025-04-30 06:29:55,774 views Accessing student dashboard: user=Naya, role=Student
+DEBUG 2025-04-30 06:29:55,785 views Rendering student dashboard: courses=2, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Naya - Naya Course ho yesari padhnu - Completed>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Naya - New Assignment 1 - Submitted>}]}]
+DEBUG 2025-04-30 06:30:00,636 views Rendering courses list: category=All, user=Naya
+DEBUG 2025-04-30 06:30:01,725 views Rendering course detail: course_id=13, user=Naya
+DEBUG 2025-04-30 06:30:03,260 views Rendering course payment: course_id=13, user=Naya
+DEBUG 2025-04-30 06:30:04,365 views Initiating payment: user=Naya, course=Eastern Vocals, level=Beginner
+INFO 2025-04-30 06:30:04,371 views Created payment: ID=77, user=Naya, session: payment_id=77, payment_user=Naya
+DEBUG 2025-04-30 06:30:04,782 views Khalti API response: status=200, body={"pidx":"RuDEirLCKXu9WkXJRv8ueR","payment_url":"https://test-pay.khalti.com/?pidx=RuDEirLCKXu9WkXJRv8ueR","expires_at":"2025-04-30T07:00:03.257385+05:45","expires_in":1800}
+INFO 2025-04-30 06:30:04,786 views Payment initiated: pidx=RuDEirLCKXu9WkXJRv8ueR
+DEBUG 2025-04-30 06:30:18,215 views Payment success called: GET=<QueryDict: {'payment_id': ['77'], 'pidx': ['RuDEirLCKXu9WkXJRv8ueR'], 'transaction_id': ['25eUgQTBBsxktavGf6dLpL'], 'tidx': ['25eUgQTBBsxktavGf6dLpL'], 'txnId': ['25eUgQTBBsxktavGf6dLpL'], 'amount': ['55500'], 'total_amount': ['55500'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['698db4e2-14e4-4e06-b82f-81c47980f639'], 'purchase_order_name': ['Eastern Vocals - Beginner']}>, Session=dict_items([('_auth_user_id', '12'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'ea3d0ec9e14917e912b983e647dc0be8b072bd67aa4368eff69144e1534ffa93'), ('payment_id', '77'), ('payment_user', 'Naya')]), User=Naya, Authenticated=True, SessionID=vznuwvl1o4jaopwrfr770x0dj16nwomk
+INFO 2025-04-30 06:30:18,218 views Found payment: ID=77, user=Naya, pidx=RuDEirLCKXu9WkXJRv8ueR, status=Initiated, course=Eastern Vocals
+DEBUG 2025-04-30 06:30:18,223 views Enrolling user Naya in course Eastern Vocals
+INFO 2025-04-30 06:30:18,230 views User Naya enrolled in course Eastern Vocals
+INFO 2025-04-30 06:30:18,236 views Payment 77 completed, redirecting to success page
+DEBUG 2025-04-30 06:30:18,251 views Accessing payment_success_page: payment_id=77, user=Naya
+INFO 2025-04-30 06:30:18,254 views Payment details: ID=77, user=Naya, course=Eastern Vocals, status=Completed
+INFO 2025-04-30 06:30:18,256 views Rendering payment_success.html for payment 77 by user Naya
+INFO 2025-04-30 06:31:52,576 views Invoice downloaded for payment 77 by Naya
+INFO 2025-04-30 06:31:52,926 views Invoice downloaded for payment 77 by Naya
+DEBUG 2025-04-30 06:34:00,631 views Accessing student dashboard: user=Naya, role=Student
+DEBUG 2025-04-30 06:34:00,643 views Rendering student dashboard: courses=3, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Naya - Naya Course ho yesari padhnu - Completed>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Naya - New Assignment 1 - Submitted>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Naya - Naya Course ho yesari padhnu - Completed>}]}]
+DEBUG 2025-04-30 07:06:53,210 views Accessing student dashboard: user=Naya, role=Student
+DEBUG 2025-04-30 07:06:53,277 views Rendering student dashboard: courses=3, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Naya - Naya Course ho yesari padhnu - Completed>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Naya - New Assignment 1 - Submitted>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Naya - Naya Course ho yesari padhnu - Completed>}]}]
+INFO 2025-04-30 07:12:27,351 views User Anonymous logged out
+DEBUG 2025-04-30 07:13:21,883 views Login attempt: form_valid=True
+DEBUG 2025-04-30 07:13:21,883 views Authenticating user: Mister
+INFO 2025-04-30 07:13:22,259 views User Mister logged in
+DEBUG 2025-04-30 07:13:22,275 views Rendering home page for user: Mister
+DEBUG 2025-04-30 07:15:12,981 views Rendering courses list: category=All, user=Mister
+DEBUG 2025-04-30 07:15:14,084 views Rendering course detail: course_id=14, user=Mister
+DEBUG 2025-04-30 07:15:15,248 views Rendering course payment: course_id=14, user=Mister
+DEBUG 2025-04-30 07:15:16,674 views Initiating payment: user=Mister, course=Western Vocals, level=Beginner
+INFO 2025-04-30 07:15:16,690 views Created payment: ID=78, user=Mister, session: payment_id=78, payment_user=Mister
+DEBUG 2025-04-30 07:15:17,168 views Khalti API response: status=200, body={"pidx":"3eGcV27r3HWk7qzvAmuLYJ","payment_url":"https://test-pay.khalti.com/?pidx=3eGcV27r3HWk7qzvAmuLYJ","expires_at":"2025-04-30T07:45:17.232414+05:45","expires_in":1800}
+INFO 2025-04-30 07:15:17,174 views Payment initiated: pidx=3eGcV27r3HWk7qzvAmuLYJ
+DEBUG 2025-04-30 07:15:20,026 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:15:20,028 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:16:43,412 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:16:43,414 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:16:57,108 views Accessing teacher dashboard: user=Mister
+WARNING 2025-04-30 07:16:57,111 views Redirecting: User Mister is not a teacher
+DEBUG 2025-04-30 07:16:57,130 views Rendering home page for user: Mister
+DEBUG 2025-04-30 07:16:58,472 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:16:58,474 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:21:42,911 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:21:42,915 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:21:46,865 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:21:46,867 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:21:48,797 views Rendering home page for user: Mister
+DEBUG 2025-04-30 07:21:54,655 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:21:54,657 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:21:59,125 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:21:59,129 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:22:00,666 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:22:00,667 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:22:03,043 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:22:03,044 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:22:04,400 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 07:22:04,401 views Rendering student dashboard: courses=0, course_assignments=[]
+DEBUG 2025-04-30 07:22:15,931 views Accessing teacher dashboard: user=shesan
+WARNING 2025-04-30 07:22:15,932 views Redirecting: User shesan is not a teacher
+DEBUG 2025-04-30 07:22:15,953 views Rendering home page for user: shesan
+DEBUG 2025-04-30 07:22:31,109 views Accessing student dashboard: user=Mister, role=Teacher
+WARNING 2025-04-30 07:22:31,109 views Redirecting: User Mister is not a student
+DEBUG 2025-04-30 07:22:31,118 views Rendering home page for user: Mister
+DEBUG 2025-04-30 07:22:32,206 views Accessing teacher dashboard: user=Mister
+DEBUG 2025-04-30 07:22:32,232 views Rendering teacher dashboard: courses=2
+DEBUG 2025-04-30 09:01:52,048 views Rendering home page for user: shesan
+DEBUG 2025-04-30 09:02:10,030 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:02:10,071 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This user does not exist</li></ul></li></ul>
+DEBUG 2025-04-30 09:06:46,162 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:06:46,162 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This user does not exist</li></ul></li></ul>
+DEBUG 2025-04-30 09:06:58,398 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:06:58,399 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This user does not exist</li></ul></li></ul>
+DEBUG 2025-04-30 09:11:33,879 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:11:33,886 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This user is not registered</li></ul></li></ul>
+DEBUG 2025-04-30 09:11:40,454 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:11:40,454 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Incorrect password</li></ul></li></ul>
+DEBUG 2025-04-30 09:12:16,928 views Accessing student dashboard: user=shesan, role=Student
+DEBUG 2025-04-30 09:12:16,990 views Rendering student dashboard: courses=14, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Drum Class>, 'assignments': []}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}]
+INFO 2025-04-30 09:12:17,996 views User Anonymous logged out
+DEBUG 2025-04-30 09:12:20,409 views Rendering register page: form_errors=
+INFO 2025-04-30 09:12:32,685 views User Info registered with role student
+DEBUG 2025-04-30 09:12:32,685 views Rendering home page for user: Info
+INFO 2025-04-30 09:12:35,433 views User Anonymous logged out
+DEBUG 2025-04-30 09:12:40,060 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:12:40,060 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Incorrect password</li></ul></li></ul>
+DEBUG 2025-04-30 09:12:58,845 views Login attempt: form_valid=True
+DEBUG 2025-04-30 09:12:58,845 views Authenticating user: Info
+INFO 2025-04-30 09:12:59,213 views User Info logged in
+DEBUG 2025-04-30 09:12:59,239 views Rendering home page for user: Info
+INFO 2025-04-30 09:13:00,969 views User Anonymous logged out
+DEBUG 2025-04-30 09:13:06,817 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:13:06,817 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Incorrect password</li></ul></li></ul>
+DEBUG 2025-04-30 09:16:34,148 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:16:34,170 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Incorrect password</li></ul></li></ul>
+DEBUG 2025-04-30 09:16:40,865 views Rendering courses list: category=All, user=Anonymous
+DEBUG 2025-04-30 09:16:41,928 views Rendering home page for user: Anonymous
+DEBUG 2025-04-30 09:16:50,107 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:16:50,108 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Incorrect password</li></ul></li></ul>
+DEBUG 2025-04-30 09:17:14,740 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:17:14,740 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This user is not registered</li></ul></li></ul>
+DEBUG 2025-04-30 09:20:09,218 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:20:09,219 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This user is not registered</li></ul></li></ul>
+DEBUG 2025-04-30 09:20:14,452 views Login attempt: form_valid=False
+ERROR 2025-04-30 09:20:14,452 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Incorrect password</li></ul></li></ul>
+DEBUG 2025-04-30 09:22:03,820 views Login attempt: form_valid=True
+DEBUG 2025-04-30 09:22:03,821 views Authenticating user: Naya
+INFO 2025-04-30 09:22:04,183 views User Naya logged in
+DEBUG 2025-04-30 09:22:04,213 views Rendering home page for user: Naya
+INFO 2025-04-30 09:24:12,250 views User Anonymous logged out
+DEBUG 2025-04-30 09:26:46,401 views Rendering register page: form_errors=
+DEBUG 2025-04-30 09:28:23,630 views Rendering register page: form_errors=<ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This email is already being used</li></ul></li><li>username<ul class="errorlist"><li>A user with that username already exists.</li></ul></li></ul>
+DEBUG 2025-04-30 09:32:14,790 views Rendering register page: form_errors=<ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Emails must match</li></ul></li></ul>
+INFO 2025-04-30 09:33:47,679 views User Pratibha registered with role teacher
+DEBUG 2025-04-30 09:33:47,699 views Rendering home page for user: Pratibha
+DEBUG 2025-04-30 09:48:42,430 views Rendering courses list: category=All, user=Pratibha
+DEBUG 2025-04-30 09:50:31,593 views Rendering courses list: category=Instruments, user=Pratibha
+DEBUG 2025-04-30 09:50:56,186 views Rendering courses list: category=Singing, user=Pratibha
+DEBUG 2025-04-30 09:51:22,818 views Rendering courses list: category=Flute, user=Pratibha
+DEBUG 2025-04-30 09:51:55,900 views Rendering courses list: category=Instruments, user=Pratibha
+DEBUG 2025-04-30 09:51:58,730 views Rendering courses list: category=Singing, user=Pratibha
+DEBUG 2025-04-30 09:52:00,254 views Rendering course detail: course_id=13, user=Pratibha
+DEBUG 2025-04-30 10:00:09,133 views Rendering course payment: course_id=13, user=Pratibha
+DEBUG 2025-04-30 10:02:49,996 views Initiating payment: user=Pratibha, course=Eastern Vocals, level=Foundation
+INFO 2025-04-30 10:02:49,999 views Created payment: ID=79, user=Pratibha, session: payment_id=79, payment_user=Pratibha
+DEBUG 2025-04-30 10:02:50,436 views Khalti API response: status=200, body={"pidx":"rCP2bdEcGnBMVPge3566Bd","payment_url":"https://test-pay.khalti.com/?pidx=rCP2bdEcGnBMVPge3566Bd","expires_at":"2025-04-30T10:32:50.752953+05:45","expires_in":1800}
+INFO 2025-04-30 10:02:50,443 views Payment initiated: pidx=rCP2bdEcGnBMVPge3566Bd
+DEBUG 2025-04-30 10:05:18,071 views Payment success called: GET=<QueryDict: {'payment_id': ['79'], 'pidx': ['rCP2bdEcGnBMVPge3566Bd'], 'transaction_id': ['UUrhbAwjQnffvQXQcyyAjk'], 'tidx': ['UUrhbAwjQnffvQXQcyyAjk'], 'txnId': ['UUrhbAwjQnffvQXQcyyAjk'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['5d5bfad4-0a80-4b03-8bcb-c75af9d36a0a'], 'purchase_order_name': ['Eastern Vocals - Foundation']}>, Session=dict_items([('_auth_user_id', '1'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', 'c5d9af8fd5ced9b7ae7e71bbaa82a7055b2de126978d35f97135267ec9e5b940')])
+INFO 2025-04-30 10:05:18,071 views Found payment: ID=79, user=Pratibha
+ERROR 2025-04-30 10:05:18,071 views User mismatch: authenticated=shesan, payment_user=Pratibha
+DEBUG 2025-04-30 10:06:00,099 views Login attempt: form_valid=True
+DEBUG 2025-04-30 10:06:00,099 views Authenticating user: Pratibha
+INFO 2025-04-30 10:06:00,484 views User Pratibha logged in
+DEBUG 2025-04-30 10:06:00,498 views Rendering home page for user: Pratibha
+DEBUG 2025-04-30 10:06:03,103 views Payment success called: GET=<QueryDict: {'payment_id': ['79'], 'pidx': ['rCP2bdEcGnBMVPge3566Bd'], 'transaction_id': ['UUrhbAwjQnffvQXQcyyAjk'], 'tidx': ['UUrhbAwjQnffvQXQcyyAjk'], 'txnId': ['UUrhbAwjQnffvQXQcyyAjk'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['5d5bfad4-0a80-4b03-8bcb-c75af9d36a0a'], 'purchase_order_name': ['Eastern Vocals - Foundation']}>, Session=dict_items([('_auth_user_id', '15'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', '9c4c7020fa7795b058cefac4bcca17533ac05f91859355184e48b7eb7472be0b')])
+INFO 2025-04-30 10:06:03,106 views Found payment: ID=79, user=Pratibha
+DEBUG 2025-04-30 10:06:03,109 views Enrolling user Pratibha in course Eastern Vocals
+INFO 2025-04-30 10:06:03,118 views User Pratibha enrolled in course Eastern Vocals
+INFO 2025-04-30 10:06:03,122 views Updated user Pratibha's role to Student
+INFO 2025-04-30 10:06:03,128 views Payment 79 completed, redirecting to success page
+DEBUG 2025-04-30 10:06:03,141 views Accessing payment_success_page: payment_id=79
+INFO 2025-04-30 10:06:03,142 views Payment details: ID=79, user=Pratibha
+INFO 2025-04-30 10:06:03,142 views Rendering payment_success.html for payment 79
+INFO 2025-04-30 10:07:36,811 views Invoice downloaded for payment 79 by Pratibha
+INFO 2025-04-30 10:07:38,558 views Invoice downloaded for payment 79 by Pratibha
+DEBUG 2025-04-30 10:09:08,379 views Rendering home page for user: Pratibha
+DEBUG 2025-04-30 10:09:11,177 views Accessing student dashboard: user=Pratibha, role=Student
+DEBUG 2025-04-30 10:09:11,190 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibha - Naya Course ho yesari padhnu - Not Started>}]}]
+DEBUG 2025-04-30 10:09:22,231 views Accessing student dashboard: user=Pratibha, role=Student
+DEBUG 2025-04-30 10:09:22,236 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibha - Naya Course ho yesari padhnu - Not Started>}]}]
+INFO 2025-04-30 10:13:31,779 views Notification 23 marked as read by Pratibha
+DEBUG 2025-04-30 10:13:31,802 views Accessing student dashboard: user=Pratibha, role=Student
+DEBUG 2025-04-30 10:13:31,810 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibha - Naya Course ho yesari padhnu - Not Started>}]}]
+DEBUG 2025-04-30 10:16:24,852 views Accessing course content: course_id=13, user=Pratibha
+INFO 2025-04-30 10:16:24,866 views Updated progress for Pratibha in Eastern Vocals: 100.0%
+DEBUG 2025-04-30 10:16:24,866 views Rendering course content: course=Eastern Vocals, contents=1
+DEBUG 2025-04-30 10:18:14,906 views Accessing student dashboard: user=Pratibha, role=Student
+DEBUG 2025-04-30 10:18:14,909 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibha - Naya Course ho yesari padhnu - Not Started>}]}]
+WARNING 2025-04-30 10:20:17,036 views Cannot create notification: No teacher assigned to course Eastern Vocals
+DEBUG 2025-04-30 10:20:17,049 views Accessing student dashboard: user=Pratibha, role=Student
+DEBUG 2025-04-30 10:20:17,049 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibha - Naya Course ho yesari padhnu - Submitted>}]}]
+DEBUG 2025-04-30 10:22:54,112 views Accessing student dashboard: user=Pratibhaaaa, role=Student
+DEBUG 2025-04-30 10:22:54,113 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibhaaaa - Naya Course ho yesari padhnu - Submitted>}]}]
+DEBUG 2025-04-30 10:23:07,218 views Accessing student dashboard: user=Pratibha, role=Student
+DEBUG 2025-04-30 10:23:07,227 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibha - Naya Course ho yesari padhnu - Submitted>}]}]
+DEBUG 2025-04-30 10:23:55,216 views Accessing student dashboard: user=Pratibhaaaa, role=Student
+DEBUG 2025-04-30 10:23:55,233 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibhaaaa - Naya Course ho yesari padhnu - Submitted>}]}]
+DEBUG 2025-04-30 10:25:47,540 views Accessing student dashboard: user=Pratibhaaaa, role=Student
+DEBUG 2025-04-30 10:25:47,544 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Pratibhaaaa - Naya Course ho yesari padhnu - Submitted>}]}]
+INFO 2025-04-30 10:34:25,523 views User Anonymous logged out
+DEBUG 2025-04-30 10:37:27,124 views Rendering register page: form_errors=
+DEBUG 2025-04-30 10:37:37,747 views Rendering register page: form_errors=<ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>This email is already being used</li></ul></li><li>username<ul class="errorlist"><li>A user with that username already exists.</li></ul></li></ul>
+DEBUG 2025-04-30 10:38:40,451 views Login attempt: form_valid=True
+DEBUG 2025-04-30 10:38:40,451 views Authenticating user: Mister
+INFO 2025-04-30 10:38:40,812 views User Mister logged in
+DEBUG 2025-04-30 10:38:40,836 views Rendering home page for user: Mister
+DEBUG 2025-04-30 10:39:55,481 views Rendering courses list: category=All, user=Mister
+DEBUG 2025-04-30 10:39:56,342 views Rendering course detail: course_id=14, user=Mister
+DEBUG 2025-04-30 10:39:58,488 views Rendering course payment: course_id=14, user=Mister
+DEBUG 2025-04-30 10:39:59,433 views Initiating payment: user=Mister, course=Western Vocals, level=Beginner
+INFO 2025-04-30 10:39:59,439 views Created payment: ID=80, user=Mister, session: payment_id=80, payment_user=Mister
+DEBUG 2025-04-30 10:39:59,911 views Khalti API response: status=200, body={"pidx":"TNyVrzj2Kvujw5jGFVrouf","payment_url":"https://test-pay.khalti.com/?pidx=TNyVrzj2Kvujw5jGFVrouf","expires_at":"2025-04-30T11:10:00.133379+05:45","expires_in":1800}
+INFO 2025-04-30 10:39:59,915 views Payment initiated: pidx=TNyVrzj2Kvujw5jGFVrouf
+DEBUG 2025-04-30 10:40:12,150 views Initiating payment: user=Mister, course=Western Vocals, level=Foundation
+INFO 2025-04-30 10:40:12,154 views Created payment: ID=81, user=Mister, session: payment_id=81, payment_user=Mister
+DEBUG 2025-04-30 10:40:13,947 views Khalti API response: status=200, body={"pidx":"HjGfMPaPiTokXBbAZsqRPA","payment_url":"https://test-pay.khalti.com/?pidx=HjGfMPaPiTokXBbAZsqRPA","expires_at":"2025-04-30T11:10:12.692784+05:45","expires_in":1800}
+INFO 2025-04-30 10:40:13,952 views Payment initiated: pidx=HjGfMPaPiTokXBbAZsqRPA
+DEBUG 2025-04-30 10:40:30,142 views Payment success called: GET=<QueryDict: {'payment_id': ['81'], 'pidx': ['HjGfMPaPiTokXBbAZsqRPA'], 'transaction_id': ['TkT6239999jfmj3oxsyiAV'], 'tidx': ['TkT6239999jfmj3oxsyiAV'], 'txnId': ['TkT6239999jfmj3oxsyiAV'], 'amount': ['100'], 'total_amount': ['100'], 'mobile': ['98XXXXX001'], 'status': ['Completed'], 'purchase_order_id': ['082614dd-5d4b-4a49-9ab6-f1d31a5eea6b'], 'purchase_order_name': ['Western Vocals - Foundation']}>, Session=dict_items([('_auth_user_id', '8'), ('_auth_user_backend', 'django.contrib.auth.backends.ModelBackend'), ('_auth_user_hash', '755cde8afc50b35964b0410eb44db82ea6ca21cdabcc1b52e9ca69ba40d78b9b'), ('payment_id', '81'), ('payment_user', 'Mister')])
+INFO 2025-04-30 10:40:30,144 views Found payment: ID=81, user=Mister
+DEBUG 2025-04-30 10:40:30,150 views Enrolling user Mister in course Western Vocals
+INFO 2025-04-30 10:40:30,162 views User Mister enrolled in course Western Vocals
+INFO 2025-04-30 10:40:30,169 views Updated user Mister's role to Student
+INFO 2025-04-30 10:40:30,178 views Payment 81 completed, redirecting to success page
+DEBUG 2025-04-30 10:40:30,205 views Accessing payment_success_page: payment_id=81
+INFO 2025-04-30 10:40:30,207 views Payment details: ID=81, user=Mister
+INFO 2025-04-30 10:40:30,209 views Rendering payment_success.html for payment 81
+DEBUG 2025-04-30 10:40:34,394 views Rendering home page for user: Mister
+DEBUG 2025-04-30 10:40:39,589 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 10:40:39,600 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Mister - New Assignment 1 - Not Started>}]}]
+INFO 2025-04-30 10:43:53,016 views Notification 25 marked as read by Mister
+DEBUG 2025-04-30 10:43:53,045 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 10:43:53,053 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Mister - New Assignment 1 - Not Started>}]}]
+INFO 2025-04-30 10:44:33,144 views Notification 24 marked as read by Mister
+DEBUG 2025-04-30 10:44:33,153 views Accessing student dashboard: user=Mister, role=Student
+DEBUG 2025-04-30 10:44:33,157 views Rendering student dashboard: courses=1, course_assignments=[{'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Mister - New Assignment 1 - Not Started>}]}]
+DEBUG 2025-04-30 10:45:45,239 views Accessing student dashboard: user=shesan, role=Student
+DEBUG 2025-04-30 10:45:45,284 views Rendering student dashboard: courses=14, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Drum Class>, 'assignments': []}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}]
+DEBUG 2025-04-30 10:45:47,191 views Accessing student dashboard: user=shesan, role=Student
+DEBUG 2025-04-30 10:45:47,330 views Rendering student dashboard: courses=14, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}, {'course': <Course: Drum Class>, 'assignments': []}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: shesan - New Assignment 1 - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: shesan - Naya Course ho yesari padhnu - Not Started>}]}]
+INFO 2025-04-30 10:45:50,634 views User Anonymous logged out
+DEBUG 2025-04-30 10:45:54,720 views Login attempt: form_valid=True
+DEBUG 2025-04-30 10:45:54,720 views Authenticating user: Mister
+INFO 2025-04-30 10:45:55,103 views User Mister logged in
+DEBUG 2025-04-30 10:45:55,116 views Rendering home page for user: Mister
+DEBUG 2025-04-30 10:45:55,909 views Accessing teacher dashboard: user=Mister
+DEBUG 2025-04-30 10:45:55,927 views Rendering teacher dashboard: courses=2
+DEBUG 2025-04-30 10:50:31,391 views Accessing teacher dashboard: user=Mister
+INFO 2025-04-30 10:50:31,430 views Assignment Bharkhar diyeko Assignment added to Western Vocals by Mister
+DEBUG 2025-04-30 10:50:31,437 views Accessing teacher dashboard: user=Mister
+DEBUG 2025-04-30 10:50:31,457 views Rendering teacher dashboard: courses=2
+DEBUG 2025-04-30 10:54:48,133 views Accessing teacher dashboard: user=Mister
+INFO 2025-04-30 10:54:48,271 views Course Classical Vocals added by Mister
+DEBUG 2025-04-30 10:54:48,273 views Accessing teacher dashboard: user=Mister
+DEBUG 2025-04-30 10:54:48,305 views Rendering teacher dashboard: courses=3
+DEBUG 2025-04-30 10:54:49,443 views Rendering courses list: category=All, user=Mister
+DEBUG 2025-04-30 10:55:23,731 views Accessing teacher dashboard: user=Mister
+DEBUG 2025-04-30 10:55:23,746 views Rendering teacher dashboard: courses=3
+INFO 2025-04-30 10:56:07,686 views User Anonymous logged out
+DEBUG 2025-04-30 10:56:15,171 views Login attempt: form_valid=True
+DEBUG 2025-04-30 10:56:15,171 views Authenticating user: Naya
+INFO 2025-04-30 10:56:15,545 views User Naya logged in
+DEBUG 2025-04-30 10:56:15,560 views Rendering home page for user: Naya
+DEBUG 2025-04-30 10:56:16,844 views Accessing student dashboard: user=Naya, role=Student
+DEBUG 2025-04-30 10:56:16,860 views Rendering student dashboard: courses=3, course_assignments=[{'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Naya - Naya Course ho yesari padhnu - Completed>}]}, {'course': <Course: Western Vocals>, 'assignments': [{'assignment': <Assignment: New Assignment 1>, 'submission': <AssignmentSubmission: Naya - New Assignment 1 - Submitted>}, {'assignment': <Assignment: Bharkhar diyeko Assignment>, 'submission': <AssignmentSubmission: Naya - Bharkhar diyeko Assignment - Not Started>}]}, {'course': <Course: Eastern Vocals>, 'assignments': [{'assignment': <Assignment: Naya Course ho yesari padhnu>, 'submission': <AssignmentSubmission: Naya - Naya Course ho yesari padhnu - Completed>}]}]
+INFO 2025-04-30 10:59:50,661 views User Anonymous logged out
+DEBUG 2025-04-30 10:59:54,314 views Login attempt: form_valid=True
+DEBUG 2025-04-30 10:59:54,314 views Authenticating user: Mister
+INFO 2025-04-30 10:59:54,698 views User Mister logged in
+DEBUG 2025-04-30 10:59:54,709 views Rendering home page for user: Mister
+DEBUG 2025-04-30 11:06:02,562 views Login attempt: form_valid=True
+DEBUG 2025-04-30 11:06:02,562 views Authenticating user: shesan
+INFO 2025-04-30 11:06:02,936 views User shesan logged in
+DEBUG 2025-04-30 11:06:02,957 views Rendering home page for user: shesan
+DEBUG 2025-04-30 11:07:16,960 views Login attempt: form_valid=False
+ERROR 2025-04-30 11:07:16,960 views Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Incorrect password</li></ul></li></ul>
+DEBUG 2025-04-30 11:11:55,596 views Login attempt: form_valid=True
+DEBUG 2025-04-30 11:11:55,596 views Authenticating user: shesan
+INFO 2025-04-30 11:11:55,992 views User shesan logged in
+DEBUG 2025-04-30 11:11:56,012 views Rendering home page for user: shesan
+DEBUG 2025-04-30 11:30:48,872 views Rendering home page for user: shesan
+DEBUG 2025-04-30 11:30:49,798 views Rendering courses list: category=All, user=shesan
+DEBUG 2025-04-30 11:32:11,300 views Rendering courses list: category=All, user=shesan
+DEBUG 2025-04-30 11:32:41,905 views Rendering course detail: course_id=14, user=shesan
+DEBUG 2025-04-30 11:34:52,177 views Rendering courses list: category=All, user=shesan
+DEBUG 2025-04-30 11:44:51,769 views Rendering courses list: category=All, user=shesan
+DEBUG 2025-04-30 11:44:52,570 views Rendering course detail: course_id=13, user=shesan

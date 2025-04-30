@@ -118,7 +118,6 @@ class AssignmentSubmission(models.Model):
     def __str__(self):
         return f"{self.student.username} - {self.assignment.title} - {self.status}"
 
-# Payment model (For handling course payments)
 class Payment(models.Model):
     STATUS_CHOICES = (
         ('Initiated', 'Initiated'),
@@ -135,8 +134,7 @@ class Payment(models.Model):
         on_delete=models.CASCADE,
         related_name='payments',
         limit_choices_to={'profile__role': 'Student'},
-        default=1
-    )
+    )  # Removed default=1
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='payments')
     level = models.ForeignKey(Level, on_delete=models.CASCADE, related_name='payments')
     purchase_order_id = models.CharField(max_length=100, unique=True, default=uuid.uuid4)

@@ -20,7 +20,6 @@
             overflow-x: hidden;
         }
 
-        /* Decorative Background Elements */
         body::before {
             content: '';
             position: absolute;
@@ -33,7 +32,6 @@
             z-index: 0;
         }
 
-        /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -133,16 +131,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Login Container Wrapper */
         .login-wrapper {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 60px 0; /* Increased padding to add more space above and below */
+            padding: 60px 0;
         }
 
-        /* Login Container */
         .login-container {
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
@@ -240,6 +236,7 @@
             font-size: 0.9rem;
             margin-top: -10px;
             margin-bottom: 10px;
+            text-align: left;
         }
 
         .alert {
@@ -256,7 +253,6 @@
             border-left: 4px solid #dc2626;
         }
 
-        /* Footer */
         .footer {
             background: linear-gradient(135deg, #059669, #07301f);
             color: white;
@@ -285,7 +281,6 @@
             color: white;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -300,7 +295,7 @@
             }
 
             .login-wrapper {
-                padding: 40px 0; /* Reduced padding for smaller screens */
+                padding: 40px 0;
             }
 
             .login-container {
@@ -375,16 +370,23 @@
                 </div>
             {% endif %}
 
-            <form method="POST">
+            <!-- Display non-field form errors -->
+            {% if form.non_field_errors %}
+                <div class="error-message">
+                    {{ form.non_field_errors|striptags }}
+                </div>
+            {% endif %}
+
+            <form method="POST" aria-label="Login Form">
                 {% csrf_token %}
                 {% for field in form %}
-                    <label>{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                     {{ field }}
                     {% if field.errors %}
                         <small class="error-message">{{ field.errors|striptags }}</small>
                     {% endif %}
                 {% endfor %}
-                <input type="submit" value="Login">
+                <input type="submit" value="Login" aria-label="Submit Login">
             </form>
         </div>
     </div>
